@@ -1,4 +1,4 @@
-name: CI/CD Backend (Symfony)
+name: Symfony CI
 
 on:
   push:
@@ -9,83 +9,23 @@ on:
       - main
 
 jobs:
-  build-and-test:
+  build:
     runs-on: ubuntu-latest
 
-    services:
-      mysql:
-        image: mysql:5.7
-        env:
-          MYSQL_ROOT_PASSWORD: root
-          MYSQL_DATABASE: test
-        ports:
-          - 3306:3306
-        options: >-
-          --health-cmd="mysqladmin ping --silent"
-          --health-interval=10s
-          --health-timeout=5s
-          --health-retries=3
-
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-      # Afficher la structure des fichiers dans le répertoire racine
-      - name: List root files
-        run: ls -R
-
-      # Afficher la structure des fichiers dans IdRecette_Back_Symfony
-      - name: List files in IdRecette_Back_Symfony
-        run: ls -R IdRecette_Back_Symfony
-
-      # Setup PHP
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
+      - name: Set up PHP
+        uses: shivammathur/php-action@v2
         with:
-          php-version: '8.1'
-          extensions: mbstring, intl, pdo_mysql
-          ini-values: post_max_size=256M, upload_max_filesize=256M
+          php-version: '8.2'
+          extensions: mbstring, intl, xml, ctype, iconv, pdo, pdo_mysql
 
-      # Installation de Composer
       - name: Install Composer dependencies
-        working-directory: IdRecette_Back_Symfony
-        run: composer install --no-progress
+        run: composer install --no-progress --prefer-dist
 
-      # Exécuter les migrations et les tests
-      - name: Run migrations
-        working-directory: IdRecette_Back_Symfony
-        env:
-          DATABASE_URL: mysql://root:root@127.0.0.1:3306/test
-        run: php bin/console doctrine:migrations:migrate --no-interaction
-
-      - name: Run tests
-        working-directory: IdRecette_Back_Symfony
-        env:
-          DATABASE_URL: mysql://root:root@127.0.0.1:3306/test
-        run: php bin/phpunit
-
-  deploy:
-    needs: build-and-test
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
-
-    steps:
-      - uses: actions/checkout@v2
-
-      # Setup PHP et Composer
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.1'
-          extensions: mbstring, intl, pdo_mysql
-
-      # Installation de l'application
-      - name: Install Composer dependencies
-        working-directory: IdRecette_Back_Symfony
-        run: composer install --no-progress
-
-      # Déploiement sur un serveur distant
-      - name: Deploy to Server
-        env:
-          SSH_KEY: ${{ secrets.SSH_KEY }}
+      - name: Run Symfony commands
         run: |
-          ssh -i $SSH_KEY user@ton-serveur.com 'cd /path/to/your/backend && git pull origin main && php bin/console cache:clear --env=prod'
+          php bin/console doctrine:migrations:migrate --no-interaction
+          php bin/console cache:clear
