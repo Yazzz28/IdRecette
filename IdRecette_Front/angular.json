@@ -19,10 +19,8 @@
           "options": {
             "outputPath": "dist/id-recette-front",
             "index": "src/index.html",
-            "browser": "src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "main": "src/main.ts",
+            "polyfills": "src/polyfills.ts",  // Correction de la référence à polyfills
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -46,12 +44,24 @@
                   "maximumError": "1MB"
                 },
                 {
+                  "type": "all",
+                  "maximumWarning": "2kB",
+                  "maximumError": "4kB"
+                },
+                {
                   "type": "anyComponentStyle",
                   "maximumWarning": "2kB",
                   "maximumError": "4kB"
+                },
+                {
+                  "type": "inline",
+                  "maximumWarning": "4kB", // Modification pour les polices inline
+                  "maximumError": "6kB"    // Modification pour les polices inline
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "optimization": true, // Activer l'optimisation
+              "sourceMap": false
             },
             "development": {
               "optimization": false,
