@@ -22,11 +22,19 @@ jobs:
           php-version: '8.2'
           extensions: mbstring, intl, xml, ctype, iconv, pdo, pdo_mysql, tokenizer, json
 
-      - name: Install Composer dependencies
-        run: composer install --no-progress --prefer-dist
-
-      - name: Check for database migrations
+      - name: Install Backend Dependencies
         run: |
+          cd IdRecette_Back_Symfony
+          composer install --no-progress --prefer-dist
+
+      - name: Create Database
+        run: |
+          cd IdRecette_Back_Symfony
+          php bin/console doctrine:database:create --if-not-exists
+
+      - name: Check for Database Migrations
+        run: |
+          cd IdRecette_Back_Symfony
           php bin/console doctrine:migrations:status
           if [ $? -eq 0 ]; then
             echo "Database migrations are up-to-date."
@@ -35,8 +43,17 @@ jobs:
             php bin/console doctrine:migrations:migrate --no-interaction
           fi
 
-      - name: Run Symfony cache clear
-        run: php bin/console cache:clear
+      - name: Run Symfony Cache Clear
+        run: |
+          cd IdRecette_Back_Symfony
+          php bin/console cache:clear
 
-      - name: Run Symfony tests
-        run: php bin/console doctrine:schema:validate
+      - name: Run Symfony Tests
+        run: |
+          cd IdRecette_Back_Symfony
+          php bin/console doctrine:schema:validate
+
+      - name: Run PHPUnit Tests
+        run: |
+          cd IdRecette_Back_Symfony
+          ./vendor/bin/phpunit --testsuite=Unit

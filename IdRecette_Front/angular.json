@@ -5,24 +5,18 @@
   "projects": {
     "IdRecette_Front": {
       "projectType": "application",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
-        }
-      },
-      "root": "",
-      "sourceRoot": "src",
+      "root": "IdRecette_Front",
+      "sourceRoot": "IdRecette_Front/src",
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/id-recette-front",
             "index": "src/index.html",
             "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",  // Correction de la référence à polyfills
+            "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "inlineStyleLanguage": "scss",
             "assets": [
               {
                 "glob": "**/*",
@@ -44,28 +38,17 @@
                   "maximumError": "1MB"
                 },
                 {
-                  "type": "all",
-                  "maximumWarning": "2kB",
-                  "maximumError": "4kB"
-                },
-                {
                   "type": "anyComponentStyle",
                   "maximumWarning": "2kB",
                   "maximumError": "4kB"
-                },
-                {
-                  "type": "inline",
-                  "maximumWarning": "4kB", // Modification pour les polices inline
-                  "maximumError": "6kB"    // Modification pour les polices inline
                 }
               ],
               "outputHashing": "all",
-              "optimization": true, // Activer l'optimisation
+              "optimization": true,
               "sourceMap": false
             },
             "development": {
               "optimization": false,
-              "extractLicenses": false,
               "sourceMap": true
             }
           },
@@ -94,7 +77,6 @@
               "zone.js/testing"
             ],
             "tsConfig": "tsconfig.spec.json",
-            "inlineStyleLanguage": "scss",
             "assets": [
               {
                 "glob": "**/*",
@@ -110,5 +92,6 @@
         }
       }
     }
-  }
+  },
+  "defaultProject": "IdRecette_Front"
 }
