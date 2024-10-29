@@ -21,11 +21,20 @@ jobs:
         with:
           node-version: '18'
 
+      - name: Navigate to Angular project directory
+        run: cd IdRecette_Front
+
       - name: Install dependencies
-        run: npm install
+        run: |
+          cd IdRecette_Front
+          npm install
 
       - name: Build the Angular application
-        run: npm run build --prod
+        run: |
+          cd IdRecette_Front
+          npm run build --prod
 
       - name: Run tests
-        run: npm test -- --watch=false
+        run: |
+          cd IdRecette_Front
+          npm test -- --watch=false
