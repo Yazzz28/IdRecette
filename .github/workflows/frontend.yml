@@ -1,0 +1,63 @@
+name: CI/CD Frontend (Angular)
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      # Setup Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16' # ou la version de Node.js utilisée
+
+      # Installation des dépendances et build
+      - name: Install dependencies
+        working-directory: ./IdRecette_Front
+        run: npm install
+
+      - name: Run tests
+        working-directory: ./IdRecette_Front
+        run: npm test
+
+      - name: Build Angular app
+        working-directory: ./IdRecette_Front
+        run: npm run build -- --prod
+
+  deploy:
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - uses: actions/checkout@v2
+
+      # Setup Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '17'
+
+      # Installation et build de l'application
+      - name: Install dependencies and build
+        working-directory: ./IdRecette_Front
+        run: |
+          npm install
+          npm run build -- --prod
+
+      # Déployer vers une plateforme (par exemple, GitHub Pages ou Vercel)
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./IdRecette_Front/dist/ton-nom-projet-angular
