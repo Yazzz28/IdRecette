@@ -14,27 +14,27 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
-      - name: Node.js Setup
+      - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
-
-      - name: Navigate to Angular project directory
-        run: cd IdRecette_Front
+          cache: 'npm'
+          cache-dependency-path: IdRecette_Front/package-lock.json
 
       - name: Install dependencies
-        run: |
-          cd IdRecette_Front
-          npm install
+        working-directory: IdRecette_Front
+        run: npm ci
 
-      - name: Build the Angular application
-        run: |
-          cd IdRecette_Front
-          npm run build --prod
+      - name: Lint
+        working-directory: IdRecette_Front
+        run: npm run lint
+
+      - name: Build
+        working-directory: IdRecette_Front
+        run: npm run build --configuration=production
 
       - name: Run tests
-        run: |
-          cd IdRecette_Front
-          npm test -- --watch=false
+        working-directory: IdRecette_Front
+        run: npm test -- --browsers=ChromeHeadless --watch=false --code-coverage
