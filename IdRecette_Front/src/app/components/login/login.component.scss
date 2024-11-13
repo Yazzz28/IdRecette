@@ -161,3 +161,40 @@ $account-prompt-font-size: 1.1rem; // Taille de la police du lien
     }
   }
 }
+
+.error-login {
+  background-color: lighten($error-color, 20%); /* Fond légèrement éclairci pour ne pas être trop intense */
+  color: white; /* Texte en blanc */
+  padding: 15px; /* Espacement modéré autour du texte */
+  border-radius: 5px; /* Coins arrondis pour une forme plus douce */
+  font-weight: bold; /* Texte en gras pour attirer l'attention */
+  text-align: center; /* Centrer le texte */
+  font-size: 1rem; /* Taille de la police plus raisonnable */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Ombre légère pour souligner sans être trop marquée */
+  margin-top: 15px; /* Espacement au-dessus du message */
+  border: 1px solid $error-color; /* Bordure rouge plus fine */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Transition douce pour les effets */
+}
+
+.error-login:hover {
+  background-color: lighten($error-color, 15%); /* Légère modification du fond au survol */
+  transform: translateY(-5px); /* Effet de soulèvement au survol pour attirer l'attention */
+}
+
+.error-login .error-text {
+  margin: 0; /* Pas de marges supplémentaires */
+  font-size: 1rem; /* Taille de texte cohérente */
+  font-family: "Montserrat", sans-serif; /* Police harmonisée */
+}
+
+@keyframes flash {
+  0% {
+    background-color: lighten($error-color, 20%);
+  }
+  50% {
+    background-color: lighten($error-color, 10%); /* Une légère variation dans l'animation */
+  }
+  100% {
+    background-color: lighten($error-color, 20%);
+  }
+}

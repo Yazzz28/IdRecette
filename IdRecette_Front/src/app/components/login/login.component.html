@@ -1,5 +1,10 @@
 <main class="login-container">
     <section class="login-header">
+      @if (errorLogin) {
+      <div class="error-login">
+        {{ errorLogin }}
+      </div>
+      }
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
         <h1 class="login-title">{{ title }}</h1>
         <div class="input-container">
@@ -39,6 +44,17 @@
           <div class="error-message">
             @if (loginForm.get('password')?.errors?.['required']) {
             <p class="error-text">Le mot de passe est requis</p>
+            }
+            @if (loginForm.get('password')?.errors?.['securePassword']) {
+              <div class="error-text">
+                Le mot de passe n'est pas au bon format. Assurez-vous qu'il respecte les critères suivants :
+                <ul>
+                  <li>Au moins 8 caractères</li>
+                  <li>Une majuscule (A-Z)</li>
+                  <li>Un chiffre (0-9)</li>
+                  <li>Un caractère spécial (par exemple, &#64;, #, $, etc.)</li>
+                </ul>
+              </div>              
             }
           </div>
           }

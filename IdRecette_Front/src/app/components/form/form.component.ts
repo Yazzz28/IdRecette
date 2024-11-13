@@ -6,9 +6,9 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-form',
   standalone: true,
-  imports: [ NavbarComponent, CommonModule, FormsModule ], // Correction des imports
+  imports: [ NavbarComponent, CommonModule, FormsModule ],
   templateUrl: './form.component.html',
-  styleUrls: ['./form.component.scss'] // Correction de 'styleUrl' en 'styleUrls'
+  styleUrls: ['./form.component.scss']
 })
 export class FormComponent {
   menuCount = 5; // Valeur initiale

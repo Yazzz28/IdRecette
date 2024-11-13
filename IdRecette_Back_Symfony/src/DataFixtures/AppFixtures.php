@@ -28,7 +28,7 @@ class AppFixtures extends Fixture
         // Hash du mot de passe
         $hashedPassword = $this->passwordHasher->hashPassword(
             $user,
-            'test'
+            'Test1234?'
         );
         $user->setPassword($hashedPassword);
 
