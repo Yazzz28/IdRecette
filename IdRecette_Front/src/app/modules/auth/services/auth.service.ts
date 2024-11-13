@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { GeneralInfo, AllergyInfo, DietInfo, AuthState } from '../models/auth.model';
+import { GeneralInfo, DietInfo, AuthState } from '../models/auth.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,6 @@ export class AuthService {
     currentStep: 1,
     isCompleted: false,
     generalInfo: undefined,
-    allergyInfo: undefined,
     dietInfo: undefined
   });
 
@@ -48,7 +47,6 @@ export class AuthService {
       currentStep: 1,
       isCompleted: false,
       generalInfo: undefined,
-      allergyInfo: undefined,
       dietInfo: undefined
     };
     this.updateState(initialState);
@@ -68,20 +66,7 @@ export class AuthService {
     );
   }
 
-  // Étape 2 : Informations sur les allergies
-  public saveAllergyInfo(info: AllergyInfo): Observable<any> {
-    return this.http.post(`${this.API_URL}/allergy-info`, info).pipe(
-      tap(() => {
-        this.updateState({
-          allergyInfo: info,
-          currentStep: 3
-        });
-      }),
-      catchError(this.handleError)
-    );
-  }
-
-  // Étape 3 : Informations sur le régime alimentaire
+  // Étape 2 : Informations sur le régime alimentaire
   public saveDietInfo(info: DietInfo): Observable<any> {
     return this.http.post(`${this.API_URL}/diet-info`, info).pipe(
       tap(() => {
@@ -99,7 +84,6 @@ export class AuthService {
   public submitCompleteProfile(): Observable<any> {
     const completeProfile = {
       ...this.authStateSubject.value.generalInfo,
-      ...this.authStateSubject.value.allergyInfo,
       ...this.authStateSubject.value.dietInfo
     };
 
@@ -122,8 +106,6 @@ export class AuthService {
       case 1:
         return !!state.generalInfo;
       case 2:
-        return !!state.allergyInfo;
-      case 3:
         return !!state.dietInfo;
       default:
         return false;
@@ -136,8 +118,6 @@ export class AuthService {
       case 1:
         return state.generalInfo as T;
       case 2:
-        return state.allergyInfo as T;
-      case 3:
         return state.dietInfo as T;
       default:
         return undefined;

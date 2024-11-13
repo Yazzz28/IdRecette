@@ -4,8 +4,10 @@ namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\Post;
 use ApiPlatform\OpenApi\Model\Operation;
 use ApiPlatform\Symfony\Action\NotFoundAction;
+use App\Controller\AuthController;
 use App\Controller\MeController;
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -13,11 +15,11 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_EMAIL', fields: ['email'])]
 #[ApiResource(
-    security: 'is_granted("ROLE_USER")',
     operations: [
         new Get(
             controller: NotFoundAction::class,
@@ -27,32 +29,40 @@ use Symfony\Component\Security\Core\User\UserInterface;
             )
         ),
         new Get(
-            name: 'me',
-            paginationEnabled: false,
             uriTemplate: '/me',
             controller: MeController::class,
-            read: false,
             openapi: new Operation(
-                security: [['bearerAuth' => []]], // Authentification par jeton
-            )
+                security: [['bearerAuth' => []]],
+            ),
+            paginationEnabled: false,
+            read: false,
+            name: 'me'
+        ),
+        new Post(
+            uriTemplate: '/auth',
+            controller: AuthController::class,
         )
     ],
     normalizationContext: ['groups' => ['user:read']],
+    security: 'is_granted("ROLE_USER")',
 )]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['user:read'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 180)]
+    #[Groups(['user:read'])]
     private ?string $email = null;
 
     /**
      * @var list<string> The user roles
      */
     #[ORM\Column]
+    #[Groups(['user:read'])]
     private array $roles = [];
 
     /**
@@ -62,23 +72,27 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $password = null;
 
     #[ORM\Column(length: 50)]
+    #[Groups(['user:read'])]
     private ?string $pseudo = null;
 
     /**
      * @var Collection<int, Diet>
      */
-    #[ORM\ManyToMany(targetEntity: Diet::class, mappedBy: 'user')]
+    #[Groups(['user:read'])]
+    #[ORM\ManyToMany(targetEntity: Diet::class, mappedBy: 'users')]
     private Collection $diets;
 
     /**
      * @var Collection<int, category>
      */
+    #[Groups(['user:read'])]
     #[ORM\ManyToMany(targetEntity: Category::class)]
     private Collection $allergy;
 
     /**
      * @var Collection<int, recipe>
      */
+    #[Groups(['user:read'])]
     #[ORM\ManyToMany(targetEntity: Recipe::class, inversedBy: 'users')]
     private Collection $favorite;
 
