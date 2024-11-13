@@ -1,0 +1,13 @@
+<form>
+    <div class="form-group">
+      <label for="menuCount">Nb de menu</label>
+      <div class="counter">
+        <button type="button" class="counter-button" (click)="decrement()">-</button>
+        <div class="menu-display">{{ menuCount }}</div>
+        <button type="button" class="counter-button" (click)="increment()">+</button>
+      </div>
+    </div>
+    <button type="submit" class="btn-validate">Valide</button>
+  </form>
+  <app-navbar></app-navbar>
+  

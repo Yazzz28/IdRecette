@@ -1,0 +1,63 @@
+// Variables de couleur
+$background-color: #202735;
+$link-color: #F1C0AD;
+$title-color: #ffffff;
+$logo-width: 150px; // Ajustez la taille du logo selon vos besoins
+
+// Importation de la police Montserrat
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+// Suppression des marges par défaut du body
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+}
+
+.home-body {
+  background-color: $background-color; // Couleur de fond de la page
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; // La page occupe toute la hauteur de la fenêtre
+  margin: 0; // Suppression des marges autour de la page
+  padding: 0; // Suppression des paddings par défaut
+  overflow: hidden; // Pour éviter tout débordement inutile
+
+  .logo {
+    width: $logo-width; // Largeur de l'image (ajustez si nécessaire)
+    height: auto; // Maintient les proportions de l'image
+    margin-bottom: 20px; // Espace entre le logo et le titre
+  }
+
+  .home-title {
+    color: $title-color; // Couleur du titre
+    font-family: 'Montserrat', sans-serif; // Police Montserrat
+    font-weight: 700; // Gras
+    font-size: 2.5rem; // Taille du titre
+    margin: 0 0 30px 0; // Espacement inférieur
+    text-align: center;
+  }
+
+  .login-link {
+    color: $link-color; // Couleur du lien
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif; // Utilisation de la même police pour la cohérence
+    font-weight: 400; // Poids normal pour le lien
+    font-size: 1.2rem; // Taille du texte du lien
+    border: 2px solid $link-color; // Bordure autour du lien
+    padding: 10px 20px; // Espacement intérieur du lien
+    border-radius: 5px; // Bordures arrondies
+    transition: background-color 0.3s ease, color 0.3s ease; // Transition pour l'effet hover
+
+    &:hover {
+      background-color: $link-color; // Couleur de fond au survol
+      color: $background-color; // Couleur du texte au survol
+    }
+  }
+}

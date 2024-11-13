@@ -1,0 +1,38 @@
+$background-color: #202735;
+$text-color: white;
+$font-family: 'Arial', sans-serif;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  overflow: hidden; /* Empêche le défilement */
+}
+
+.content {
+  display: flex;
+  justify-content: center; /* Centre horizontalement */
+  align-items: center; /* Centre verticalement */
+  min-height: 100vh; /* Utilise la hauteur de l'écran sans dépasser */
+  padding: 20px; /* Espace autour pour les grands écrans */
+  background-color: $background-color;
+}
+
+.paragraph {
+  font-family: $font-family;
+  font-size: 24px; /* Taille de police plus grande */
+  color: $text-color;
+  text-align: center; /* Centre le texte */
+  line-height: 1.6;
+  padding: 20px;
+  max-width: 800px; /* Largeur maximale pour éviter de trop étendre le texte */
+  background-color: transparent;
+
+  &:hover {
+    background-color: #1a1f2b; /* Couleur de fond légèrement plus foncée au survol */
+  }
+}

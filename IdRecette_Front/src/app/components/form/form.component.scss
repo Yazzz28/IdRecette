@@ -1,0 +1,103 @@
+$background-color: #202735;
+$form-background: #606c88;
+$button-background: #475268;
+$text-color: #ffffff;
+$border-radius: 15px;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  background-color: $background-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $text-color;
+}
+
+// Style du formulaire centré
+form {
+  background-color: $form-background;
+  padding: 30px;
+  border-radius: $border-radius;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  max-width: 300px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+label {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: $text-color;
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+  background-color: darken($form-background, 5%);
+  border-radius: $border-radius;
+  padding: 10px;
+}
+
+.counter-button {
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  color: $text-color;
+  background-color: $button-background;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: lighten($button-background, 5%);
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.menu-display {
+  font-size: 24px;
+  width: 60px;
+  text-align: center;
+  color: $text-color;
+  margin: 0 10px;
+}
+
+.btn-validate {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: $text-color;
+  background-color: $button-background;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: lighten($button-background, 5%);
+  }
+
+  &:focus {
+    outline: none;
+  }
+}

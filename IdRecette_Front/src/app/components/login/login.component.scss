@@ -1,0 +1,163 @@
+// Variables de couleur
+$background-color: #202735; // Couleur de fond
+$error-color: #ff4f4f; // Rouge vif pour les erreurs
+$input-background: rgba(255, 255, 255, 0.8); // Blanc transparent pour les champs d'entrée
+$link-color: #f1c0ad; // Couleur des liens
+$title-color: #ffffff; // Couleur du titre
+$button-background: #f1c0ad; // Couleur de fond du bouton
+$button-hover-background: darken($button-background, 10%); // Couleur de fond au survol
+$blur-background: rgba(255, 255, 255, 0.2); // Arrière-plan flou transparent
+$input-container-background: rgba(255, 255, 255, 0.15); // Couleur de fond flou et plus foncé pour le conteneur
+$placeholder-color: rgba(255, 255, 255, 0.7); // Couleur des placeholders
+$button-font-size: 1.2rem; // Taille de la police du bouton
+$account-prompt-font-size: 1.1rem; // Taille de la police du lien
+
+// Importation de la police Montserrat
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+
+.login-title {
+  color: $title-color; // Couleur du titre
+  font-family: "Montserrat", sans-serif; // Police pour le titre
+  font-size: 2rem; // Taille de la police
+  text-align: center; // Centrer le texte
+  margin-bottom: 20px; // Espace en dessous du titre
+}
+
+.login-container {
+  background-color: $background-color; // Couleur de fond de la page
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; // La page occupe toute la hauteur de la fenêtre
+  margin: 0; // Suppression des marges autour de la page
+  padding: 0; // Suppression des paddings par défaut
+  overflow: hidden; // Pour éviter tout débordement inutile
+
+  .login-form {
+    background: $blur-background; // Arrière-plan flou transparent
+    border-radius: 10px; // Bordures arrondies pour le formulaire
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); // Ombre pour donner du relief
+    padding: 20px; // Espacement intérieur du formulaire
+    backdrop-filter: blur(10px); // Flou d'arrière-plan
+    height: auto; // Ajuste la hauteur pour qu'elle s'adapte au contenu
+    width: 90%; // Largeur de la forme
+
+    .input-container {
+      background: $input-container-background; // Couleur de fond flou et plus foncé
+      border-radius: 10px; // Bordures arrondies pour le conteneur d'input
+      padding: 10px; // Espacement intérieur du conteneur d'input
+      margin: 10px auto; // Centrer le conteneur et espace vertical autour
+
+      // Centrer le contenu de l'input-container
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .input-field {
+        width: 100%; // Largeur du champ d'entrée
+        max-width: 245px; // Largeur maximale du champ d'entrée
+        margin: 5px 0; // Espace vertical réduit entre les champs
+        padding: 16px; // Augmenter l'espacement intérieur pour élargir la hauteur
+        background: $background-color; // Couleur de fond des champs d'entrée
+        border: 1px solid rgba(0, 0, 0, 0.2); // Bordure légère
+        border-radius: 10px 10px 0 0; // Arrondi en haut uniquement
+        font-family: "Montserrat", sans-serif; // Police pour les champs
+        font-size: 1rem; // Taille de la police
+        transition: border-color 0.3s; // Transition pour la couleur de la bordure
+      
+        // Style pour le placeholder
+        &::placeholder {
+          color: $placeholder-color; // Couleur du placeholder
+          opacity: 1; // Rendre l'opacité à 1
+        }
+      
+        &:focus {
+          border-color: $link-color; // Couleur de la bordure au focus
+          outline: none; // Supprime l'outline par défaut
+        }
+      }
+      
+      .input-field2 {
+        width: 100%; // Largeur du champ d'entrée
+        max-width: 245px; // Largeur maximale du champ d'entrée
+        margin: 5px 0; // Espace vertical réduit entre les champs
+        padding: 16px; // Augmenter l'espacement intérieur pour élargir la hauteur
+        background: $background-color; // Couleur de fond des champs d'entrée
+        border: 1px solid rgba(0, 0, 0, 0.2); // Bordure légère
+        border-radius: 0 0 10px 10px; // Arrondi en bas uniquement
+        font-family: "Montserrat", sans-serif; // Police pour les champs
+        font-size: 1rem; // Taille de la police
+        transition: border-color 0.3s; // Transition pour la couleur de la bordure
+      
+        // Style pour le placeholder
+        &::placeholder {
+          color: $placeholder-color; // Couleur du placeholder
+          opacity: 1; // Rendre l'opacité à 1
+        }
+      
+        &:focus {
+          border-color: $link-color; // Couleur de la bordure au focus
+          outline: none; // Supprime l'outline par défaut
+        }
+      }
+      
+
+      // Style pour les messages d'erreur
+      .error-message {
+        width: 100%; // Prend toute la largeur du conteneur
+        max-width: 245px; // Largeur maximale
+        margin-top: 5px; // Espace en haut du message
+        padding: 10px; // Espacement intérieur
+        background-color: lighten($error-color, 30%); // Fond de l'erreur, éclairci
+        border-radius: 5px; // Bordures arrondies
+        color: $error-color; // Texte en rouge vif
+        font-size: 0.9rem; // Taille du texte de l'erreur
+        text-align: left; // Aligner le texte à gauche
+        border: 1px solid $error-color; // Bordure rouge
+
+        .error-text {
+          margin: 0; // Pas d'espacement supplémentaire
+          font-family: "Montserrat", sans-serif; // Police pour les erreurs
+        }
+      }
+    }
+
+    .submit-button {
+      background-color: $button-background; // Couleur de fond du bouton
+      color: $background-color; // Couleur du texte du bouton
+      border: none; // Supprime la bordure par défaut
+      padding: 12px; // Espacement intérieur
+      border-radius: 5px; // Bordures arrondies
+      font-family: "Montserrat", sans-serif; // Police pour le bouton
+      font-weight: bold; // Gras
+      font-size: $button-font-size; // Taille de la police du bouton
+      cursor: pointer; // Curseur de pointeur
+      transition: background-color 0.3s; // Transition pour l'effet hover
+      margin: 15px auto; // Centrer le bouton avec marge auto
+      width: 90%; // Largeur du bouton
+      display: block; // Comportement de bloc pour le centrage
+
+      &:hover {
+        background-color: $button-hover-background; // Assombrit la couleur au survol
+      }
+    }
+
+    .account-prompt {
+      text-align: center; // Centrer le texte
+      margin-top: 15px; // Espace au-dessus du texte
+      color: $title-color;
+      font-size: $account-prompt-font-size; // Taille de la police du lien
+
+      .signup-link {
+        color: $link-color; // Couleur du lien
+        text-decoration: none; // Pas de soulignement
+        font-size: 1rem; // Taille de la police
+
+        &:hover {
+          text-decoration: underline; // Souligner au survol
+        }
+      }
+    }
+  }
+}
