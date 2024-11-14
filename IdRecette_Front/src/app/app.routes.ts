@@ -27,6 +27,10 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/form-page/form-page.component').then(m => m.FormPageComponent),
   },
   {
+    path: 'recettes',
+    loadComponent: () => import('./pages/recette-list-page/recette-list-page.component').then(m => m.RecetteListPageComponent),
+  },
+  {
     path: '**',
     redirectTo: 'home',
   },
