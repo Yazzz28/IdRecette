@@ -1,7 +1,12 @@
 import { Component, inject } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormArray,
+  FormBuilder,
+  FormGroup,
+  Validators,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { AuthService } from '@services/auth.service';
-import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule, AsyncPipe } from '@angular/common';
 import { User } from '@models/user.model';
 import { RegexService } from '@services/regex.service';
@@ -19,16 +24,18 @@ import { Observable } from 'rxjs';
 export class RegisterComponent {
   registerForm: FormGroup;
   router: Router = inject(Router);
-  allergies: string[] = ['Pollen', 'Arachides', 'Lactose', 'Gluten'];
+  allergies: Observable<any>;
   diets: Observable<any>;
+  isAllergySectionVisible = false; 
 
   constructor(
-    private fb: FormBuilder,
-    private authService: AuthService,
-    private regexService: RegexService,
-    private dietService: DietService
+    private readonly fb: FormBuilder,
+    private readonly authService: AuthService,
+    private readonly regexService: RegexService,
+    private readonly dietService: DietService
   ) {
     this.diets = this.dietService.getAllDiets();
+    this.allergies = this.dietService.getAllergyList();
     this.registerForm = this.fb.group({
       email: [
         '',
@@ -57,6 +64,7 @@ export class RegisterComponent {
   onSubmit() {
     // Vérifier si le formulaire est valide avant de soumettre
     if (this.registerForm.valid) {
+      console.log(this.registerForm.value);
       // Destructurer la valeur du formulaire pour obtenir les données de l'utilisateur,
       // excluant confirmPassword et passwords.
       const { passwords, confirmPassword, ...userData } =
@@ -73,6 +81,8 @@ export class RegisterComponent {
       // Appeler la méthode d'enregistrement depuis le service d'authentification
       this.authService.register(user).subscribe({
         next: (response: any) => {
+          console.log(user);
+          console.log(response);
           localStorage.setItem('token', response.token);
           this.router.navigate(['/']);
         },
@@ -81,5 +91,33 @@ export class RegisterComponent {
         },
       });
     }
+  }
+
+  isAllergySelected(allergy: string): boolean {
+    const allergyFormArray = this.registerForm.get('allergy') as FormArray;
+    return allergyFormArray.controls.some(
+      (control) => control.value === allergy
+    );
+  }
+
+  onAllergyChange(event: Event) {
+    const checkbox = event.target as HTMLInputElement;
+    const allergy = checkbox.value;
+    const allergyFormArray = this.registerForm.get('allergy') as FormArray;
+
+    if (checkbox.checked) {
+      allergyFormArray.push(this.fb.control(allergy));
+    } else {
+      const index = allergyFormArray.controls.findIndex(
+        (control) => control.value === allergy
+      );
+      if (index !== -1) {
+        allergyFormArray.removeAt(index);
+      }
+    }
+  }
+
+  toggleAllergySection() {
+    this.isAllergySectionVisible = !this.isAllergySectionVisible;
   }
 }

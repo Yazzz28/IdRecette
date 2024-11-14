@@ -1,7 +1,10 @@
 <div class="container form-container">
   <h1 class="form-title">Inscription</h1>
-  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="register-form">
-    
+  <form
+    [formGroup]="registerForm"
+    (ngSubmit)="onSubmit()"
+    class="register-form"
+  >
     <!-- Email -->
     <div class="form-group">
       <label for="email" class="form-label">Email</label>
@@ -12,18 +15,17 @@
         formControlName="email"
         required
       />
-      @if (registerForm.controls['email'].invalid && registerForm.controls['email'].touched) {
-        <div class="error-message">
-          @if (registerForm.get('email')?.errors?.['required']) {
-            <p class="error-text">L'email est requis</p>
-          } 
-          @if (registerForm.get('email')?.errors?.['pattern']) {
-            <p class="error-text">L'email n'est pas valide</p>
-          } 
-          @if (registerForm.get('email')?.errors?.['alreadyExist']) {
-            <p class="error-text">Cet email est déjà utilisé</p>
-          }
-        </div>
+      @if (registerForm.controls['email'].invalid &&
+      registerForm.controls['email'].touched) {
+      <div class="error-message">
+        @if (registerForm.get('email')?.errors?.['required']) {
+        <p class="error-text">L'email est requis</p>
+        } @if (registerForm.get('email')?.errors?.['pattern']) {
+        <p class="error-text">L'email n'est pas valide</p>
+        } @if (registerForm.get('email')?.errors?.['alreadyExist']) {
+        <p class="error-text">Cet email est déjà utilisé</p>
+        }
+      </div>
       }
     </div>
 
@@ -38,20 +40,26 @@
           formControlName="password"
           required
         />
-        @if (registerForm.get('passwords.password')?.invalid && registerForm.get('passwords.password')?.touched) {
-          <div class="error-message">
-            @if (registerForm.get('passwords.password')?.errors?.['required']) {
-              <span class="error-text">Le mot de passe est requis.</span>
-            }
-            @if (registerForm.get('passwords.password')?.errors?.['securePassword']) {
-              <span class="error-text">Le mot de passe doit contenir au moins 8 caractères, avec une majuscule, une minuscule, un chiffre, et un caractère spécial.</span>
-            }
-          </div>
+        @if (registerForm.get('passwords.password')?.invalid &&
+        registerForm.get('passwords.password')?.touched) {
+        <div class="error-message">
+          @if (registerForm.get('passwords.password')?.errors?.['required']) {
+          <span class="error-text">Le mot de passe est requis.</span>
+          } @if
+          (registerForm.get('passwords.password')?.errors?.['securePassword']) {
+          <span class="error-text"
+            >Le mot de passe doit contenir au moins 8 caractères, avec une
+            majuscule, une minuscule, un chiffre, et un caractère spécial.</span
+          >
+          }
+        </div>
         }
       </div>
 
       <div class="form-group">
-        <label for="confirmPassword" class="form-label">Confirmer le mot de passe</label>
+        <label for="confirmPassword" class="form-label"
+          >Confirmer le mot de passe</label
+        >
         <input
           type="password"
           class="form-control form-input"
@@ -59,8 +67,11 @@
           formControlName="confirmPassword"
           required
         />
-        @if (registerForm.get('passwords')?.errors?.['passwordsMismatch'] && registerForm.get('passwords')?.touched) {
-          <span class="error-message error-text">Les mots de passe ne correspondent pas.</span>
+        @if (registerForm.get('passwords')?.errors?.['passwordsMismatch'] &&
+        registerForm.get('passwords')?.touched) {
+        <span class="error-message error-text"
+          >Les mots de passe ne correspondent pas.</span
+        >
         }
       </div>
     </div>
@@ -79,26 +90,41 @@
 
     <!-- Allergies -->
     <div class="form-group">
-      <label for="allergy" class="form-label">Allergies</label>
-      @for (allergy of allergies; track $index) {
+      <!-- Titre de l'onglet -->
+      <button class="toggle-btn" (click)="toggleAllergySection()" type="button">
+        Allergies
+      </button>
+
+      <!-- Contenu des allergies -->
+      @if (isAllergySectionVisible) {
+      <div class="checkbox-group">
+        @for (allergy of allergies |async ; track $index) {
         <div class="form-check">
           <input
-            class="form-check-input"
             type="checkbox"
-            [value]="allergy"
-            [id]="'allergy' + $index"
+            class="form-check-input"
+            [value]="allergy.id"
+            (change)="onAllergyChange($event)"
+            [checked]="isAllergySelected(allergy)"
           />
-          <label class="form-check-label" [for]="'allergy' + $index">{{ allergy }}</label>
+          <label class="form-check-label" for="allergy">{{
+            allergy.name
+          }}</label>
         </div>
-      }
+        }
+      </div>
+    }
     </div>
 
     <!-- Régime alimentaire -->
     <div class="form-group">
       <label for="diet" class="form-label">Régime alimentaire</label>
       <select class="form-control form-select" id="diet">
+        <option value="" disabled selected>Pas de restriction</option>
         @for (diet of diets | async; track $index) {
-          <option [value]="diet.name">{{ diet.name }}</option>
+        <option [value]="diet.id">
+          {{ diet.name }}
+        </option>
         }
       </select>
     </div>

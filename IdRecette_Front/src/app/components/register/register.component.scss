@@ -11,6 +11,7 @@ $input-container-background: rgba(255, 255, 255, 0.15);
 $placeholder-color: rgba(255, 255, 255, 0.7);
 $button-font-size: 1.2rem;
 $account-prompt-font-size: 1.1rem;
+$checkbox-margin: 0.5rem 0 0.5rem 1rem;
 
 // Styles globaux pour le conteneur
 .container {
@@ -109,22 +110,35 @@ input[type="password"] {
   }
 }
 
-// Checkbox et radio buttons dans le formulaire
-.form-check {
+// **Styles pour les allergies (Checkboxes)**
+// La classe .checkbox-group permet de mieux gérer les allergènes multiples
+.checkbox-group {
   display: flex;
-  align-items: center;
-  gap: 0.5rem;
+  flex-direction: column;
+  gap: 0.5rem; // Ajoute un petit espacement entre chaque ligne de checkboxes
 
-  .form-check-input {
-    accent-color: $button-background;
+  .form-check {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    .form-check-input {
+      accent-color: $button-background;
+    }
+
+    .form-check-label {
+      color: $title-color;
+      font-size: 1rem;
+    }
   }
 
-  .form-check-label {
-    color: $title-color;
+  // Ajouter un espacement entre le label des allergies et les cases
+  label {
+    margin-bottom: 1rem;
   }
 }
 
-// Select pour le régime alimentaire
+// Sélecteur pour le régime alimentaire
 .form-select {
   background-color: $input-background;
   color: $title-color;
@@ -135,4 +149,30 @@ input[type="password"] {
   option {
     color: $background-color;
   }
+}
+
+// Styles du bouton d'onglet pour les allergies
+.toggle-btn {
+  background-color: $button-background;
+  color: $background-color;
+  font-size: 1.1rem;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 35%; // L'onglet prend toute la largeur
+
+  &:hover {
+    background-color: $button-hover-background;
+  }
+
+  &.active {
+    background-color: lighten($button-background, 10%); // Effet visuel lorsqu'il est actif
+  }
+}
+
+// Cache les allergies par défaut, si la section est invisible
+.checkbox-group.visible {
+  display: flex;
 }
