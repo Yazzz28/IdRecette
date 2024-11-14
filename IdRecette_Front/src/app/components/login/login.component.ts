@@ -84,14 +84,12 @@ export class LoginComponent implements OnInit {
         .subscribe({
           next: (response) => {
             localStorage.setItem('token', response.token);
-            console.log('Token: ', response.token);
             this.router.navigate(['/']);
           },
           error: (error) => {
             this.errorLogin =
               error?.error?.message ||
               'An error occurred. Please try again later.';
-            console.log(error);
           },
         });
     }

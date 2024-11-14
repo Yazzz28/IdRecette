@@ -1,0 +1,138 @@
+// Variables de couleur
+$background-color: #202735;
+$error-color: #ff4f4f;
+$input-background: rgba(255, 255, 255, 0.8);
+$link-color: #f1c0ad;
+$title-color: #ffffff;
+$button-background: #f1c0ad;
+$button-hover-background: darken($button-background, 10%);
+$blur-background: rgba(255, 255, 255, 0.2);
+$input-container-background: rgba(255, 255, 255, 0.15);
+$placeholder-color: rgba(255, 255, 255, 0.7);
+$button-font-size: 1.2rem;
+$account-prompt-font-size: 1.1rem;
+
+// Styles globaux pour le conteneur
+.container {
+  background-color: $background-color;
+  color: $title-color;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+// Titre du formulaire
+.form-title {
+  color: $title-color;
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+// Formulaire d'inscription
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  .form-group {
+    background-color: $input-container-background;
+    padding: 1rem;
+    border-radius: 5px;
+
+    label {
+      color: $title-color;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+  }
+
+  .form-control {
+    background-color: $input-background;
+    color: $title-color;
+    border: none;
+    border-radius: 5px;
+    padding: 0.8rem;
+    font-size: 1rem;
+
+    &::placeholder {
+      color: $placeholder-color;
+    }
+  }
+
+  // Message d'erreur
+  .error-message {
+    width: 100%;
+    max-width: 245px;
+    margin-top: 5px;
+    padding: 10px;
+    background-color: lighten($error-color, 30%);
+    border-radius: 5px;
+    color: $error-color;
+    font-size: 0.9rem;
+    text-align: left;
+    border: 1px solid $error-color;
+
+    .error-text {
+      margin: 0;
+      font-family: "Montserrat", sans-serif;
+    }
+  }
+}
+
+// Bouton d'inscription
+.submit-btn {
+  background-color: $button-background;
+  color: $background-color;
+  font-size: $button-font-size;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: $button-hover-background;
+  }
+}
+
+// Styles pour les champs de mot de passe
+input[type="password"] {
+  background-color: $input-background;
+  color: $title-color;
+  border: none;
+  padding: 0.8rem;
+  border-radius: 5px;
+
+  &::placeholder {
+    color: $placeholder-color;
+  }
+}
+
+// Checkbox et radio buttons dans le formulaire
+.form-check {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  .form-check-input {
+    accent-color: $button-background;
+  }
+
+  .form-check-label {
+    color: $title-color;
+  }
+}
+
+// Select pour le régime alimentaire
+.form-select {
+  background-color: $input-background;
+  color: $title-color;
+  border: none;
+  padding: 0.8rem;
+  border-radius: 5px;
+
+  option {
+    color: $background-color;
+  }
+}

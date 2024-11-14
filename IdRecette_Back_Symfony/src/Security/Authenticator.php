@@ -37,8 +37,6 @@ class Authenticator extends AbstractAuthenticator
             throw new CustomUserMessageAuthenticationException('Aucun jeton API fourni');
         }
 
-        // Implémentez votre propre logique pour récupérer l'utilisateur
-        // à partir du jeton API (par ex., chercher dans la base de données).
         $userIdentifier = $this->getUserFromApiToken($apiToken);
 
         // Si l'utilisateur n'est pas trouvé, l'authentification échoue
@@ -92,8 +90,6 @@ class Authenticator extends AbstractAuthenticator
     {
         // Exemple : validation du jeton et récupération de l'identifiant utilisateur
         // (logique personnalisée à implémenter, comme une requête dans une base de données)
-
-        // TODO : remplacer par votre propre logique
         $validToken = 'your_valid_api_token'; // Exemple d'un jeton valide
 
         if ($apiToken === $validToken) {

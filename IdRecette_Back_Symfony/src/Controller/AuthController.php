@@ -4,12 +4,14 @@ namespace App\Controller;
 
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
+use Exception;
 use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 
 class AuthController extends AbstractController
@@ -26,18 +28,19 @@ class AuthController extends AbstractController
         try {
             $data = json_decode($request->getContent(), true);
 
-            if (!isset($data['email']) || !isset($data['password'])) {
-                throw new AuthenticationException('Email and password are required');
+            if (!isset($data['email'])) {
+                throw new AuthenticationException('Email are required');
+            }
+
+            if (!isset($data['password'])) {
+                throw new AuthenticationException('Password are required');
             }
 
             $email = $data['email'];
             $password = $data['password'];
 
             // If registration data is provided
-            if (isset($data['register']) && $data['register'] === true) {
-                if (!isset($data['pseudo'])) {
-                    throw new AuthenticationException('Pseudo is required for registration');
-                }
+            if (isset($data['email']) && isset($data['password']) && isset($data['pseudo'])) {
                 return $this->register($email, $password, $data['pseudo']);
             }
 
@@ -45,11 +48,12 @@ class AuthController extends AbstractController
             return $this->login($email, $password);
         } catch (AuthenticationException $e) {
             return new JsonResponse(['message' => $e->getMessage()], Response::HTTP_UNAUTHORIZED);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return new JsonResponse(['message' => 'An error occurred'], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
 
+    #[Route('/api/auth', name: 'api_auth', methods: ['POST'])]
     private function register(string $email, string $password, string $pseudo): JsonResponse
     {
         // Check if user already exists

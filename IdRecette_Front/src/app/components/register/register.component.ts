@@ -1,12 +1,81 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '@services/auth.service';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { User } from '@models/user.model';
+import { RegexService } from '@services/regex.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
-  standalone: true,
-  imports: [],
   templateUrl: './register.component.html',
-  styleUrl: './register.component.scss'
+  styleUrls: ['./register.component.scss'],
+  standalone: true,
+  imports: [ReactiveFormsModule, CommonModule],
 })
 export class RegisterComponent {
+  registerForm: FormGroup;
+  router: Router = inject(Router)
+  allergies: string[] = ['Pollen', 'Arachides', 'Lactose', 'Gluten'];
+  diets: string[] = ['Végétarien', 'Végétalien', 'Cétogène', 'Paléo'];
+
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private regexService: RegexService
+  ) {
+    this.registerForm = this.fb.group({
+      email: [
+        '',
+        [Validators.required, Validators.pattern(this.regexService.emailRegex)],
+      ],
+      pseudo: ['', Validators.required],
+      passwords: this.fb.group(
+        {
+          password: [
+            '',
+            [
+              Validators.required,
+              Validators.minLength(8),
+              this.authService.securePasswordValidator(),
+            ],
+          ],
+          confirmPassword: ['', Validators.required],
+        },
+        { validators: this.authService.passwordMatchValidator() }
+      ),
+      allergy: this.fb.array([]),
+      diet: [''],
+    });
+  }
+
+  onSubmit() {
+    // Vérifier si le formulaire est valide avant de soumettre
+    if (this.registerForm.valid) {
+      // Destructurer la valeur du formulaire pour obtenir les données de l'utilisateur,
+      // excluant confirmPassword et passwords.
+      const { passwords, confirmPassword, ...userData } = this.registerForm.value;
+  
+      // Récupérer la valeur du mot de passe, qui est dans le groupe passwords.
+      const user: User = {
+        ...userData,
+        password: passwords.password, // Récupérer directement le mot de passe depuis le groupe passwords.
+        allergy: this.registerForm.get('allergy')?.value,
+        diet: this.registerForm.get('diet')?.value,
+      };
+  
+      // Appeler la méthode d'enregistrement depuis le service d'authentification
+      this.authService.register(user).subscribe({
+        next: (response: any) => {
+          localStorage.setItem('token', response.token);
+          this.router.navigate(['/']);
+        },
+        error: (error: any) => {
+          console.error(error);
+        }
+      });
+    }
+  }
 
 }

@@ -1,1 +1,106 @@
-<p>register works!</p>
+<div class="container form-container">
+  <h1 class="form-title">Inscription</h1>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="register-form">
+    
+    <!-- Email -->
+    <div class="form-group">
+      <label for="email" class="form-label">Email</label>
+      <input
+        type="email"
+        class="form-control form-input"
+        id="email"
+        formControlName="email"
+        required
+      />
+      @if (registerForm.controls['email'].invalid && registerForm.controls['email'].touched) {
+        <div class="error-message">
+          @if (registerForm.get('email')?.errors?.['required']) {
+            <p class="error-text">L'email est requis</p>
+          } 
+          @if (registerForm.get('email')?.errors?.['pattern']) {
+            <p class="error-text">L'email n'est pas valide</p>
+          } 
+          @if (registerForm.get('email')?.errors?.['alreadyExist']) {
+            <p class="error-text">Cet email est déjà utilisé</p>
+          }
+        </div>
+      }
+    </div>
+
+    <!-- Mot de passe -->
+    <div formGroupName="passwords">
+      <div class="form-group">
+        <label for="password" class="form-label">Mot de passe</label>
+        <input
+          type="password"
+          class="form-control form-input"
+          id="password"
+          formControlName="password"
+          required
+        />
+        @if (registerForm.get('passwords.password')?.invalid && registerForm.get('passwords.password')?.touched) {
+          <div class="error-message">
+            @if (registerForm.get('passwords.password')?.errors?.['required']) {
+              <span class="error-text">Le mot de passe est requis.</span>
+            }
+            @if (registerForm.get('passwords.password')?.errors?.['securePassword']) {
+              <span class="error-text">Le mot de passe doit contenir au moins 8 caractères, avec une majuscule, une minuscule, un chiffre, et un caractère spécial.</span>
+            }
+          </div>
+        }
+      </div>
+
+      <div class="form-group">
+        <label for="confirmPassword" class="form-label">Confirmer le mot de passe</label>
+        <input
+          type="password"
+          class="form-control form-input"
+          id="confirmPassword"
+          formControlName="confirmPassword"
+          required
+        />
+        @if (registerForm.get('passwords')?.errors?.['passwordsMismatch'] && registerForm.get('passwords')?.touched) {
+          <span class="error-message error-text">Les mots de passe ne correspondent pas.</span>
+        }
+      </div>
+    </div>
+
+    <!-- Pseudo -->
+    <div class="form-group">
+      <label for="pseudo" class="form-label">Pseudo</label>
+      <input
+        type="text"
+        class="form-control form-input"
+        id="pseudo"
+        formControlName="pseudo"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="allergy" class="form-label">Allergies</label>
+      <div *ngFor="let allergy of allergies; let i = index">
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            [id]="'allergy' + i"
+            [value]="allergy"
+          />
+          <label class="form-check-label" [for]="'allergy' + i">{{ allergy }}</label>
+        </div>
+      </div>
+    </div>
+    
+
+    <div class="form-group">
+      <label for="diet" class="form-label">Régime alimentaire</label>
+      <select class="form-control form-select" id="diet" formControlName="diet">
+        <option *ngFor="let diet of diets" [value]="diet">{{ diet }}</option>
+      </select>
+    </div>    
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary submit-btn">S'inscrire</button>
+  </form>
+</div>
