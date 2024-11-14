@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { NavbarComponent } from '../navbar/navbar.component';
+import { Component, OnInit } from '@angular/core';
+import { NavbarComponent } from '@components/navbar/navbar.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,6 +8,10 @@ import { NavbarComponent } from '../navbar/navbar.component';
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
-export class DashboardComponent {
-
+export class DashboardComponent implements OnInit {
+  ngOnInit() {
+    if (localStorage.getItem('token') === null) {
+      window.location.href = '/login';
+    }
+  }
 }

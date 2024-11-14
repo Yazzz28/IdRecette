@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { TITLE } from '../../utils/general';
+import { TITLE } from '@utils/general';
 
 @Component({
   selector: 'app-home',

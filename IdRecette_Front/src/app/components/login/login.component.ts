@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -9,9 +9,9 @@ import {
   ValidatorFn,
 } from '@angular/forms';
 import { RouterLink, Router } from '@angular/router';
-import { TITLE } from '../../utils/general';
-import { RegexService } from '../../services/regex.service';
-import { AuthService } from '../../services/auth.service';
+import { TITLE } from '@utils/general';
+import { RegexService } from '@services/regex.service';
+import { AuthService } from '@services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -71,17 +71,14 @@ export class LoginComponent implements OnInit {
     };
   }
 
-  @Output() formSubmitted = new EventEmitter<any>();
-
   ngOnInit(): void {
-    /* if (localStorage.getItem('token')) {
+    if (localStorage.getItem('token')) {
       this.router.navigate(['/']);
-    }*/
+    }
   }
 
   onSubmit() {
     if (this.loginForm.valid) {
-      this.formSubmitted.emit(this.loginForm.value);
       this.authService
         .login(this.loginForm.value.email, this.loginForm.value.password)
         .subscribe({
