@@ -10,7 +10,7 @@ import { AuthService } from '@services/auth.service';
 import { CommonModule, AsyncPipe } from '@angular/common';
 import { User } from '@models/user.model';
 import { RegexService } from '@services/regex.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { DietService } from '@services/diet.service';
 import { Observable } from 'rxjs';
 
@@ -19,7 +19,7 @@ import { Observable } from 'rxjs';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, AsyncPipe],
+  imports: [ReactiveFormsModule, CommonModule, AsyncPipe, RouterLink],
 })
 export class RegisterComponent {
   registerForm: FormGroup;

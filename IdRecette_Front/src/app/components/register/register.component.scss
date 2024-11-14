@@ -176,3 +176,14 @@ input[type="password"] {
 .checkbox-group.visible {
   display: flex;
 }
+.login-link {
+  color: #f1c0ad; /* Applique la couleur spécifiée */
+  text-decoration: none; /* Supprime le soulignement par défaut */
+  font-size: 1rem; /* Vous pouvez ajuster la taille de la police selon vos préférences */
+  font-family: Arial, sans-serif; /* Vous pouvez choisir la police de votre choix */
+  transition: color 0.3s ease; /* Ajoute une transition douce pour le changement de couleur au survol */
+}
+
+.login-link:hover {
+  color: #d8a78f; /* Couleur au survol, légèrement plus sombre */
+}
