@@ -77,28 +77,31 @@
       />
     </div>
 
+    <!-- Allergies -->
     <div class="form-group">
       <label for="allergy" class="form-label">Allergies</label>
-      <div *ngFor="let allergy of allergies; let i = index">
+      @for (allergy of allergies; track $index) {
         <div class="form-check">
           <input
             class="form-check-input"
             type="checkbox"
-            [id]="'allergy' + i"
             [value]="allergy"
+            [id]="'allergy' + $index"
           />
-          <label class="form-check-label" [for]="'allergy' + i">{{ allergy }}</label>
+          <label class="form-check-label" [for]="'allergy' + $index">{{ allergy }}</label>
         </div>
-      </div>
+      }
     </div>
-    
 
+    <!-- Régime alimentaire -->
     <div class="form-group">
       <label for="diet" class="form-label">Régime alimentaire</label>
-      <select class="form-control form-select" id="diet" formControlName="diet">
-        <option *ngFor="let diet of diets" [value]="diet">{{ diet }}</option>
+      <select class="form-control form-select" id="diet">
+        @for (diet of diets | async; track $index) {
+          <option [value]="diet.name">{{ diet.name }}</option>
+        }
       </select>
-    </div>    
+    </div>
 
     <!-- Submit Button -->
     <button type="submit" class="btn btn-primary submit-btn">S'inscrire</button>

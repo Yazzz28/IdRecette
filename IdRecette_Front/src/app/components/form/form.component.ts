@@ -39,7 +39,6 @@ private readonly recipesService: RecipesService
   onSubmit() {
     if (this.recipeForm.valid) {
       this.recipesService.getRecipesLimited(this.recipeForm.value.menuCount);
-      console.log('Form submitted! Menu count:', this.recipeForm.value.menuCount);
     } else {
       console.log('Form is invalid');
     }

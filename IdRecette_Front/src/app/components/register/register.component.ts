@@ -2,29 +2,33 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '@services/auth.service';
 import { ReactiveFormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { CommonModule, AsyncPipe } from '@angular/common';
 import { User } from '@models/user.model';
 import { RegexService } from '@services/regex.service';
 import { Router } from '@angular/router';
+import { DietService } from '@services/diet.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, AsyncPipe],
 })
 export class RegisterComponent {
   registerForm: FormGroup;
-  router: Router = inject(Router)
+  router: Router = inject(Router);
   allergies: string[] = ['Pollen', 'Arachides', 'Lactose', 'Gluten'];
-  diets: string[] = ['Végétarien', 'Végétalien', 'Cétogène', 'Paléo'];
+  diets: Observable<any>;
 
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private regexService: RegexService
+    private regexService: RegexService,
+    private dietService: DietService
   ) {
+    this.diets = this.dietService.getAllDiets();
     this.registerForm = this.fb.group({
       email: [
         '',
@@ -55,8 +59,9 @@ export class RegisterComponent {
     if (this.registerForm.valid) {
       // Destructurer la valeur du formulaire pour obtenir les données de l'utilisateur,
       // excluant confirmPassword et passwords.
-      const { passwords, confirmPassword, ...userData } = this.registerForm.value;
-  
+      const { passwords, confirmPassword, ...userData } =
+        this.registerForm.value;
+
       // Récupérer la valeur du mot de passe, qui est dans le groupe passwords.
       const user: User = {
         ...userData,
@@ -64,7 +69,7 @@ export class RegisterComponent {
         allergy: this.registerForm.get('allergy')?.value,
         diet: this.registerForm.get('diet')?.value,
       };
-  
+
       // Appeler la méthode d'enregistrement depuis le service d'authentification
       this.authService.register(user).subscribe({
         next: (response: any) => {
@@ -73,9 +78,8 @@ export class RegisterComponent {
         },
         error: (error: any) => {
           console.error(error);
-        }
+        },
       });
     }
   }
-
 }
