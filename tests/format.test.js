@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { formatQty, formatMinutes, formatHours } from '../js/utils/format.js';
+import { formatQty, formatMinutes, formatHours, formatRest } from '../js/utils/format.js';
 import { normalize, slugify, capitalize } from '../js/utils/text.js';
 
 // toLocaleString('fr-FR') utilise une espace insécable fine comme séparateur de milliers.
@@ -36,6 +36,11 @@ test('formatMinutes / formatHours', () => {
   assert.equal(formatMinutes(70), '1 h 10');
   assert.equal(formatMinutes(125), '2 h 05');
   assert.equal(formatHours(24), '24 h');
+  assert.equal(formatRest(30), '30 min');
+  assert.equal(formatRest(120), '2 h');
+  assert.equal(formatRest(480), '1 nuit');
+  assert.equal(formatQty(2, 'gousse'), '2 gousses');
+  assert.equal(formatQty(2, 'boîte'), '2 boîtes');
 });
 
 test('normalize : casse, accents et ligatures', () => {

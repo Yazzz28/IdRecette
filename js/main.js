@@ -11,7 +11,7 @@ import { createShoppingView } from './views/shoppingView.js';
 import { createCreateView } from './views/createView.js';
 
 const TITLES = {
-  recettes: 'IDrecette V.2 · Glaces Ninja Creami',
+  recettes: 'IDrecette V.2',
   menu: 'Mon menu · IDrecette V.2',
   courses: 'Liste de courses · IDrecette V.2',
   creer: 'Nouvelle recette · IDrecette V.2',

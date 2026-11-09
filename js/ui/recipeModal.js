@@ -1,5 +1,5 @@
 import { esc, plural } from '../utils/dom.js';
-import { formatQty, formatKcal, formatMinutes, formatHours } from '../utils/format.js';
+import { formatQty, formatKcal, formatMinutes, formatHours, formatRest } from '../utils/format.js';
 import { copyText, mailtoUrl } from '../utils/clipboard.js';
 import { GROUPS, scaleIngredients, thumbColor } from '../core/library.js';
 import {
@@ -33,13 +33,15 @@ export function createRecipeModal(dialog, { onClose, onEdit }) {
 
   function ingredientsHtml() {
     const scaled = scaleIngredients(recipe, servings);
+    // Un seul groupe (cas d'un plat classique) : pas besoin du titre « Base ».
+    const showLabels = new Set(scaled.map((i) => i.group)).size > 1;
     return GROUPS.map((group) => {
       const items = scaled
         .map((ing, index) => ({ ing, index }))
         .filter(({ ing }) => ing.group === group.id);
       if (!items.length) return '';
       return `
-        <p class="ingredients__group">${esc(group.label)}</p>
+        ${showLabels ? `<p class="ingredients__group">${esc(group.label)}</p>` : ''}
         <ul class="ingredients">
           ${items.map(({ ing, index }) => `
             <li>
@@ -57,13 +59,14 @@ export function createRecipeModal(dialog, { onClose, onEdit }) {
   function servingsHtml() {
     const pots = servings / recipe.servings;
     const potsLabel = Number.isInteger(pots) ? pots : pots.toFixed(1).replace('.', ',');
+    const potsHint = recipe.isCreami ? `≈ ${potsLabel} ${plural(pots, 'pot', 'pots')} Ninja Creami · ` : '';
     return `
       <div class="stepper" role="group" aria-label="Nombre de portions">
         <button type="button" class="stepper__btn" data-step="-1" aria-label="Une portion de moins" ${servings <= MIN_SERVINGS ? 'disabled' : ''}>${icons.minus}</button>
         <span class="stepper__value" aria-live="polite">${servings} pers.</span>
         <button type="button" class="stepper__btn stepper__btn--plus" data-step="1" aria-label="Une portion de plus" ${servings >= MAX_SERVINGS ? 'disabled' : ''}>${icons.plus}</button>
       </div>
-      <p class="servings__hint">≈ ${potsLabel} ${plural(pots, 'pot', 'pots')} Ninja Creami · ${formatKcal(recipe.kcalPerServing * servings)} kcal au total</p>`;
+      <p class="servings__hint">${potsHint}${formatKcal(recipe.kcalPerServing * servings)} kcal au total</p>`;
   }
 
   function menuButtonHtml() {
@@ -84,6 +87,16 @@ export function createRecipeModal(dialog, { onClose, onEdit }) {
     const n = recipe.nutrition;
     const macro = (value, label) => (value === null ? '' : `<span><strong class="num">${value} g</strong> ${label}</span>`);
     const macros = [macro(n.protein, 'protéines'), macro(n.carbs, 'glucides'), macro(n.fat, 'lipides')].filter(Boolean).join('');
+    const stat = (value, label, accent = false) =>
+      `<div class="stat${accent ? ' stat--accent' : ''}"><span class="stat__value">${value}</span><span class="stat__label">${label}</span></div>`;
+    const stats = [
+      stat(formatMinutes(recipe.prepTime), 'Préparation'),
+      recipe.cookTime ? stat(formatMinutes(recipe.cookTime), 'Cuisson') : '',
+      recipe.restTime ? stat(formatRest(recipe.restTime), 'Repos') : '',
+      recipe.freezeTime ? stat(formatHours(recipe.freezeTime), 'Congélation') : '',
+      stat(formatKcal(recipe.kcalPerServing), 'kcal / portion', true),
+      n.protein !== null ? stat(`${n.protein} g`, 'Protéines / portion') : '',
+    ].join('');
 
     scroller.innerHTML = `
       <div class="detail__hero" style="--thumb:${thumbColor(recipe, categoriesById)}">
@@ -96,18 +109,14 @@ export function createRecipeModal(dialog, { onClose, onEdit }) {
       <div class="detail__body">
         <div class="detail__eyebrow">
           ${category ? `<span class="chip chip--sm chip--static chip--encre">${esc(category.label)}</span>` : ''}
+          ${recipe.appliance ? `<span class="chip chip--sm chip--static chip--appliance">${esc(recipe.appliance)}</span>` : ''}
           ${recipe.tags.map((t) => `<span class="chip chip--sm chip--static">${esc(t)}</span>`).join('')}
         </div>
         <h2 class="detail__title" id="modal-title">${esc(recipe.title)}</h2>
         ${recipe.description ? `<p class="detail__desc">${esc(recipe.description)}</p>` : ''}
         <p class="detail__author">${recipe.isUser ? 'Recette perso' : 'Recette'}${recipe.author ? ` signée <strong>${esc(recipe.author)}</strong>` : ''} · ${esc(recipe.difficulty)}</p>
 
-        <div class="stats">
-          <div class="stat"><span class="stat__value">${formatMinutes(recipe.prepTime)}</span><span class="stat__label">Préparation</span></div>
-          <div class="stat"><span class="stat__value">${formatHours(recipe.freezeTime)}</span><span class="stat__label">Congélation</span></div>
-          <div class="stat stat--accent"><span class="stat__value">${formatKcal(recipe.kcalPerServing)}</span><span class="stat__label">kcal / portion</span></div>
-          <div class="stat"><span class="stat__value">${n.protein ?? '–'}${n.protein !== null ? ' g' : ''}</span><span class="stat__label">Protéines / portion</span></div>
-        </div>
+        <div class="stats">${stats}</div>
 
         ${macros ? `<p class="macros">Par portion : ${macros}</p>` : ''}
 

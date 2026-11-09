@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { validateData } from '../scripts/lib/validate.mjs';
-import { makeRecipe, makeData } from './helpers.js';
+import { makeRecipe, makeDish, makeData } from './helpers.js';
 
 const errorsFor = (recipe) => validateData(makeData([recipe])).errors;
 const hasError = (errors, fragment) => errors.some((e) => e.includes(fragment));
@@ -10,6 +10,23 @@ test('une recette complète est valide', () => {
   const { errors, warnings } = validateData(makeData());
   assert.deepEqual(errors, []);
   assert.deepEqual(warnings, []);
+});
+
+test('un plat sans Ninja Creami est valide sans modes ni congélation', () => {
+  const { errors, warnings } = validateData(makeData([makeDish()]));
+  assert.deepEqual(errors, []);
+  assert.deepEqual(warnings, []);
+  assert.deepEqual(errorsFor(makeDish({ appliance: undefined })), [], 'appliance est facultatif');
+  assert.deepEqual(errorsFor(makeDish({ restTime: 480 })), []);
+});
+
+test('règles propres à Ninja Creami', () => {
+  assert.ok(hasError(errorsFor(makeRecipe({ modes: [] })), 'programmes'));
+  assert.ok(hasError(errorsFor(makeRecipe({ freezeTime: undefined })), 'freezeTime'));
+  assert.ok(hasError(errorsFor(makeDish({ modes: ['Sorbet'] })), 'réservé'));
+  assert.ok(hasError(errorsFor(makeDish({ appliance: 'Thermomix' })), 'appliance'));
+  assert.ok(hasError(errorsFor(makeDish({ cookTime: -5 })), 'cookTime'));
+  assert.ok(hasError(errorsFor(makeDish({ restTime: '1 nuit' })), 'restTime'));
 });
 
 test('racine invalide', () => {
@@ -33,7 +50,6 @@ test('catégorie inconnue', () => {
 test('valeurs hors schéma', () => {
   assert.ok(hasError(errorsFor(makeRecipe({ difficulty: 'Dur' })), 'difficulty'));
   assert.ok(hasError(errorsFor(makeRecipe({ modes: ['Turbo'] })), 'mode inconnu'));
-  assert.ok(hasError(errorsFor(makeRecipe({ modes: [] })), 'modes'));
   assert.ok(hasError(errorsFor(makeRecipe({ color: 'rouge' })), 'color'));
   assert.ok(hasError(errorsFor(makeRecipe({ servings: 1.5 })), 'servings'));
   assert.ok(hasError(errorsFor(makeRecipe({ prepTime: '5' })), 'prepTime'));

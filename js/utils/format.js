@@ -1,6 +1,6 @@
 const FRACTIONS = { 0.25: '¼', 0.5: '½', 0.75: '¾' };
 const WEIGHT_UNITS = new Set(['g', 'kg', 'ml', 'cl', 'l']);
-const PLURALIZABLE = new Set(['pincée', 'gousse', 'feuille', 'tranche', 'boule', 'botte', 'sachet', 'pot']);
+const PLURALIZABLE = new Set(['pincée', 'gousse', 'feuille', 'tranche', 'boule', 'botte', 'sachet', 'pot', 'boîte']);
 
 /** 1.5 → « 1 ½ », 0.25 → « ¼ ». */
 function toFraction(value) {
@@ -45,6 +45,13 @@ export function formatMinutes(min) {
 }
 
 export const formatHours = (h) => `${Math.round(Number(h) || 0)} h`;
+
+/** Durée de repos en minutes : « 30 min », « 2 h », « 1 nuit » au-delà de 6 h. */
+export function formatRest(min) {
+  const m = Math.round(Number(min) || 0);
+  if (m >= 360) return '1 nuit';
+  return formatMinutes(m);
+}
 
 /** Lundi de la semaine courante, en toutes lettres. */
 export function currentWeekLabel(date = new Date()) {

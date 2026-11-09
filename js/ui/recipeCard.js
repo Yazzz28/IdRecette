@@ -28,8 +28,8 @@ export function recipeCard(recipe, { categoriesById, isFav, inMenu, index = 0 })
       ${recipe.description ? `<p class="card__desc">${esc(recipe.description)}</p>` : ''}
       ${tags ? `<div class="card__tags">${tags}</div>` : ''}
       <div class="card__meta">
-        <span class="card__info" title="Préparation">${icons.clock}${formatMinutes(recipe.prepTime)}</span>
-        <span class="card__info" title="Congélation">${icons.snow}${formatHours(recipe.freezeTime)}</span>
+        <span class="card__info" title="${recipe.cookTime ? 'Préparation + cuisson' : 'Préparation'}">${icons.clock}${formatMinutes(recipe.activeTime)}</span>
+        ${recipe.freezeTime ? `<span class="card__info" title="Congélation">${icons.snow}${formatHours(recipe.freezeTime)}</span>` : ''}
         <span class="chip chip--sm chip--kcal chip--static">${icons.flame}${formatKcal(recipe.kcalPerServing)} kcal</span>
         <button type="button" class="card__add" data-action="menu" aria-pressed="${inMenu}"
           aria-label="${inMenu ? 'Retirer du menu' : 'Ajouter au menu'}" title="${inMenu ? 'Dans ton menu' : 'Ajouter au menu'}">${inMenu ? icons.check : icons.plus}</button>

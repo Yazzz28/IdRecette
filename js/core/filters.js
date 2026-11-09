@@ -34,7 +34,7 @@ export function sortRecipes(recipes, sort) {
     case 'az': return list.sort((a, b) => collator.compare(a.title, b.title));
     case 'kcal': return list.sort((a, b) => a.kcalPerServing - b.kcalPerServing);
     case 'protein': return list.sort((a, b) => (b.nutrition.protein ?? -1) - (a.nutrition.protein ?? -1));
-    case 'prep': return list.sort((a, b) => a.prepTime - b.prepTime);
+    case 'prep': return list.sort((a, b) => a.activeTime - b.activeTime);
     default: return list;
   }
 }
