@@ -393,6 +393,43 @@
       "nutrition": { "protein": 3, "carbs": 30, "fat": 4 },
       "tip": "Les fruits trop mûrs, c'est parfait ici : ils sont plus sucrés et se mixent mieux.",
       "author": "Yacine"
+    },
+    {
+      "id": "coco-curry-popcorn-erable",
+      "title": "Coco-curry & pop-corn à l'érable",
+      "category": "glaces",
+      "emoji": "🍿",
+      "color": "beurre",
+      "description": "Le sucré-salé-épicé façon dessert de chef. Le curry doux et la coco s'entendent trop bien, et le pop-corn croque sous la dent.",
+      "tags": ["Healthy", "Vegan", "Sans gluten", "Gourmande", "Sucré-salé", "Moins de 200 kcal"],
+      "appliance": "Ninja Creami",
+      "difficulty": "Moyen",
+      "prepTime": 10,
+      "cookTime": 3,
+      "freezeTime": 24,
+      "servings": 2,
+      "modes": ["Lite Ice Cream", "Re-spin", "Mix-in"],
+      "ingredients": [
+        { "qty": 200, "unit": "ml", "name": "Boisson coco", "kcal": 40, "group": "base", "aisle": "Épicerie" },
+        { "qty": 150, "unit": "ml", "name": "Lait de soja sans sucre", "kcal": 50, "group": "base", "aisle": "Épicerie" },
+        { "qty": 1, "unit": "c. à s.", "name": "Sirop d'érable", "kcal": 52, "group": "base", "aisle": "Placard" },
+        { "qty": 0.5, "unit": "c. à c.", "name": "Curry doux en poudre", "kcal": 3, "group": "base", "aisle": "Placard" },
+        { "qty": 1, "unit": "pincée", "name": "Cannelle", "kcal": 0, "group": "base", "aisle": "Placard" },
+        { "qty": 0.25, "unit": "c. à c.", "name": "Gomme de guar", "kcal": 2, "group": "base", "aisle": "Épicerie" },
+        { "qty": 15, "unit": "g", "name": "Pop-corn nature", "kcal": 58, "group": "mixin", "aisle": "Épicerie" },
+        { "qty": 1, "unit": "c. à s.", "name": "Sirop d'érable", "kcal": 52, "group": "mixin", "aisle": "Placard" },
+        { "qty": 1, "unit": "pincée", "name": "Fleur de sel", "kcal": 0, "group": "mixin", "aisle": "Placard" }
+      ],
+      "steps": [
+        "Mixe la boisson coco, le lait de soja, 1 c. à s. de sirop d'érable, le curry, la cannelle et la gomme de guar.",
+        "Verse dans le pot Creami jusqu'au trait MAX, ferme et congèle 24 h bien à plat.",
+        "Le jour J, chauffe le reste du sirop d'érable 1 min dans une poêle, ajoute le pop-corn et la fleur de sel, et remue 2 min jusqu'à ce que ça caramélise. Laisse refroidir puis concasse grossièrement.",
+        "Lance le programme Lite Ice Cream, puis un Re-spin avec 1 c. à s. de lait de soja si c'est poudreux.",
+        "Creuse un puits, ajoute les deux tiers du pop-corn et lance Mix-in. Le reste, par-dessus au service."
+      ],
+      "nutrition": { "protein": 4, "carbs": 20, "fat": 4 },
+      "tip": "Fais ton pop-corn toi-même à la poêle, sans beurre : il reste plus croquant que celui du commerce une fois dans la glace.",
+      "author": "Yacine"
     }
   ]
 }
