@@ -1045,6 +1045,39 @@
       "nutrition": { "protein": 15, "carbs": 40, "fat": 10 },
       "tip": "Fais-les petits, de la taille d'une paume : ils se retournent beaucoup plus facilement.",
       "author": "Yacine"
+    },
+    {
+      "id": "tzatziki-crudites",
+      "title": "Tzatziki & crudités",
+      "category": "apero",
+      "emoji": "🥒",
+      "color": "sauge",
+      "description": "Frais, aillé, prêt en 10 min. L'apéro qu'on peut enchaîner sans culpabiliser.",
+      "tags": ["Healthy", "Végétarien", "Sans gluten", "Moins de 200 kcal", "Apéro", "Express"],
+      "appliance": "Sans cuisson",
+      "difficulty": "Facile",
+      "prepTime": 10,
+      "servings": 4,
+      "ingredients": [
+        { "qty": 300, "unit": "g", "name": "Yaourt grec", "kcal": 291, "group": "base", "aisle": "Frais" },
+        { "qty": 1, "unit": "pc", "name": "Concombre", "kcal": 45, "group": "base", "aisle": "Fruits & légumes" },
+        { "qty": 1, "unit": "gousse", "name": "Ail", "kcal": 5, "group": "base", "aisle": "Fruits & légumes" },
+        { "qty": 10, "unit": "feuilles", "name": "Menthe fraîche", "kcal": 1, "group": "base", "aisle": "Fruits & légumes" },
+        { "qty": 0.5, "unit": "pc", "name": "Citron jaune bio", "kcal": 9, "group": "base", "aisle": "Fruits & légumes" },
+        { "qty": 1, "unit": "c. à s.", "name": "Huile d'olive", "kcal": 88, "group": "base", "aisle": "Placard" },
+        { "qty": 1, "unit": "pincée", "name": "Fleur de sel", "kcal": 0, "group": "base", "aisle": "Placard" },
+        { "qty": 2, "unit": "pc", "name": "Carotte", "kcal": 82, "group": "topping", "aisle": "Fruits & légumes" },
+        { "qty": 1, "unit": "botte", "name": "Radis", "kcal": 30, "group": "topping", "aisle": "Fruits & légumes" }
+      ],
+      "steps": [
+        "Râpe le concombre, sale-le légèrement et laisse-le dégorger 5 min dans une passoire. Presse-le bien.",
+        "Mélange-le avec le yaourt grec, l'ail pressé, la menthe ciselée et le jus du demi-citron.",
+        "Verse dans un bol avec un filet d'huile d'olive par-dessus.",
+        "Coupe les carottes en bâtonnets et les radis en deux, et sers à côté."
+      ],
+      "nutrition": { "protein": 7, "carbs": 10, "fat": 6 },
+      "tip": "Ne zappe pas l'étape où on presse le concombre, sinon le tzatziki se transforme en soupe au bout de 10 min.",
+      "author": "Yacine"
     }
   ]
 }
