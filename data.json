@@ -1110,6 +1110,34 @@
       "nutrition": { "protein": 6, "carbs": 37, "fat": 8 },
       "tip": "Prends des pommes qui tiennent à la cuisson, comme la Boskoop, la Reine des reinettes ou la Pink Lady.",
       "author": "Yacine"
+    },
+    {
+      "id": "lassi-mangue-cardamome",
+      "title": "Lassi mangue-cardamome",
+      "category": "boissons",
+      "emoji": "🥭",
+      "color": "beurre",
+      "description": "Onctueux, frais, parfumé. La boisson qui accompagne un curry, ou qui remplace un dessert.",
+      "tags": ["Healthy", "Vegan", "Sans gluten", "Moins de 200 kcal", "Express"],
+      "appliance": "Robot",
+      "difficulty": "Facile",
+      "prepTime": 5,
+      "servings": 2,
+      "ingredients": [
+        { "qty": 200, "unit": "g", "name": "Mangue surgelée", "kcal": 120, "group": "base", "aisle": "Surgelés" },
+        { "qty": 250, "unit": "g", "name": "Yaourt de soja nature", "kcal": 125, "group": "base", "aisle": "Frais" },
+        { "qty": 100, "unit": "ml", "name": "Lait d'amande sans sucre", "kcal": 13, "group": "base", "aisle": "Épicerie" },
+        { "qty": 1, "unit": "c. à c.", "name": "Sirop d'agave", "kcal": 20, "group": "base", "aisle": "Placard" },
+        { "qty": 1, "unit": "pincée", "name": "Cardamome moulue", "kcal": 0, "group": "base", "aisle": "Placard" }
+      ],
+      "steps": [
+        "Mets tout dans le blender, la mangue encore surgelée.",
+        "Mixe 1 min jusqu'à ce que ce soit bien lisse et mousseux.",
+        "Goûte, ajuste la cardamome, et sers tout de suite."
+      ],
+      "nutrition": { "protein": 6, "carbs": 22, "fat": 3 },
+      "tip": "Avec de la mangue fraîche, ajoute 3 glaçons pour garder le côté bien frais.",
+      "author": "Yacine"
     }
   ]
 }
