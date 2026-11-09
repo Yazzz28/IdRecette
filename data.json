@@ -1012,6 +1012,39 @@
       "nutrition": { "protein": 20, "carbs": 55, "fat": 16 },
       "tip": "L'étape du pressage n'est pas optionnelle : moins il y a d'eau dans le tofu, plus il croustille.",
       "author": "Yacine"
+    },
+    {
+      "id": "pancakes-banane-avoine",
+      "title": "Pancakes banane-avoine",
+      "category": "petit-dej",
+      "emoji": "🥞",
+      "description": "Trois ingrédients de base, pas de farine ni de sucre ajouté. Le brunch du dimanche qui ne finit pas en sieste.",
+      "tags": ["Healthy", "Végétarien", "Riche en protéines", "Express"],
+      "appliance": "Poêle",
+      "difficulty": "Facile",
+      "prepTime": 5,
+      "cookTime": 10,
+      "servings": 2,
+      "ingredients": [
+        { "qty": 1, "unit": "pc", "name": "Banane bien mûre", "kcal": 105, "group": "base", "aisle": "Fruits & légumes" },
+        { "qty": 2, "unit": "pc", "name": "Œufs", "kcal": 144, "group": "base", "aisle": "Frais" },
+        { "qty": 60, "unit": "g", "name": "Flocons d'avoine", "kcal": 222, "group": "base", "aisle": "Épicerie" },
+        { "qty": 0.25, "unit": "sachet", "name": "Levure chimique", "kcal": 3, "group": "base", "aisle": "Placard" },
+        { "qty": 1, "unit": "pincée", "name": "Cannelle", "kcal": 0, "group": "base", "aisle": "Placard" },
+        { "qty": 100, "unit": "g", "name": "Yaourt grec", "kcal": 97, "group": "topping", "aisle": "Frais" },
+        { "qty": 80, "unit": "g", "name": "Myrtilles surgelées", "kcal": 46, "group": "topping", "aisle": "Surgelés" },
+        { "qty": 1, "unit": "c. à c.", "name": "Sirop d'érable", "kcal": 17, "group": "topping", "aisle": "Placard" }
+      ],
+      "steps": [
+        "Mixe la banane, les œufs, les flocons d'avoine, la levure et la cannelle jusqu'à obtenir une pâte lisse. Laisse reposer 5 min.",
+        "Fais chauffer une poêle antiadhésive à feu moyen, sans matière grasse.",
+        "Verse de petites louches de pâte et laisse cuire jusqu'à ce que des bulles apparaissent, environ 2 min, puis retourne 1 min.",
+        "Pendant ce temps, fais chauffer les myrtilles 3 min dans une casserole pour un coulis express.",
+        "Sers les pancakes avec le yaourt grec, le coulis et un filet de sirop d'érable."
+      ],
+      "nutrition": { "protein": 15, "carbs": 40, "fat": 10 },
+      "tip": "Fais-les petits, de la taille d'une paume : ils se retournent beaucoup plus facilement.",
+      "author": "Yacine"
     }
   ]
 }
