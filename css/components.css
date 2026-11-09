@@ -213,6 +213,23 @@
 
 @media (hover: none) { .search__kbd { display: none; } }
 
+/* ---------- Champ texte ---------- */
+.input {
+  width: 100%;
+  min-height: 44px;
+  padding: 10px var(--s-3);
+  border: 1.5px solid var(--trait);
+  border-radius: 12px;
+  background: var(--blanc);
+  font-size: 1rem;
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.input:focus { border-color: var(--encre); box-shadow: 0 0 0 4px var(--pelure); }
+.input::placeholder { color: var(--texte-pale); }
+.input--qty { width: 84px; flex: none; }
+
 /* ---------- Select (tri) ---------- */
 .select {
   position: relative;
@@ -328,7 +345,6 @@
 
 /* ---------- Variantes ---------- */
 .btn--block { width: 100%; }
-.btn--danger:hover { color: var(--tomate-cuite); background: var(--pelure); }
 .btn.is-disabled { opacity: 0.4; pointer-events: none; }
 .btn:disabled { opacity: 0.4; cursor: not-allowed; }
 

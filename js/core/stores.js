@@ -32,20 +32,12 @@ export const shoppingStore = createStore({ checked: {}, manual: [], pantry: fals
   }),
 });
 
-/** Recettes créées dans l'app (format identique à data.json). */
-export const userRecipesStore = createStore([], {
-  persist: 'userRecipes',
-  sanitize: (v) => (Array.isArray(v) ? v : []),
-});
-
-/** Brouillon du formulaire de création. */
-export const draftStore = createStore(null, { persist: 'draft' });
-
-/** Bibliothèque chargée (data.json + recettes perso). Non persistée. */
+/** Bibliothèque chargée depuis data.json. Non persistée. */
 export const libraryStore = createStore({
   status: 'loading',
   error: null,
   categories: [],
+  categoriesById: new Map(),
   recipes: [],
   byId: new Map(),
 });

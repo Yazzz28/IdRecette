@@ -4,7 +4,7 @@
  *   #/recette/id  fiche recette (par-dessus la vue courante)
  *   #/menu        menu
  *   #/courses     liste de courses
- *   #/creer       nouvelle recette · #/creer/id édition
+ * Les recettes s'ajoutent dans data.json, pas depuis l'app.
  */
 export function parseHash(hash = location.hash) {
   const path = hash.replace(/^#\/?/, '').split('?')[0];

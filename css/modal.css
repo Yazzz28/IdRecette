@@ -320,14 +320,6 @@
 
 .detail__actions-main { display: contents; }
 
-.detail__owner {
-  display: flex;
-  gap: var(--s-2);
-  margin-top: var(--s-4);
-  padding-top: var(--s-4);
-  border-top: 1px solid var(--trait);
-}
-
 .detail__tip {
   margin-top: var(--s-5);
   padding: var(--s-4);

@@ -2,12 +2,12 @@
 
 App web **statique** de recettes de la bande : plats, apéros, desserts, petits-déj, boissons, glaces (dont Ninja Creami)…
 « Healthy » n'est pas une contrainte, c'est un **tag** filtrable.
-Plusieurs personnes ajoutent des recettes : la seule source de vérité partagée est **`data.json`**.
+Plusieurs personnes ajoutent des recettes : la seule source de vérité est **`data.json`**. Il n'y a **pas de formulaire dans l'app** : on ajoute et on modifie les recettes uniquement dans le code, via une PR. Ne pas recréer de page de création.
 
 ## Règles non négociables
 
 - **Pas de BDD, pas de backend, pas d'auth, pas de build, pas de dépendance npm.** HTML + CSS + JS (modules ES natifs).
-- Tout état utilisateur (favoris, menu, liste de courses, recettes perso, brouillon, filtres) vit dans **`localStorage`**, via `js/core/stores.js` (préfixe `idrecette.v2.`). Ne jamais ajouter d'autre persistance.
+- Tout état utilisateur (favoris, menu, liste de courses, filtres) vit dans **`localStorage`**, via `js/core/stores.js` (préfixe `idrecette.v2.`). Ne jamais ajouter d'autre persistance.
 - Les recettes partagées vont **uniquement** dans `data.json`. Jamais en dur dans le JS ou le HTML.
 - Après toute modif de `data.json` : **`npm run validate`** doit afficher `✓`. Les warnings sont tolérés, les erreurs non.
 - Avant tout commit : **`npm test`** doit être vert (tests `node:test` dans `tests/`, sans dépendance). Toute nouvelle logique dans `js/core` ou `js/utils` arrive avec son test.
@@ -48,19 +48,19 @@ tests/                  tests node:test (données, validateur, formatage, filtre
 .github/workflows/ci.yml    CI : validate + tests sur chaque PR et push sur main
 css/
   tokens.css            couleurs / typo / rayons de la charte (modifier ici, jamais en dur ailleurs)
-  base.css layout.css nav.css components.css card.css modal.css views.css form.css
+  base.css layout.css nav.css components.css card.css modal.css views.css
 js/
   main.js               point d'entrée : crée les vues, routeur, modale
   core/
     schema.js           valeurs autorisées (unités, rayons, appareils, modes Creami…) : partagé app + validateur
-    library.js          chargement data.json + fusion recettes perso, normalizeRecipe, scaleIngredients
+    library.js          chargement de data.json, buildLibrary, normalizeRecipe, scaleIngredients
     store.js            createStore (observable + localStorage tolérant aux erreurs)
-    stores.js           instances : filters, favorites, menu, shopping, userRecipes, draft, library
+    stores.js           instances : filters, favorites, menu, shopping, library
     filters.js          recherche (sans accents), filtres, tris, tags
     shopping.js         agrégation des ingrédients du menu → liste de courses par rayon
-    router.js           routes hash : #/  #/recette/:id  #/menu  #/courses  #/creer[/:id]
+    router.js           routes hash : #/  #/recette/:id  #/menu  #/courses
   ui/                   composants (searchBar, categoryChips, tagFilters, recipeGrid, recipeCard, recipeModal, nav, toast, icons)
-  views/                catalogView, menuView, shoppingView, createView
+  views/                catalogView, menuView, shoppingView
   utils/                dom (esc, debounce), text (normalize, slugify), format (quantités, kcal, durées), clipboard
 ```
 
@@ -108,7 +108,6 @@ Recette **Ninja Creami** : `"appliance": "Ninja Creami"` rend obligatoires `"fre
 - `aisle` : `Fruits & légumes` | `Boulangerie` | `Boucherie & poisson` | `Frais` | `Surgelés` | `Épicerie` | `Placard`.
 - Même ingrédient = **même nom exact et même rayon** d'une recette à l'autre (ex. toujours « Lait d'amande sans sucre », rayon Épicerie), sinon la liste de courses ne les regroupe pas. Les tests le vérifient.
 - Catégories actuelles : `glaces`, `plats`, `apero`, `desserts`, `petit-dej`, `boissons`. Une catégorie déclarée doit contenir au moins une recette.
-- Les ids préfixés `perso-` sont réservés aux recettes créées dans le navigateur.
 
 ## Charte graphique (résumé)
 

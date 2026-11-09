@@ -20,7 +20,6 @@
   <link rel="stylesheet" href="css/card.css">
   <link rel="stylesheet" href="css/modal.css">
   <link rel="stylesheet" href="css/views.css">
-  <link rel="stylesheet" href="css/form.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Aller au contenu</a>
@@ -40,7 +39,6 @@
         <a class="topnav__link" href="#/" data-nav="recettes">Recettes</a>
         <a class="topnav__link" href="#/menu" data-nav="menu">Menu <span class="nav__badge" hidden></span></a>
         <a class="topnav__link" href="#/courses" data-nav="courses">Courses <span class="nav__badge" hidden></span></a>
-        <a class="btn btn--encre topnav__cta" href="#/creer" data-nav="creer">Créer une recette</a>
       </nav>
     </div>
   </header>
@@ -49,22 +47,19 @@
     <section id="view-recettes" class="view" aria-label="Recettes"></section>
     <section id="view-menu" class="view" aria-label="Mon menu" hidden></section>
     <section id="view-courses" class="view" aria-label="Liste de courses" hidden></section>
-    <section id="view-creer" class="view" aria-label="Créer une recette" hidden></section>
   </main>
 
   <footer class="footer">
     <div class="container footer__inner">
       <p><strong>IDrecette V.2</strong> · La deuxième, c'est la bonne.</p>
-      <p>Les recettes viennent de <code>data.json</code>. Tes favoris, ton menu et tes recettes perso restent dans ce navigateur.</p>
+      <p>Les recettes viennent de <code>data.json</code>. Tes favoris, ton menu et ta liste de courses restent dans ce navigateur.</p>
     </div>
   </footer>
 
   <nav class="tabbar" aria-label="Navigation">
     <a class="tabbar__link" href="#/" data-nav="recettes"><span class="tabbar__icon" data-icon="book"></span>Recettes</a>
     <a class="tabbar__link" href="#/menu" data-nav="menu"><span class="tabbar__icon" data-icon="menu"></span>Menu<span class="nav__badge" hidden></span></a>
-    <a class="tabbar__link" href="#/courses" data-nav="courses"><span class="tabbar__icon" data-icon="cart"></span>Courses<span class="nav__badge" hidden></span></a>
-    <a class="tabbar__link" href="#/creer" data-nav="creer"><span class="tabbar__icon" data-icon="pen"></span>Créer</a>
-  </nav>
+    <a class="tabbar__link" href="#/courses" data-nav="courses"><span class="tabbar__icon" data-icon="cart"></span>Courses<span class="nav__badge" hidden></span></a>  </nav>
 
   <dialog id="recipe-modal" class="modal" aria-labelledby="modal-title">
     <div class="modal__scroll"></div>

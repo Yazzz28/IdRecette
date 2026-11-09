@@ -3,7 +3,7 @@ import { formatQty, formatKcal, formatMinutes, formatHours, formatRest } from '.
 import { copyText, mailtoUrl } from '../utils/clipboard.js';
 import { GROUPS, scaleIngredients, thumbColor } from '../core/library.js';
 import {
-  libraryStore, favoritesStore, menuStore, userRecipesStore,
+  libraryStore, favoritesStore, menuStore,
   toggleFavorite, setMenuServings, removeFromMenu,
 } from '../core/stores.js';
 import { icons } from './icons.js';
@@ -19,14 +19,13 @@ const MAX_SERVINGS = 24;
 /**
  * Fiche recette dans un <dialog>.
  * @param {HTMLDialogElement} dialog
- * @param {{ onClose: () => void, onEdit: (id: string) => void }} hooks
+ * @param {{ onClose: () => void }} hooks
  */
-export function createRecipeModal(dialog, { onClose, onEdit }) {
+export function createRecipeModal(dialog, { onClose }) {
   const scroller = dialog.querySelector('.modal__scroll');
   let recipe = null;
   let servings = 2;
   let checked = new Set();
-  let confirmDelete = false;
 
   const ingredientsText = () => {
     const lines = scaleIngredients(recipe, servings)
@@ -117,7 +116,7 @@ export function createRecipeModal(dialog, { onClose, onEdit }) {
         </div>
         <h2 class="detail__title" id="modal-title">${esc(recipe.title)}</h2>
         ${recipe.description ? `<p class="detail__desc">${esc(recipe.description)}</p>` : ''}
-        <p class="detail__author">${recipe.isUser ? 'Recette perso' : 'Recette'}${recipe.author ? ` signée <strong>${esc(recipe.author)}</strong>` : ''} · ${esc(recipe.difficulty)}</p>
+        <p class="detail__author">Recette${recipe.author ? ` signée <strong>${esc(recipe.author)}</strong>` : ''} · ${esc(recipe.difficulty)}</p>
 
         <div class="stats">${stats}</div>
 
@@ -152,12 +151,6 @@ export function createRecipeModal(dialog, { onClose, onEdit }) {
           <button type="button" class="btn btn--outline" data-action="copy">${icons.copy}Copier les ingrédients</button>
           <a class="btn btn--outline" data-slot="mail" href="${esc(mailtoUrl(`Recette : ${recipe.title}`, ingredientsText()))}">${icons.mail}Envoyer par mail</a>
         </div>
-
-        ${recipe.isUser ? `
-          <div class="detail__owner">
-            <button type="button" class="btn btn--ghost" data-action="edit">${icons.pen}Modifier</button>
-            <button type="button" class="btn btn--ghost btn--danger" data-action="delete">${icons.trash}<span>Supprimer</span></button>
-          </div>` : ''}
       </div>`;
   }
 
@@ -201,24 +194,6 @@ export function createRecipeModal(dialog, { onClose, onEdit }) {
       case 'copy':
         toast((await copyText(ingredientsText())) ? 'Ingrédients copiés.' : 'Copie impossible, désolé.');
         break;
-      case 'edit':
-        onEdit(recipe.id);
-        break;
-      case 'delete': {
-        const button = e.target.closest('[data-action="delete"]');
-        if (!confirmDelete) {
-          confirmDelete = true;
-          button.querySelector('span').textContent = 'Sûr ? Re-clique pour supprimer';
-          return;
-        }
-        const id = recipe.id;
-        userRecipesStore.set((list) => list.filter((r) => r.id !== id));
-        removeFromMenu(id);
-        favoritesStore.set((favs) => favs.filter((f) => f !== id));
-        toast('Recette supprimée.');
-        dialog.close();
-        break;
-      }
       default:
     }
   });
@@ -251,7 +226,6 @@ export function createRecipeModal(dialog, { onClose, onEdit }) {
       if (!sameRecipe) {
         servings = menuStore.get()[id] || found.servings;
         checked = new Set();
-        confirmDelete = false;
       }
       render();
       if (!dialog.open) {

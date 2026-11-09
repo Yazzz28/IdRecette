@@ -53,7 +53,6 @@ export function validateData(data) {
       if (!isStr(r.id) || !ID_PATTERN.test(r.id)) err(where, 'id manquant ou invalide (kebab-case sans accent, ex. "fraise-banane-amande")');
       else if (ids.has(r.id)) err(where, `id en double « ${r.id} »`);
       ids.add(r.id);
-      if (typeof r.id === 'string' && r.id.startsWith('perso-')) warn(where, 'le préfixe « perso- » est réservé aux recettes du navigateur, renomme l\'id');
 
       if (!isStr(r.title)) err(where, 'title manquant');
       else {

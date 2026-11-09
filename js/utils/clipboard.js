@@ -25,19 +25,6 @@ export async function copyText(text) {
   return ok;
 }
 
-/** Déclenche le téléchargement d'un fichier texte. */
-export function downloadFile(filename, content, type = 'application/json') {
-  const blob = new Blob([content], { type: `${type};charset=utf-8` });
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement('a');
-  link.href = url;
-  link.download = filename;
-  document.body.appendChild(link);
-  link.click();
-  link.remove();
-  setTimeout(() => URL.revokeObjectURL(url), 1000);
-}
-
 export function mailtoUrl(subject, body) {
   return `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 }

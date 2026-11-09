@@ -18,6 +18,14 @@ export function writeStorage(key, value) {
   }
 }
 
+export function removeStorage(key) {
+  try {
+    localStorage.removeItem(PREFIX + key);
+  } catch {
+    /* stockage indisponible : rien à nettoyer */
+  }
+}
+
 /**
  * Petit store observable. Avec `persist`, la valeur est relue et sauvegardée dans localStorage.
  * @template T
