@@ -430,6 +430,42 @@
       "nutrition": { "protein": 4, "carbs": 20, "fat": 4 },
       "tip": "Fais ton pop-corn toi-même à la poêle, sans beurre : il reste plus croquant que celui du commerce une fois dans la glace.",
       "author": "Yacine"
+    },
+    {
+      "id": "sorbet-tomate-basilic",
+      "title": "Sorbet tomate-basilic",
+      "category": "glaces",
+      "emoji": "🍅",
+      "color": "pelure",
+      "description": "La quenelle qui fait son effet à l'apéro : sur un gaspacho, à côté d'une burrata ou juste avec des gressins.",
+      "tags": ["Healthy", "Vegan", "Salé", "Apéro", "Moins de 200 kcal"],
+      "appliance": "Ninja Creami",
+      "difficulty": "Facile",
+      "prepTime": 10,
+      "freezeTime": 24,
+      "servings": 4,
+      "modes": ["Sorbet", "Re-spin"],
+      "ingredients": [
+        { "qty": 450, "unit": "g", "name": "Tomates bien mûres", "kcal": 81, "group": "base", "aisle": "Fruits & légumes" },
+        { "qty": 10, "unit": "feuilles", "name": "Basilic frais", "kcal": 2, "group": "base", "aisle": "Fruits & légumes" },
+        { "qty": 1, "unit": "c. à s.", "name": "Huile d'olive", "kcal": 88, "group": "base", "aisle": "Placard" },
+        { "qty": 1, "unit": "c. à c.", "name": "Vinaigre balsamique", "kcal": 5, "group": "base", "aisle": "Placard" },
+        { "qty": 1, "unit": "c. à c.", "name": "Sirop d'agave", "kcal": 20, "group": "base", "aisle": "Placard" },
+        { "qty": 2, "unit": "pincée", "name": "Fleur de sel", "kcal": 0, "group": "base", "aisle": "Placard" },
+        { "qty": 0.25, "unit": "c. à c.", "name": "Gomme de guar", "kcal": 2, "group": "base", "aisle": "Épicerie" },
+        { "qty": 15, "unit": "g", "name": "Croûtons", "kcal": 60, "group": "topping", "aisle": "Boulangerie" },
+        { "qty": 1, "unit": "pincée", "name": "Poivre noir", "kcal": 0, "group": "topping", "aisle": "Placard" }
+      ],
+      "steps": [
+        "Coupe les tomates en quartiers et retire le pédoncule.",
+        "Mixe-les avec le basilic, l'huile d'olive, le vinaigre, le sirop d'agave, la fleur de sel et la gomme de guar. Goûte : ça doit être un poil trop salé, le froid atténue tout.",
+        "Passe au tamis pour enlever peaux et pépins, verse dans le pot jusqu'au trait MAX et congèle 24 h.",
+        "Lance le programme Sorbet, puis un Re-spin si la texture est trop sèche.",
+        "Sers en quenelles avec les croûtons et un tour de poivre."
+      ],
+      "nutrition": { "protein": 1, "carbs": 6, "fat": 4 },
+      "tip": "En plein été, prends des cœurs de bœuf ou des tomates cerises bien mûres. En hiver, une bonne conserve de tomates pelées fait le job.",
+      "author": "Yacine"
     }
   ]
 }
