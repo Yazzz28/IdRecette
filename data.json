@@ -740,6 +740,40 @@
       "nutrition": { "protein": 4, "carbs": 18, "fat": 10 },
       "tip": "Ajoute une quenelle de sorbet tomate-basilic au moment de servir : effet garanti.",
       "author": "Yacine"
+    },
+    {
+      "id": "salade-lentilles-feta",
+      "title": "Salade de lentilles, feta & herbes",
+      "category": "plats",
+      "emoji": "🥗",
+      "description": "La salade qui tient au corps : pleine de protéines végétales, de croquant et de citron. Elle voyage très bien dans une boîte pour le déj.",
+      "tags": ["Healthy", "Végétarien", "Sans gluten", "Riche en protéines", "Batch cooking"],
+      "appliance": "Casserole",
+      "difficulty": "Facile",
+      "prepTime": 15,
+      "cookTime": 25,
+      "servings": 4,
+      "ingredients": [
+        { "qty": 250, "unit": "g", "name": "Lentilles vertes", "kcal": 875, "group": "base", "aisle": "Épicerie" },
+        { "qty": 1, "unit": "pc", "name": "Concombre", "kcal": 45, "group": "base", "aisle": "Fruits & légumes" },
+        { "qty": 250, "unit": "g", "name": "Tomates cerises", "kcal": 45, "group": "base", "aisle": "Fruits & légumes" },
+        { "qty": 1, "unit": "pc", "name": "Oignon rouge", "kcal": 44, "group": "base", "aisle": "Fruits & légumes" },
+        { "qty": 0.5, "unit": "botte", "name": "Persil plat", "kcal": 5, "group": "base", "aisle": "Fruits & légumes" },
+        { "qty": 3, "unit": "c. à s.", "name": "Huile d'olive", "kcal": 264, "group": "base", "aisle": "Placard" },
+        { "qty": 1, "unit": "pc", "name": "Citron jaune bio", "kcal": 17, "group": "base", "aisle": "Fruits & légumes" },
+        { "qty": 1, "unit": "c. à c.", "name": "Moutarde", "kcal": 5, "group": "base", "aisle": "Placard" },
+        { "qty": 120, "unit": "g", "name": "Feta", "kcal": 317, "group": "topping", "aisle": "Frais" }
+      ],
+      "steps": [
+        "Rince les lentilles et fais-les cuire 20 à 25 min dans 3 fois leur volume d'eau non salée. Elles doivent rester un peu fermes.",
+        "Égoutte-les et sale-les tout de suite, tant qu'elles sont chaudes : elles boivent l'assaisonnement.",
+        "Pendant la cuisson, coupe le concombre en dés, les tomates cerises en deux, émince finement l'oignon rouge et cisèle le persil.",
+        "Fouette l'huile d'olive, le jus du citron et la moutarde, puis mélange avec les lentilles et les légumes.",
+        "Émiette la feta par-dessus au moment de servir."
+      ],
+      "nutrition": { "protein": 19, "carbs": 40, "fat": 15 },
+      "tip": "Fais tremper l'oignon rouge émincé 10 min dans l'eau froide : il garde son croquant et perd son piquant.",
+      "author": "Yacine"
     }
   ]
 }
