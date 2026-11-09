@@ -838,6 +838,40 @@
       "nutrition": { "protein": 4, "carbs": 33, "fat": 16 },
       "tip": "Une pincée de fleur de sel sur chaque cookie à la sortie du four, et c'est le niveau au-dessus.",
       "author": "Yacine"
+    },
+    {
+      "id": "poke-bowl-saumon",
+      "title": "Poke bowl saumon-avocat",
+      "category": "plats",
+      "emoji": "🍣",
+      "color": "ciel",
+      "description": "Le resto hawaïen à la maison, pour trois fois moins cher. Tout est dans le dressage, rien dans la difficulté.",
+      "tags": ["Healthy", "Riche en protéines"],
+      "appliance": "Casserole",
+      "difficulty": "Facile",
+      "prepTime": 15,
+      "cookTime": 12,
+      "servings": 2,
+      "ingredients": [
+        { "qty": 100, "unit": "g", "name": "Riz basmati", "kcal": 352, "group": "base", "aisle": "Épicerie" },
+        { "qty": 160, "unit": "g", "name": "Saumon frais", "kcal": 320, "group": "base", "aisle": "Boucherie & poisson" },
+        { "qty": 0.5, "unit": "pc", "name": "Avocat", "kcal": 120, "group": "base", "aisle": "Fruits & légumes" },
+        { "qty": 0.5, "unit": "pc", "name": "Concombre", "kcal": 23, "group": "base", "aisle": "Fruits & légumes" },
+        { "qty": 80, "unit": "g", "name": "Edamame surgelés", "kcal": 97, "group": "base", "aisle": "Surgelés" },
+        { "qty": 2, "unit": "c. à s.", "name": "Sauce soja", "kcal": 16, "group": "base", "aisle": "Placard" },
+        { "qty": 0.5, "unit": "pc", "name": "Citron vert", "kcal": 4, "group": "base", "aisle": "Fruits & légumes" },
+        { "qty": 5, "unit": "g", "name": "Graines de sésame", "kcal": 29, "group": "topping", "aisle": "Épicerie" }
+      ],
+      "steps": [
+        "Fais cuire le riz, puis laisse-le tiédir. Plonge les edamame 3 min dans l'eau bouillante.",
+        "Coupe le saumon en cubes et fais-le mariner 10 min dans la sauce soja et le jus du citron vert.",
+        "Coupe l'avocat et le concombre en tranches fines.",
+        "Dans deux bols, dispose le riz, puis chaque ingrédient en petit tas côte à côte.",
+        "Arrose avec la marinade et parsème de graines de sésame."
+      ],
+      "nutrition": { "protein": 25, "carbs": 44, "fat": 19 },
+      "tip": "Demande au poissonnier un saumon « qualité sashimi », ou fais-le saisir 1 min de chaque côté si tu préfères cuit.",
+      "author": "Yacine"
     }
   ]
 }
