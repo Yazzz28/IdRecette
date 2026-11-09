@@ -670,6 +670,41 @@
       "nutrition": { "protein": 6, "carbs": 27, "fat": 9 },
       "tip": "Plus les bananes sont noires, meilleur il est. Congèle-les en attendant d'en avoir trois.",
       "author": "Yacine"
+    },
+    {
+      "id": "poulet-paprika-patate-douce-airfryer",
+      "title": "Poulet paprika & patate douce à l'airfryer",
+      "category": "plats",
+      "emoji": "🍗",
+      "color": "beurre",
+      "description": "Doré dehors, juteux dedans, et zéro vaisselle. Le dîner de semaine qui cale sans alourdir.",
+      "tags": ["Healthy", "Sans gluten", "Riche en protéines"],
+      "appliance": "Airfryer",
+      "difficulty": "Facile",
+      "prepTime": 10,
+      "cookTime": 20,
+      "servings": 2,
+      "ingredients": [
+        { "qty": 300, "unit": "g", "name": "Blanc de poulet", "kcal": 360, "group": "base", "aisle": "Boucherie & poisson" },
+        { "qty": 400, "unit": "g", "name": "Patate douce", "kcal": 344, "group": "base", "aisle": "Fruits & légumes" },
+        { "qty": 1, "unit": "c. à s.", "name": "Huile d'olive", "kcal": 88, "group": "base", "aisle": "Placard" },
+        { "qty": 1, "unit": "c. à c.", "name": "Paprika fumé", "kcal": 6, "group": "base", "aisle": "Placard" },
+        { "qty": 1, "unit": "gousse", "name": "Ail", "kcal": 5, "group": "base", "aisle": "Fruits & légumes" },
+        { "qty": 0.5, "unit": "pc", "name": "Citron jaune bio", "kcal": 9, "group": "base", "aisle": "Fruits & légumes" },
+        { "qty": 1, "unit": "pincée", "name": "Fleur de sel", "kcal": 0, "group": "base", "aisle": "Placard" },
+        { "qty": 100, "unit": "g", "name": "Yaourt grec", "kcal": 97, "group": "topping", "aisle": "Frais" },
+        { "qty": 5, "unit": "feuilles", "name": "Menthe fraîche", "kcal": 0, "group": "topping", "aisle": "Fruits & légumes" }
+      ],
+      "steps": [
+        "Coupe la patate douce en frites épaisses, sans l'éplucher, et le poulet en gros morceaux.",
+        "Mélange le tout avec l'huile d'olive, le paprika, l'ail pressé et la fleur de sel.",
+        "Airfryer à 200 °C : 8 min les frites seules, puis ajoute le poulet et lance 12 min de plus, en secouant à mi-cuisson.",
+        "Pendant ce temps, mélange le yaourt grec avec la menthe ciselée et le jus du demi-citron.",
+        "Sers bien chaud avec la sauce à côté."
+      ],
+      "nutrition": { "protein": 42, "carbs": 42, "fat": 10 },
+      "tip": "Ne surcharge pas le panier : en une seule couche, tout dore. Fais deux fournées si besoin.",
+      "author": "Yacine"
     }
   ]
 }
