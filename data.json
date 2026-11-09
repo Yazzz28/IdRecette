@@ -1078,6 +1078,38 @@
       "nutrition": { "protein": 7, "carbs": 10, "fat": 6 },
       "tip": "Ne zappe pas l'étape où on presse le concombre, sinon le tzatziki se transforme en soupe au bout de 10 min.",
       "author": "Yacine"
+    },
+    {
+      "id": "pommes-au-four-cannelle-noix",
+      "title": "Pommes au four, cannelle & noix",
+      "category": "desserts",
+      "emoji": "🍎",
+      "color": "pelure",
+      "description": "Le dessert de grand-mère qui sent bon dans toute la maison. Fondantes, caramélisées, avec un crumble express.",
+      "tags": ["Healthy", "Végétarien", "Gourmande"],
+      "appliance": "Four",
+      "difficulty": "Facile",
+      "prepTime": 10,
+      "cookTime": 30,
+      "servings": 4,
+      "ingredients": [
+        { "qty": 4, "unit": "pc", "name": "Pommes", "kcal": 380, "group": "base", "aisle": "Fruits & légumes" },
+        { "qty": 30, "unit": "g", "name": "Noix", "kcal": 196, "group": "base", "aisle": "Épicerie" },
+        { "qty": 20, "unit": "g", "name": "Flocons d'avoine", "kcal": 74, "group": "base", "aisle": "Épicerie" },
+        { "qty": 2, "unit": "c. à s.", "name": "Sirop d'érable", "kcal": 104, "group": "base", "aisle": "Placard" },
+        { "qty": 1, "unit": "c. à c.", "name": "Cannelle", "kcal": 6, "group": "base", "aisle": "Placard" },
+        { "qty": 200, "unit": "g", "name": "Yaourt grec", "kcal": 194, "group": "topping", "aisle": "Frais" }
+      ],
+      "steps": [
+        "Préchauffe le four à 180 °C.",
+        "Évide les pommes sans les percer jusqu'en bas, et pose-les dans un plat.",
+        "Mélange les noix concassées, les flocons d'avoine, la cannelle et le sirop d'érable, puis farcis les pommes avec.",
+        "Verse un fond d'eau dans le plat et enfourne 30 min, jusqu'à ce que les pommes soient tendres.",
+        "Sers tiède avec une cuillère de yaourt grec."
+      ],
+      "nutrition": { "protein": 6, "carbs": 37, "fat": 8 },
+      "tip": "Prends des pommes qui tiennent à la cuisson, comme la Boskoop, la Reine des reinettes ou la Pink Lady.",
+      "author": "Yacine"
     }
   ]
 }
