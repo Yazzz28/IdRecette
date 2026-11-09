@@ -28,14 +28,22 @@ ou l'extension **Live Server** de VS Code.
 
 ## Ajouter une recette
 
-1. `git pull`
+`main` est protégée : on passe par une **pull request**, et elle ne peut être mergée que si la CI (check **Tests**) est verte.
+
+1. `git switch main && git pull && git switch -c recette/mon-id`
 2. Ajoute ta recette **à la fin** du tableau `recipes` de `data.json` (format complet dans [.claude/CLAUDE.md](.claude/CLAUDE.md)).
    - Tu peux aussi la créer dans l'app (onglet **Créer**), puis **Exporter en JSON** et coller l'objet dans `data.json`. Dans ce cas, renomme l'`id` en enlevant `perso-` et le suffixe, puis supprime la version perso de ton navigateur.
 3. Vérifie :
    ```bash
-   node scripts/validate-data.mjs
+   npm run validate
+   npm test
    ```
-4. Commit avec une recette par commit, `feat(recette): Titre de la recette`, puis push.
+4. Commit avec une recette par commit, `feat(recette): Titre de la recette`, puis `git push -u origin recette/mon-id` et ouvre une PR (`gh pr create --fill`).
+
+## Tests et CI
+
+- `npm test` lance les tests `node:test` du dossier [tests/](tests/) : validation des données, cohérence des ingrédients entre recettes, formatage des quantités, recherche et filtres, liste de courses, syntaxe de tous les fichiers JS.
+- [.github/workflows/ci.yml](.github/workflows/ci.yml) les lance à chaque PR et à chaque push sur `main`. Aucun `npm install` n'est nécessaire.
 
 Avec Claude Code, tape simplement **`/ajouter-recette`** : la procédure, le gabarit et les repères caloriques sont dans [.claude/skills/ajouter-recette/SKILL.md](.claude/skills/ajouter-recette/SKILL.md).
 

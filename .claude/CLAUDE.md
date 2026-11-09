@@ -9,12 +9,26 @@ Plusieurs personnes ajoutent des recettes : la seule source de vérité partagé
 - Tout état utilisateur (favoris, menu, liste de courses, recettes perso, brouillon, filtres) vit dans **`localStorage`**, via `js/core/stores.js` (préfixe `idrecette.v2.`). Ne jamais ajouter d'autre persistance.
 - Les recettes partagées vont **uniquement** dans `data.json`. Jamais en dur dans le JS ou le HTML.
 - Après toute modif de `data.json` : **`node scripts/validate-data.mjs`** doit afficher `✓`. Les warnings sont tolérés, les erreurs non.
+- Avant tout commit : **`npm test`** doit être vert (tests `node:test` dans `tests/`, sans dépendance). Toute nouvelle logique dans `js/core` ou `js/utils` arrive avec son test.
+- **`main` est protégée** : pas de push direct. On travaille sur une branche, on ouvre une PR, et la CI GitHub (`.github/workflows/ci.yml`, check **« Tests »**) doit passer pour pouvoir merger. Ne jamais renommer ce job ni contourner le check.
+
+## Workflow git
+
+```bash
+git switch main && git pull
+git switch -c recette/<id>          # ou feat/…, fix/…
+# … modifs …
+npm run validate && npm test
+git commit -m "feat(recette): <Titre>"
+git push -u origin recette/<id>
+gh pr create --fill                 # la CI tourne, merge possible quand « Tests » est vert
+```
 - Langue de l'interface et des recettes : **français**, ton « entre potes » (tutoiement, phrases courtes, un peu d'autodérision). Chiffres en `font-variant-numeric: tabular-nums`.
 
 ## Ajouter une recette
 
 Utilise la skill **`/ajouter-recette`** (`.claude/skills/ajouter-recette/SKILL.md`) : elle donne la procédure complète, le gabarit JSON et les valeurs caloriques de référence.
-En résumé : ajoute un objet **à la fin** du tableau `recipes`, avec un `id` unique en kebab-case, puis lance le script de validation, puis commit **une recette par commit** (`feat(recette): <titre>`).
+En résumé : sur une branche `recette/<id>`, ajoute un objet **à la fin** du tableau `recipes` avec un `id` unique en kebab-case, lance `npm run validate && npm test`, commit **une recette par commit** (`feat(recette): <titre>`) et ouvre une PR.
 
 ## Lancer l'app
 
@@ -27,7 +41,9 @@ En résumé : ajoute un objet **à la fin** du tableau `recipes`, avec un `id` u
 ```
 index.html              coquille : header + nav, 4 <section> de vues, <dialog> fiche recette, tabbar mobile
 data.json               catégories + recettes (format ci-dessous)
-scripts/validate-data.mjs   validation de data.json (Node, sans dépendance)
+scripts/validate-data.mjs   CLI de validation de data.json (logique dans scripts/lib/validate.mjs)
+tests/                  tests node:test (données, validateur, formatage, filtres, liste de courses, syntaxe)
+.github/workflows/ci.yml    CI : validate + tests sur chaque PR et push sur main
 css/
   tokens.css            couleurs / typo / rayons de la charte (modifier ici, jamais en dur ailleurs)
   base.css layout.css nav.css components.css card.css modal.css views.css form.css
