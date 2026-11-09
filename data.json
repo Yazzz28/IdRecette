@@ -705,6 +705,41 @@
       "nutrition": { "protein": 42, "carbs": 42, "fat": 10 },
       "tip": "Ne surcharge pas le panier : en une seule couche, tout dore. Fais deux fournées si besoin.",
       "author": "Yacine"
+    },
+    {
+      "id": "gaspacho-andalou",
+      "title": "Gaspacho andalou",
+      "category": "apero",
+      "emoji": "🥫",
+      "description": "Une soupe froide qui se boit en verrine à l'apéro. Mixée en 10 min, elle passe 2 h au frais et c'est l'été dans le verre.",
+      "tags": ["Healthy", "Vegan", "Salé", "Apéro", "Moins de 200 kcal"],
+      "appliance": "Robot",
+      "difficulty": "Facile",
+      "prepTime": 10,
+      "restTime": 120,
+      "servings": 4,
+      "ingredients": [
+        { "qty": 800, "unit": "g", "name": "Tomates bien mûres", "kcal": 144, "group": "base", "aisle": "Fruits & légumes" },
+        { "qty": 1, "unit": "pc", "name": "Concombre", "kcal": 45, "group": "base", "aisle": "Fruits & légumes" },
+        { "qty": 1, "unit": "pc", "name": "Poivron rouge", "kcal": 40, "group": "base", "aisle": "Fruits & légumes" },
+        { "qty": 1, "unit": "gousse", "name": "Ail", "kcal": 5, "group": "base", "aisle": "Fruits & légumes" },
+        { "qty": 40, "unit": "g", "name": "Pain de campagne", "kcal": 104, "group": "base", "aisle": "Boulangerie" },
+        { "qty": 3, "unit": "c. à s.", "name": "Huile d'olive", "kcal": 264, "group": "base", "aisle": "Placard" },
+        { "qty": 1, "unit": "c. à s.", "name": "Vinaigre de Xérès", "kcal": 3, "group": "base", "aisle": "Placard" },
+        { "qty": 2, "unit": "pincée", "name": "Fleur de sel", "kcal": 0, "group": "base", "aisle": "Placard" },
+        { "qty": 1, "unit": "pincée", "name": "Piment d'Espelette", "kcal": 0, "group": "topping", "aisle": "Placard" },
+        { "qty": 15, "unit": "g", "name": "Croûtons", "kcal": 60, "group": "topping", "aisle": "Boulangerie" }
+      ],
+      "steps": [
+        "Fais tremper le pain 5 min dans un peu d'eau, puis essore-le.",
+        "Coupe grossièrement les tomates, le concombre épluché et le poivron épépiné.",
+        "Mixe tout avec l'ail, le pain, l'huile d'olive, le vinaigre et la fleur de sel, 2 bonnes minutes.",
+        "Passe au tamis si tu veux une texture bien lisse, puis laisse 2 h au frigo.",
+        "Sers bien frais en verrines, avec les croûtons et une pincée de piment d'Espelette."
+      ],
+      "nutrition": { "protein": 4, "carbs": 18, "fat": 10 },
+      "tip": "Ajoute une quenelle de sorbet tomate-basilic au moment de servir : effet garanti.",
+      "author": "Yacine"
     }
   ]
 }
