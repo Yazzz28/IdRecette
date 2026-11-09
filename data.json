@@ -976,6 +976,42 @@
       "nutrition": { "protein": 15, "carbs": 60, "fat": 15 },
       "tip": "Sèche bien les pois chiches dans un torchon avant de les enfourner : c'est ce qui les rend croustillants.",
       "author": "Yacine"
+    },
+    {
+      "id": "wok-tofu-brocoli",
+      "title": "Wok de tofu croustillant & brocoli",
+      "category": "plats",
+      "emoji": "🥦",
+      "color": "sauge",
+      "description": "Le tofu, pour ceux qui pensent ne pas aimer le tofu : doré, laqué au soja et au gingembre, avec un brocoli encore croquant.",
+      "tags": ["Healthy", "Vegan", "Riche en protéines"],
+      "appliance": "Poêle",
+      "difficulty": "Moyen",
+      "prepTime": 15,
+      "cookTime": 15,
+      "servings": 2,
+      "ingredients": [
+        { "qty": 200, "unit": "g", "name": "Tofu ferme", "kcal": 280, "group": "base", "aisle": "Frais" },
+        { "qty": 300, "unit": "g", "name": "Brocoli", "kcal": 102, "group": "base", "aisle": "Fruits & légumes" },
+        { "qty": 1, "unit": "pc", "name": "Poivron rouge", "kcal": 40, "group": "base", "aisle": "Fruits & légumes" },
+        { "qty": 2, "unit": "gousse", "name": "Ail", "kcal": 9, "group": "base", "aisle": "Fruits & légumes" },
+        { "qty": 10, "unit": "g", "name": "Gingembre frais", "kcal": 8, "group": "base", "aisle": "Fruits & légumes" },
+        { "qty": 2, "unit": "c. à s.", "name": "Sauce soja", "kcal": 16, "group": "base", "aisle": "Placard" },
+        { "qty": 1, "unit": "c. à c.", "name": "Sirop d'érable", "kcal": 17, "group": "base", "aisle": "Placard" },
+        { "qty": 1, "unit": "c. à s.", "name": "Huile de sésame", "kcal": 120, "group": "base", "aisle": "Placard" },
+        { "qty": 100, "unit": "g", "name": "Riz basmati", "kcal": 352, "group": "base", "aisle": "Épicerie" },
+        { "qty": 5, "unit": "g", "name": "Graines de sésame", "kcal": 29, "group": "topping", "aisle": "Épicerie" }
+      ],
+      "steps": [
+        "Lance la cuisson du riz. Presse le tofu 10 min entre deux torchons avec un poids dessus, puis coupe-le en cubes.",
+        "Fais dorer le tofu 8 min dans l'huile de sésame bien chaude, en le retournant. Réserve.",
+        "Dans la même poêle, saisis le brocoli en petits bouquets et le poivron en lanières 4 min à feu vif.",
+        "Ajoute l'ail et le gingembre râpés, puis la sauce soja et le sirop d'érable. Remets le tofu et mélange 1 min pour bien le laquer.",
+        "Sers sur le riz avec les graines de sésame."
+      ],
+      "nutrition": { "protein": 20, "carbs": 55, "fat": 16 },
+      "tip": "L'étape du pressage n'est pas optionnelle : moins il y a d'eau dans le tofu, plus il croustille.",
+      "author": "Yacine"
     }
   ]
 }
