@@ -1,7 +1,8 @@
 {
   "categories": [
     { "id": "glaces", "label": "Glaces", "color": "ciel" },
-    { "id": "plats", "label": "Plats", "color": "sauge" }
+    { "id": "plats", "label": "Plats", "color": "sauge" },
+    { "id": "apero", "label": "Apéro", "color": "pelure" }
   ],
   "recipes": [
     {
@@ -537,6 +538,38 @@
       ],
       "nutrition": { "protein": 21, "carbs": 20, "fat": 24 },
       "tip": "Retire du feu quand le blanc est pris mais que le jaune tremble encore : il finit de cuire dans la poêle.",
+      "author": "Yacine"
+    },
+    {
+      "id": "houmous-betterave",
+      "title": "Houmous de betterave",
+      "category": "apero",
+      "emoji": "🧆",
+      "description": "Rose fluo, ultra crémeux, prêt en 10 min. Le houmous qui disparaît avant que les invités aient enlevé leur manteau.",
+      "tags": ["Healthy", "Vegan", "Sans gluten", "Express", "Apéro"],
+      "appliance": "Robot",
+      "difficulty": "Facile",
+      "prepTime": 10,
+      "servings": 6,
+      "ingredients": [
+        { "qty": 240, "unit": "g", "name": "Pois chiches cuits", "kcal": 288, "group": "base", "aisle": "Épicerie" },
+        { "qty": 150, "unit": "g", "name": "Betterave cuite", "kcal": 65, "group": "base", "aisle": "Frais" },
+        { "qty": 30, "unit": "g", "name": "Tahini", "kcal": 180, "group": "base", "aisle": "Épicerie" },
+        { "qty": 1, "unit": "pc", "name": "Citron jaune bio", "kcal": 17, "group": "base", "aisle": "Fruits & légumes" },
+        { "qty": 1, "unit": "gousse", "name": "Ail", "kcal": 5, "group": "base", "aisle": "Fruits & légumes" },
+        { "qty": 1, "unit": "c. à c.", "name": "Cumin", "kcal": 8, "group": "base", "aisle": "Placard" },
+        { "qty": 2, "unit": "c. à s.", "name": "Huile d'olive", "kcal": 176, "group": "base", "aisle": "Placard" },
+        { "qty": 1, "unit": "pincée", "name": "Fleur de sel", "kcal": 0, "group": "base", "aisle": "Placard" },
+        { "qty": 5, "unit": "g", "name": "Graines de sésame", "kcal": 29, "group": "topping", "aisle": "Épicerie" }
+      ],
+      "steps": [
+        "Égoutte et rince les pois chiches, en gardant 3 c. à s. de leur jus.",
+        "Mixe-les avec la betterave, le tahini, le jus du citron, l'ail, le cumin et la fleur de sel.",
+        "Ajoute l'huile d'olive en filet en mixant, puis le jus des pois chiches petit à petit jusqu'à ce que ce soit bien lisse.",
+        "Sers avec un filet d'huile, les graines de sésame, et des crudités ou du pain pita."
+      ],
+      "nutrition": { "protein": 5, "carbs": 12, "fat": 7 },
+      "tip": "Mixe longtemps, 3 bonnes minutes : c'est ça le secret d'un houmous crémeux, pas l'huile.",
       "author": "Yacine"
     }
   ]
