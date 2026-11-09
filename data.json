@@ -872,6 +872,43 @@
       "nutrition": { "protein": 25, "carbs": 44, "fat": 19 },
       "tip": "Demande au poissonnier un saumon « qualité sashimi », ou fais-le saisir 1 min de chaque côté si tu préfères cuit.",
       "author": "Yacine"
+    },
+    {
+      "id": "soupe-lentilles-corail-coco",
+      "title": "Soupe de lentilles corail coco",
+      "category": "plats",
+      "emoji": "🥣",
+      "color": "beurre",
+      "description": "Orange, veloutée, réconfortante. Elle cale vraiment, et elle coûte trois fois rien.",
+      "tags": ["Healthy", "Vegan", "Sans gluten", "Batch cooking"],
+      "appliance": "Casserole",
+      "difficulty": "Facile",
+      "prepTime": 10,
+      "cookTime": 25,
+      "servings": 4,
+      "ingredients": [
+        { "qty": 200, "unit": "g", "name": "Lentilles corail", "kcal": 700, "group": "base", "aisle": "Épicerie" },
+        { "qty": 200, "unit": "ml", "name": "Lait de coco léger", "kcal": 160, "group": "base", "aisle": "Épicerie" },
+        { "qty": 2, "unit": "pc", "name": "Carotte", "kcal": 82, "group": "base", "aisle": "Fruits & légumes" },
+        { "qty": 1, "unit": "pc", "name": "Oignon jaune", "kcal": 44, "group": "base", "aisle": "Fruits & légumes" },
+        { "qty": 2, "unit": "gousse", "name": "Ail", "kcal": 9, "group": "base", "aisle": "Fruits & légumes" },
+        { "qty": 10, "unit": "g", "name": "Gingembre frais", "kcal": 8, "group": "base", "aisle": "Fruits & légumes" },
+        { "qty": 1, "unit": "c. à s.", "name": "Curry doux en poudre", "kcal": 20, "group": "base", "aisle": "Placard" },
+        { "qty": 1, "unit": "c. à s.", "name": "Huile d'olive", "kcal": 88, "group": "base", "aisle": "Placard" },
+        { "qty": 1, "unit": "l", "name": "Bouillon de légumes", "kcal": 10, "group": "base", "aisle": "Placard" },
+        { "qty": 0.5, "unit": "pc", "name": "Citron vert", "kcal": 4, "group": "base", "aisle": "Fruits & légumes" },
+        { "qty": 0.5, "unit": "botte", "name": "Coriandre fraîche", "kcal": 3, "group": "topping", "aisle": "Fruits & légumes" }
+      ],
+      "steps": [
+        "Émince l'oignon, coupe les carottes en rondelles, presse l'ail et râpe le gingembre.",
+        "Fais revenir le tout 5 min dans l'huile d'olive, puis ajoute le curry et remue 1 min.",
+        "Ajoute les lentilles rincées et le bouillon. Laisse mijoter 20 min, jusqu'à ce que les lentilles se défassent.",
+        "Ajoute le lait de coco et mixe jusqu'à ce que ce soit bien lisse.",
+        "Un filet de citron vert, la coriandre ciselée, et c'est prêt."
+      ],
+      "nutrition": { "protein": 13, "carbs": 32, "fat": 7 },
+      "tip": "Les lentilles corail n'ont pas besoin de trempage et cuisent en 20 min : c'est la légumineuse des gens pressés.",
+      "author": "Yacine"
     }
   ]
 }
