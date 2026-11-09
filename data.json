@@ -3,6 +3,7 @@
     { "id": "glaces", "label": "Glaces", "color": "ciel" },
     { "id": "plats", "label": "Plats", "color": "sauge" },
     { "id": "apero", "label": "Apéro", "color": "pelure" },
+    { "id": "desserts", "label": "Desserts", "color": "lilas" },
     { "id": "petit-dej", "label": "Petit-déj", "color": "beurre" },
     { "id": "boissons", "label": "Boissons", "color": "ciel" }
   ],
@@ -633,6 +634,41 @@
       ],
       "nutrition": { "protein": 2, "carbs": 22, "fat": 3 },
       "tip": "Le poivre n'est pas là pour le goût : il aide le corps à absorber le curcuma. Une pincée suffit.",
+      "author": "Yacine"
+    },
+    {
+      "id": "banana-bread-avoine",
+      "title": "Banana bread à l'avoine",
+      "category": "desserts",
+      "emoji": "🍌",
+      "description": "Moelleux, parfumé, sans farine blanche ni sucre raffiné. La meilleure façon de sauver les bananes qui noircissent.",
+      "tags": ["Healthy", "Végétarien", "Gourmande"],
+      "appliance": "Four",
+      "difficulty": "Facile",
+      "prepTime": 15,
+      "cookTime": 45,
+      "servings": 8,
+      "ingredients": [
+        { "qty": 3, "unit": "pc", "name": "Banane bien mûre", "kcal": 315, "group": "base", "aisle": "Fruits & légumes" },
+        { "qty": 150, "unit": "g", "name": "Flocons d'avoine", "kcal": 555, "group": "base", "aisle": "Épicerie" },
+        { "qty": 2, "unit": "pc", "name": "Œufs", "kcal": 144, "group": "base", "aisle": "Frais" },
+        { "qty": 3, "unit": "c. à s.", "name": "Sirop d'érable", "kcal": 156, "group": "base", "aisle": "Placard" },
+        { "qty": 30, "unit": "g", "name": "Purée de noix de cajou", "kcal": 180, "group": "base", "aisle": "Épicerie" },
+        { "qty": 1, "unit": "sachet", "name": "Levure chimique", "kcal": 10, "group": "base", "aisle": "Placard" },
+        { "qty": 1, "unit": "c. à c.", "name": "Cannelle", "kcal": 6, "group": "base", "aisle": "Placard" },
+        { "qty": 1, "unit": "pincée", "name": "Fleur de sel", "kcal": 0, "group": "base", "aisle": "Placard" },
+        { "qty": 40, "unit": "g", "name": "Noix de pécan", "kcal": 276, "group": "base", "aisle": "Épicerie" }
+      ],
+      "steps": [
+        "Préchauffe le four à 180 °C et chemise un moule à cake de papier cuisson.",
+        "Mixe les flocons d'avoine en farine.",
+        "Écrase 2 bananes à la fourchette, puis mélange-les avec les œufs, le sirop d'érable et la purée de cajou.",
+        "Ajoute la farine d'avoine, la levure, la cannelle et la fleur de sel, puis les trois quarts des noix de pécan concassées.",
+        "Verse dans le moule, pose la dernière banane coupée en deux dans la longueur et le reste des noix, puis enfourne 45 min à 180 °C.",
+        "Laisse tiédir avant de démouler, sinon il se casse."
+      ],
+      "nutrition": { "protein": 6, "carbs": 27, "fat": 9 },
+      "tip": "Plus les bananes sont noires, meilleur il est. Congèle-les en attendant d'en avoir trois.",
       "author": "Yacine"
     }
   ]
