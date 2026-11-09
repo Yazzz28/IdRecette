@@ -11,9 +11,8 @@ App 100 % statique (HTML, CSS, JS) : pas de base de données, pas de compte, pas
 - **Fiche recette** : portions ajustables (quantités et kcal recalculées), temps de préparation, cuisson et repos, macros, ingrédients à cocher, copie ou envoi par mail. Pour les glaces Ninja Creami : programmes et nombre de pots.
 - **Mon menu** : les recettes prévues, avec portions et total de kcal.
 - **Liste de courses** : générée depuis le menu, ingrédients regroupés et classés par rayon, ajouts à la main, copie ou envoi par mail.
-- **Créer** : formulaire de recette perso avec brouillon automatique, kcal pré-remplies pour les ingrédients connus, export JSON.
 
-Favoris, menu, liste de courses, recettes perso, brouillon et filtres sont enregistrés dans le **localStorage** du navigateur. Les recettes partagées par tout le monde vivent dans **`data.json`**.
+Favoris, menu, liste de courses et filtres sont enregistrés dans le **localStorage** du navigateur. Les recettes, elles, vivent uniquement dans **`data.json`** : il n'y a pas de formulaire dans l'app, on les ajoute dans le code via une PR.
 
 ## Lancer en local
 
@@ -32,7 +31,6 @@ ou l'extension **Live Server** de VS Code.
 
 1. `git switch main && git pull && git switch -c recette/mon-id`
 2. Ajoute ta recette **à la fin** du tableau `recipes` de `data.json` (format complet dans [.claude/CLAUDE.md](.claude/CLAUDE.md)).
-   - Tu peux aussi la créer dans l'app (onglet **Créer**), puis **Exporter en JSON** et coller l'objet dans `data.json`. Dans ce cas, renomme l'`id` en enlevant `perso-` et le suffixe, puis supprime la version perso de ton navigateur.
 3. Vérifie :
    ```bash
    npm run validate

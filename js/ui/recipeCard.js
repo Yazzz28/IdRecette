@@ -19,7 +19,7 @@ export function recipeCard(recipe, { categoriesById, isFav, inMenu, index = 0 })
     <a class="card__link" href="#/recette/${encodeURIComponent(recipe.id)}" aria-label="Voir la recette ${esc(recipe.title)}"></a>
     <div class="card__thumb" style="--thumb:${thumbColor(recipe, categoriesById)}">
       ${thumbContent(recipe, 'card__emoji')}
-      <span class="card__cat">${esc(category?.label ?? '')}${recipe.isUser ? ' · perso' : ''}</span>
+      <span class="card__cat">${esc(category?.label ?? '')}</span>
       <button type="button" class="icon-btn card__fav" data-action="fav" aria-pressed="${isFav}"
         aria-label="${isFav ? 'Retirer des favoris' : 'Ajouter aux favoris'}">${isFav ? icons.heartFilled : icons.heart}</button>
     </div>

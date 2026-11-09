@@ -1,6 +1,6 @@
 ---
 name: ajouter-recette
-description: Ajoute (ou corrige) une recette dans data.json en respectant le schéma, les noms d'ingrédients existants et le calcul des calories, puis valide et commit. Utiliser dès qu'on parle d'ajouter, importer, corriger ou supprimer une recette, ou d'intégrer un export « recettes-perso.json » venu de l'app.
+description: Ajoute (ou corrige) une recette dans data.json en respectant le schéma, les noms d'ingrédients existants et le calcul des calories, puis valide et commit. Utiliser dès qu'on parle d'ajouter, importer, corriger ou supprimer une recette.
 ---
 
 # Ajouter une recette dans IDrecette
@@ -14,7 +14,7 @@ Si l'utilisateur ne l'a pas donnée, demande-la (en une seule question groupée)
 - Pour une glace **Ninja Creami** : les quantités sont pour **un pot** (≈ 2 portions) et il faut le ou les programmes.
 - Le reste (description, tags, astuce, kcal, macros, temps) : propose-le toi-même, l'utilisateur corrigera.
 
-S'il s'agit d'un **export de l'app** (`recettes-perso.json`, ids en `perso-…`) : reprends chaque objet tel quel, mais **renomme l'id** sans le préfixe `perso-` ni le suffixe aléatoire (ex. `perso-fraise-basilic-mw9ofc4j` → `fraise-basilic`).
+L'app n'a pas de formulaire : **toutes les recettes s'ajoutent ici, dans `data.json`**. Si on te colle une recette en texte libre (site, carnet, message), reformule-la au format du dépôt, avec le ton et les noms d'ingrédients maison.
 
 ## 2. Lire l'existant avant d'écrire
 

@@ -1,23 +1,31 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { normalizeRecipe, scaleIngredients, thumbColor } from '../js/core/library.js';
-import { makeRecipe, makeDish } from './helpers.js';
+import { normalizeRecipe, scaleIngredients, thumbColor, buildLibrary } from '../js/core/library.js';
+import { makeRecipe, makeDish, makeData } from './helpers.js';
 
 test('normalizeRecipe calcule les kcal depuis les ingrédients', () => {
   const r = normalizeRecipe(makeRecipe());
   assert.equal(r.kcalTotal, 90);
   assert.equal(r.kcalPerServing, 45);
-  assert.equal(r.isUser, false);
+});
+
+test('buildLibrary indexe catégories et recettes, et tolère des données absentes', () => {
+  const lib = buildLibrary(makeData([makeRecipe(), makeDish(), { title: 'sans id' }]));
+  assert.equal(lib.recipes.length, 2);
+  assert.equal(lib.byId.get('test-plat').title, 'Plat de test');
+  assert.equal(lib.categoriesById.get('fruitees').label, 'Fruitées');
+  const empty = buildLibrary(null);
+  assert.deepEqual(empty.recipes, []);
+  assert.equal(empty.byId.size, 0);
 });
 
 test('normalizeRecipe applique des valeurs par défaut sûres', () => {
-  const r = normalizeRecipe({ id: 42, title: 'Minimal', ingredients: [{ name: 'Mangue', qty: '100', kcal: '60', aisle: 'Inconnu', group: '?' }] }, { isUser: true });
+  const r = normalizeRecipe({ id: 42, title: 'Minimal', ingredients: [{ name: 'Mangue', qty: '100', kcal: '60', aisle: 'Inconnu', group: '?' }] });
   assert.equal(r.id, '42');
   assert.equal(r.servings, 2);
   assert.equal(r.freezeTime, 0, 'pas de congélation par défaut hors Ninja Creami');
   assert.equal(r.appliance, '');
   assert.equal(r.emoji, '🍨');
-  assert.equal(r.isUser, true);
   assert.deepEqual(r.tags, []);
   assert.equal(r.ingredients[0].qty, 100);
   assert.equal(r.ingredients[0].aisle, 'Épicerie');

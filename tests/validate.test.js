@@ -72,9 +72,9 @@ test('ingrédients invalides', () => {
 });
 
 test('avertissements non bloquants', () => {
-  const perso = validateData(makeData([makeRecipe({ id: 'perso-fraise-abc' })]));
-  assert.deepEqual(perso.errors, []);
-  assert.ok(perso.warnings.some((w) => w.includes('perso-')));
+  const sansAuteur = validateData(makeData([makeRecipe({ author: '' })]));
+  assert.deepEqual(sansAuteur.errors, []);
+  assert.ok(sansAuteur.warnings.some((w) => w.includes('author')));
 
   const kcalPour100g = validateData(makeData([makeRecipe({
     ingredients: [{ qty: 10, unit: 'g', name: 'Amandes', kcal: 580, group: 'topping', aisle: 'Épicerie' }],

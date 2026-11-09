@@ -1,4 +1,4 @@
-import { libraryStore, userRecipesStore } from './stores.js';
+import { libraryStore } from './stores.js';
 import { normalize } from '../utils/text.js';
 import { THUMB_COLORS, AISLES, GROUPS, APPLIANCES, CREAMI } from './schema.js';
 
@@ -6,7 +6,6 @@ export {
   THUMB_COLORS, AISLES, PANTRY_AISLE, UNITS, GROUPS, CREAMI_MODES, DIFFICULTIES, APPLIANCES, CREAMI,
 } from './schema.js';
 
-const DEFAULT_CATEGORY = { id: 'perso', label: 'Perso', color: 'pelure' };
 const toNumber = (v, fallback = 0) => (v === '' || v === null || v === undefined || Number.isNaN(Number(v)) ? fallback : Number(v));
 
 function normalizeIngredient(raw) {
@@ -21,8 +20,8 @@ function normalizeIngredient(raw) {
   };
 }
 
-/** Transforme une recette brute (data.json ou perso) en objet prêt pour l'affichage. */
-export function normalizeRecipe(raw, { isUser = false } = {}) {
+/** Transforme une recette brute de data.json en objet prêt pour l'affichage. */
+export function normalizeRecipe(raw) {
   const ingredients = (Array.isArray(raw.ingredients) ? raw.ingredients : [])
     .map(normalizeIngredient)
     .filter((i) => i.name);
@@ -38,7 +37,7 @@ export function normalizeRecipe(raw, { isUser = false } = {}) {
   const recipe = {
     id: String(raw.id),
     title: String(raw.title ?? 'Sans titre'),
-    category: raw.category || DEFAULT_CATEGORY.id,
+    category: String(raw.category ?? ''),
     emoji: raw.emoji || '🍨',
     image: raw.image || '',
     color: THUMB_COLORS.includes(raw.color) ? raw.color : null,
@@ -64,7 +63,6 @@ export function normalizeRecipe(raw, { isUser = false } = {}) {
     author: raw.author || '',
     kcalTotal,
     kcalPerServing: Math.round(kcalTotal / servings),
-    isUser,
   };
 
   /** Temps « actif » : préparation + cuisson (sans repos ni congélation). */
@@ -99,26 +97,14 @@ export function thumbColor(recipe, categoriesById) {
   return `var(--${THUMB_COLORS.includes(color) ? color : 'sauge'})`;
 }
 
-let baseData = { categories: [], recipes: [] };
-
-function build() {
-  const userRecipes = userRecipesStore.get();
-  const categories = (baseData.categories || []).map((c) => ({
+/** Construit la bibliothèque (catégories + recettes indexées) à partir du contenu de data.json. */
+export function buildLibrary(data) {
+  const categories = (data?.categories || []).map((c) => ({
     id: String(c.id),
     label: c.label || c.id,
     color: THUMB_COLORS.includes(c.color) ? c.color : 'sauge',
   }));
-  const recipes = [
-    ...(baseData.recipes || []).filter((r) => r && r.id).map((r) => normalizeRecipe(r)),
-    ...userRecipes.filter((r) => r && r.id).map((r) => normalizeRecipe(r, { isUser: true })),
-  ];
-  const knownIds = new Set(categories.map((c) => c.id));
-  if (recipes.some((r) => !knownIds.has(r.category))) {
-    categories.push(DEFAULT_CATEGORY);
-    recipes.forEach((r) => {
-      if (!knownIds.has(r.category)) r.category = DEFAULT_CATEGORY.id;
-    });
-  }
+  const recipes = (data?.recipes || []).filter((r) => r && r.id).map(normalizeRecipe);
   return {
     categories,
     categoriesById: new Map(categories.map((c) => [c.id, c])),
@@ -127,21 +113,15 @@ function build() {
   };
 }
 
-/** Charge data.json puis fusionne avec les recettes perso du localStorage. */
+/** Charge data.json, la seule source des recettes. */
 export async function loadLibrary() {
-  let status = 'ready';
-  let error = null;
   try {
     const res = await fetch('data.json', { cache: 'no-store' });
     if (!res.ok) throw new Error(`data.json introuvable (HTTP ${res.status})`);
     const json = await res.json();
     if (!Array.isArray(json.recipes)) throw new Error('data.json doit contenir un tableau "recipes".');
-    baseData = json;
-  } catch (err) {
-    status = 'error';
-    error = err;
-    baseData = { categories: [], recipes: [] };
+    libraryStore.set({ status: 'ready', error: null, ...buildLibrary(json) });
+  } catch (error) {
+    libraryStore.set({ status: 'error', error, ...buildLibrary(null) });
   }
-  libraryStore.set({ status, error, ...build() });
-  userRecipesStore.subscribe(() => libraryStore.set((s) => ({ ...s, ...build() })));
 }
