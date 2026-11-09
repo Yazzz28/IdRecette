@@ -2,7 +2,8 @@
   "categories": [
     { "id": "glaces", "label": "Glaces", "color": "ciel" },
     { "id": "plats", "label": "Plats", "color": "sauge" },
-    { "id": "apero", "label": "Apéro", "color": "pelure" }
+    { "id": "apero", "label": "Apéro", "color": "pelure" },
+    { "id": "petit-dej", "label": "Petit-déj", "color": "beurre" }
   ],
   "recipes": [
     {
@@ -570,6 +571,37 @@
       ],
       "nutrition": { "protein": 5, "carbs": 12, "fat": 7 },
       "tip": "Mixe longtemps, 3 bonnes minutes : c'est ça le secret d'un houmous crémeux, pas l'huile.",
+      "author": "Yacine"
+    },
+    {
+      "id": "overnight-oats-myrtilles",
+      "title": "Overnight oats aux myrtilles",
+      "category": "petit-dej",
+      "emoji": "🥣",
+      "description": "5 min le soir, tu ouvres le frigo le matin et c'est prêt. Le petit-déj de ceux qui appuient trois fois sur snooze.",
+      "tags": ["Healthy", "Vegan", "Express"],
+      "appliance": "Sans cuisson",
+      "difficulty": "Facile",
+      "prepTime": 5,
+      "restTime": 480,
+      "servings": 1,
+      "ingredients": [
+        { "qty": 50, "unit": "g", "name": "Flocons d'avoine", "kcal": 185, "group": "base", "aisle": "Épicerie" },
+        { "qty": 150, "unit": "ml", "name": "Lait d'amande sans sucre", "kcal": 20, "group": "base", "aisle": "Épicerie" },
+        { "qty": 100, "unit": "g", "name": "Yaourt de soja nature", "kcal": 50, "group": "base", "aisle": "Frais" },
+        { "qty": 10, "unit": "g", "name": "Graines de chia", "kcal": 49, "group": "base", "aisle": "Épicerie" },
+        { "qty": 1, "unit": "c. à c.", "name": "Sirop d'érable", "kcal": 17, "group": "base", "aisle": "Placard" },
+        { "qty": 80, "unit": "g", "name": "Myrtilles surgelées", "kcal": 46, "group": "base", "aisle": "Surgelés" },
+        { "qty": 10, "unit": "g", "name": "Amandes effilées", "kcal": 58, "group": "topping", "aisle": "Épicerie" }
+      ],
+      "steps": [
+        "Dans un bocal, mélange les flocons d'avoine, les graines de chia, le lait d'amande, le yaourt et le sirop d'érable.",
+        "Ajoute les myrtilles encore surgelées : elles décongèlent pendant la nuit et colorent tout.",
+        "Ferme et laisse au frigo toute la nuit.",
+        "Le matin, mélange, ajoute un trait de lait si c'est trop épais, et parsème d'amandes effilées."
+      ],
+      "nutrition": { "protein": 15, "carbs": 55, "fat": 14 },
+      "tip": "Prépare-en 3 ou 4 bocaux le dimanche : ils se gardent 3 jours au frigo.",
       "author": "Yacine"
     }
   ]
