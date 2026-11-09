@@ -1,0 +1,11 @@
+{
+  "name": "idrecette",
+  "version": "2.0.0",
+  "private": true,
+  "description": "IDrecette V.2 : recettes de glaces Ninja Creami healthy. HTML/CSS/JS statique, données dans data.json.",
+  "type": "module",
+  "scripts": {
+    "start": "npx --yes serve@14.2.4 -l 3000 .",
+    "validate": "node scripts/validate-data.mjs"
+  }
+}

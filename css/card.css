@@ -1,0 +1,197 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--trait);
+  border-radius: var(--r-carte);
+  background: var(--blanc);
+  box-shadow: var(--ombre-carte);
+  overflow: hidden;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+  animation: card-in 320ms both cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--ombre-hover);
+  border-color: var(--trait-fort);
+}
+
+@keyframes card-in {
+  from { opacity: 0; transform: translateY(8px); }
+}
+
+.card__link {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: var(--r-carte);
+}
+
+.card__thumb {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 16 / 10;
+  margin: var(--s-2) var(--s-2) 0;
+  border-radius: var(--r-vignette);
+  background: var(--thumb, var(--sauge));
+  overflow: hidden;
+}
+
+.card__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card__emoji {
+  font-size: 4rem;
+  line-height: 1;
+  filter: drop-shadow(0 8px 10px rgba(23, 23, 26, 0.12));
+  transition: transform 300ms cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+.card:hover .card__emoji { transform: scale(1.08) rotate(-4deg); }
+
+.card__fav,
+.card__add {
+  position: relative;
+  z-index: 2;
+}
+
+.card__fav {
+  position: absolute;
+  top: var(--s-2);
+  right: var(--s-2);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.88);
+  color: var(--encre);
+}
+.card__fav svg { width: 19px; height: 19px; }
+.card__fav[aria-pressed="true"] { color: var(--tomate); background: var(--blanc); }
+.card__fav:hover { background: var(--blanc); }
+
+.card__add {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid var(--encre);
+  border-radius: 11px;
+  background: var(--blanc);
+  color: var(--encre);
+  transition: background var(--transition), color var(--transition);
+}
+.card__add svg { width: 18px; height: 18px; }
+.card__add:hover { background: var(--papier); }
+.card__add[aria-pressed="true"] { background: var(--encre); color: var(--blanc); }
+
+.card__cat {
+  position: absolute;
+  bottom: var(--s-3);
+  left: var(--s-3);
+  padding: 4px 10px;
+  border-radius: var(--r-pilule);
+  background: rgba(255, 255, 255, 0.85);
+  font-size: var(--fs-micro);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.card__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  flex: 1;
+  padding: var(--s-4) var(--s-4) var(--s-4);
+}
+
+.card__title {
+  font-size: 1.3125rem;
+  font-weight: 700;
+}
+
+.card__desc {
+  font-size: var(--fs-petit);
+  color: var(--texte-doux);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card__meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+  margin-top: auto;
+  padding-top: var(--s-1);
+}
+
+.card__info {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--fs-petit);
+  color: var(--texte-doux);
+  font-variant-numeric: tabular-nums;
+}
+
+.card__info svg { width: 16px; height: 16px; }
+
+.card__meta .chip--kcal { margin-left: auto; }
+.card__meta .chip--kcal svg { width: 14px; height: 14px; }
+
+.card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag {
+  padding: 2px 10px;
+  border-radius: var(--r-pilule);
+  background: var(--papier);
+  font-size: var(--fs-micro);
+  font-weight: 500;
+  color: var(--texte-doux);
+}
+
+/* ---------- État vide ---------- */
+.empty {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--s-3);
+  padding: var(--s-8) var(--s-4);
+  border: 1.5px dashed var(--trait-fort);
+  border-radius: var(--r-carte);
+  text-align: center;
+}
+
+.empty__icon { width: 72px; height: 72px; opacity: 0.9; transform: rotate(-8deg); }
+.empty h2 { font-size: var(--fs-titre2); }
+.empty p { color: var(--texte-doux); max-width: 38ch; }
+.empty .btn { margin-top: var(--s-2); }
+
+/* ---------- Squelettes de chargement ---------- */
+.card--skeleton { animation: none; pointer-events: none; }
+.card--skeleton .card__thumb,
+.skeleton-line {
+  background: linear-gradient(90deg, #EFEDE7 0%, #F7F6F2 50%, #EFEDE7 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.2s infinite linear;
+}
+.skeleton-line { height: 14px; border-radius: 6px; }
+.skeleton-line--title { height: 22px; width: 70%; }
+.skeleton-line--short { width: 40%; }
+
+@keyframes shimmer {
+  to { background-position: -200% 0; }
+}

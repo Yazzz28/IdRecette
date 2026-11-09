@@ -1,0 +1,378 @@
+{
+  "categories": [
+    { "id": "fruitees", "label": "Fruitées", "color": "sauge" },
+    { "id": "proteinees", "label": "Protéinées", "color": "ciel" },
+    { "id": "gourmandes", "label": "Gourmandes", "color": "beurre" },
+    { "id": "sorbets", "label": "Sorbets", "color": "lilas" }
+  ],
+  "recipes": [
+    {
+      "id": "fraise-banane-amande",
+      "title": "Fraise-banane au lait d'amande",
+      "category": "fruitees",
+      "emoji": "🍓",
+      "color": "pelure",
+      "description": "La base qui ne déçoit jamais. Trois ingrédients, zéro prise de tête, une texture de vraie glace.",
+      "tags": ["Vegan", "Sans gluten", "Moins de 200 kcal", "Express"],
+      "difficulty": "Facile",
+      "prepTime": 5,
+      "freezeTime": 24,
+      "servings": 2,
+      "modes": ["Lite Ice Cream", "Re-spin"],
+      "ingredients": [
+        { "qty": 250, "unit": "g", "name": "Fraises surgelées", "kcal": 80, "group": "base", "aisle": "Surgelés" },
+        { "qty": 1, "unit": "pc", "name": "Banane bien mûre", "kcal": 105, "group": "base", "aisle": "Fruits & légumes" },
+        { "qty": 200, "unit": "ml", "name": "Lait d'amande sans sucre", "kcal": 26, "group": "base", "aisle": "Épicerie" },
+        { "qty": 1, "unit": "c. à s.", "name": "Sirop d'érable", "kcal": 52, "group": "base", "aisle": "Placard" },
+        { "qty": 10, "unit": "g", "name": "Amandes effilées", "kcal": 58, "group": "topping", "aisle": "Épicerie" },
+        { "qty": 2, "unit": "feuilles", "name": "Menthe fraîche", "kcal": 0, "group": "topping", "aisle": "Fruits & légumes" }
+      ],
+      "steps": [
+        "Mixe les fraises, la banane, le lait d'amande et le sirop d'érable jusqu'à ce que ce soit bien lisse.",
+        "Verse dans le pot Creami jusqu'au trait MAX, ferme et congèle 24 h bien à plat.",
+        "Lance le programme Lite Ice Cream.",
+        "Si c'est encore poudreux, ajoute 1 c. à s. de lait d'amande et fais un Re-spin.",
+        "Parsème d'amandes effilées et de menthe ciselée. Mange direct."
+      ],
+      "nutrition": { "protein": 3, "carbs": 30, "fat": 4 },
+      "tip": "Plus la banane est tachetée, moins tu as besoin de sirop. Tu peux même t'en passer.",
+      "author": "Yacine"
+    },
+    {
+      "id": "sorbet-mangue-coco-passion",
+      "title": "Sorbet mangue, coco & passion",
+      "category": "sorbets",
+      "emoji": "🥭",
+      "description": "Un aller simple pour les vacances. La boisson coco rend le sorbet crémeux sans l'alourdir.",
+      "tags": ["Vegan", "Sans gluten", "Moins de 200 kcal"],
+      "difficulty": "Facile",
+      "prepTime": 5,
+      "freezeTime": 24,
+      "servings": 2,
+      "modes": ["Sorbet", "Re-spin"],
+      "ingredients": [
+        { "qty": 300, "unit": "g", "name": "Mangue surgelée", "kcal": 180, "group": "base", "aisle": "Surgelés" },
+        { "qty": 150, "unit": "ml", "name": "Boisson coco", "kcal": 30, "group": "base", "aisle": "Épicerie" },
+        { "qty": 1, "unit": "pc", "name": "Fruit de la passion", "kcal": 17, "group": "base", "aisle": "Fruits & légumes" },
+        { "qty": 0.5, "unit": "pc", "name": "Citron vert", "kcal": 4, "group": "base", "aisle": "Fruits & légumes" },
+        { "qty": 1, "unit": "c. à s.", "name": "Sirop d'agave", "kcal": 60, "group": "base", "aisle": "Placard" },
+        { "qty": 5, "unit": "g", "name": "Noix de coco râpée", "kcal": 33, "group": "topping", "aisle": "Épicerie" }
+      ],
+      "steps": [
+        "Mixe la mangue avec la boisson coco, le jus du demi-citron vert et le sirop d'agave.",
+        "Ajoute la pulpe du fruit de la passion à la cuillère, sans mixer, pour garder les graines.",
+        "Verse dans le pot jusqu'au trait MAX et congèle 24 h.",
+        "Programme Sorbet, puis un Re-spin si la texture est trop sèche.",
+        "Termine avec la noix de coco râpée, idéalement toastée 2 min à la poêle."
+      ],
+      "nutrition": { "protein": 2, "carbs": 36, "fat": 2 },
+      "tip": "Toaste la coco à sec à la poêle : 2 minutes, et ça change tout.",
+      "author": "Yacine"
+    },
+    {
+      "id": "vanille-cacahuete-proteinee",
+      "title": "Vanille-cacahuète protéinée",
+      "category": "proteinees",
+      "emoji": "🥜",
+      "description": "Le goûter post-séance qui a le goût d'une triche. 22 g de protéines par portion, sans lactose.",
+      "tags": ["Vegan", "Sans gluten", "Riche en protéines"],
+      "difficulty": "Facile",
+      "prepTime": 5,
+      "freezeTime": 24,
+      "servings": 2,
+      "modes": ["Lite Ice Cream", "Re-spin", "Mix-in"],
+      "ingredients": [
+        { "qty": 300, "unit": "ml", "name": "Lait de soja sans sucre", "kcal": 99, "group": "base", "aisle": "Épicerie" },
+        { "qty": 30, "unit": "g", "name": "Protéine végétale vanille", "kcal": 115, "group": "base", "aisle": "Épicerie" },
+        { "qty": 15, "unit": "g", "name": "Beurre de cacahuète", "kcal": 90, "group": "base", "aisle": "Placard" },
+        { "qty": 1, "unit": "c. à c.", "name": "Sirop d'érable", "kcal": 17, "group": "base", "aisle": "Placard" },
+        { "qty": 1, "unit": "pincée", "name": "Fleur de sel", "kcal": 0, "group": "base", "aisle": "Placard" },
+        { "qty": 15, "unit": "g", "name": "Cacahuètes grillées concassées", "kcal": 88, "group": "mixin", "aisle": "Épicerie" }
+      ],
+      "steps": [
+        "Mixe le lait de soja, la protéine, le beurre de cacahuète, le sirop et la fleur de sel 30 secondes.",
+        "Laisse reposer 5 min pour que la mousse retombe, puis verse dans le pot jusqu'au trait MAX.",
+        "Congèle 24 h.",
+        "Programme Lite Ice Cream. Les glaces protéinées sortent souvent poudreuses : ajoute 1 à 2 c. à s. de lait de soja et Re-spin.",
+        "Creuse un puits au centre, ajoute les cacahuètes et lance Mix-in."
+      ],
+      "nutrition": { "protein": 22, "carbs": 10, "fat": 9 },
+      "tip": "Le Re-spin n'est pas un échec, c'est le secret. Une glace protéinée en a presque toujours besoin.",
+      "author": "Yacine"
+    },
+    {
+      "id": "choco-banane-proteinee",
+      "title": "Choco-banane protéinée",
+      "category": "proteinees",
+      "emoji": "🍫",
+      "description": "Le goût d'une glace au chocolat de supermarché, la liste d'ingrédients en moins.",
+      "tags": ["Vegan", "Riche en protéines"],
+      "difficulty": "Facile",
+      "prepTime": 5,
+      "freezeTime": 24,
+      "servings": 2,
+      "modes": ["Lite Ice Cream", "Re-spin"],
+      "ingredients": [
+        { "qty": 300, "unit": "ml", "name": "Lait d'avoine", "kcal": 135, "group": "base", "aisle": "Épicerie" },
+        { "qty": 1, "unit": "pc", "name": "Banane bien mûre", "kcal": 105, "group": "base", "aisle": "Fruits & légumes" },
+        { "qty": 25, "unit": "g", "name": "Protéine végétale chocolat", "kcal": 95, "group": "base", "aisle": "Épicerie" },
+        { "qty": 10, "unit": "g", "name": "Cacao non sucré", "kcal": 35, "group": "base", "aisle": "Placard" },
+        { "qty": 10, "unit": "g", "name": "Pépites de chocolat noir 70 %", "kcal": 58, "group": "topping", "aisle": "Épicerie" }
+      ],
+      "steps": [
+        "Mixe le lait d'avoine, la banane, la protéine et le cacao jusqu'à obtenir un mélange bien lisse.",
+        "Verse dans le pot jusqu'au trait MAX et congèle 24 h.",
+        "Programme Lite Ice Cream, puis Re-spin avec 1 c. à s. de lait d'avoine si besoin.",
+        "Parsème de pépites de chocolat noir au service."
+      ],
+      "nutrition": { "protein": 14, "carbs": 30, "fat": 6 },
+      "tip": "Une pincée de sel et un trait de café froid dans la base, et le chocolat ressort deux fois plus.",
+      "author": "Yacine"
+    },
+    {
+      "id": "myrtille-yaourt-soja",
+      "title": "Myrtilles & yaourt de soja",
+      "category": "fruitees",
+      "emoji": "🫐",
+      "description": "Façon frozen yogurt, avec un granola croquant par-dessus. Le petit-déj qui se prend pour un dessert.",
+      "tags": ["Vegan", "Moins de 200 kcal", "Express"],
+      "difficulty": "Facile",
+      "prepTime": 5,
+      "freezeTime": 24,
+      "servings": 2,
+      "modes": ["Lite Ice Cream"],
+      "ingredients": [
+        { "qty": 250, "unit": "g", "name": "Myrtilles surgelées", "kcal": 143, "group": "base", "aisle": "Surgelés" },
+        { "qty": 125, "unit": "g", "name": "Yaourt de soja nature", "kcal": 62, "group": "base", "aisle": "Frais" },
+        { "qty": 100, "unit": "ml", "name": "Lait d'amande sans sucre", "kcal": 13, "group": "base", "aisle": "Épicerie" },
+        { "qty": 1, "unit": "c. à s.", "name": "Sirop d'agave", "kcal": 60, "group": "base", "aisle": "Placard" },
+        { "qty": 20, "unit": "g", "name": "Granola", "kcal": 90, "group": "topping", "aisle": "Épicerie" }
+      ],
+      "steps": [
+        "Mixe les myrtilles, le yaourt, le lait d'amande et le sirop d'agave.",
+        "Verse dans le pot jusqu'au trait MAX et congèle 24 h.",
+        "Programme Lite Ice Cream.",
+        "Sers avec le granola par-dessus, à ajouter au dernier moment pour qu'il reste croquant."
+      ],
+      "nutrition": { "protein": 5, "carbs": 33, "fat": 4 },
+      "tip": "Garde quelques myrtilles entières et ajoute-les en Mix-in pour des petits éclats glacés.",
+      "author": "Yacine"
+    },
+    {
+      "id": "pistache-avoine",
+      "title": "Pistache au lait d'avoine",
+      "category": "gourmandes",
+      "emoji": "🌰",
+      "description": "Le parfum chic du glacier italien, version maison et sans crème. La purée de pistache fait tout le boulot.",
+      "tags": ["Vegan"],
+      "difficulty": "Moyen",
+      "prepTime": 10,
+      "freezeTime": 24,
+      "servings": 2,
+      "modes": ["Ice Cream", "Re-spin"],
+      "ingredients": [
+        { "qty": 350, "unit": "ml", "name": "Lait d'avoine", "kcal": 158, "group": "base", "aisle": "Épicerie" },
+        { "qty": 20, "unit": "g", "name": "Purée de pistache", "kcal": 120, "group": "base", "aisle": "Épicerie" },
+        { "qty": 1, "unit": "c. à s.", "name": "Sirop d'érable", "kcal": 52, "group": "base", "aisle": "Placard" },
+        { "qty": 0.25, "unit": "c. à c.", "name": "Gomme de guar", "kcal": 2, "group": "base", "aisle": "Épicerie" },
+        { "qty": 1, "unit": "pincée", "name": "Fleur de sel", "kcal": 0, "group": "base", "aisle": "Placard" },
+        { "qty": 10, "unit": "g", "name": "Pistaches concassées", "kcal": 57, "group": "topping", "aisle": "Épicerie" }
+      ],
+      "steps": [
+        "Mixe le lait d'avoine, la purée de pistache, le sirop et la fleur de sel.",
+        "Saupoudre la gomme de guar en mixant encore 20 secondes, pour éviter les grumeaux.",
+        "Verse dans le pot jusqu'au trait MAX et congèle 24 h.",
+        "Programme Ice Cream, puis Re-spin pour une texture bien soyeuse.",
+        "Termine avec les pistaches concassées."
+      ],
+      "nutrition": { "protein": 6, "carbs": 26, "fat": 13 },
+      "tip": "La gomme de guar, c'est le petit truc qui évite l'effet granité avec les laits végétaux. Un quart de cuillère suffit.",
+      "author": "Yacine"
+    },
+    {
+      "id": "cookie-dough-healthy",
+      "title": "Cookie dough healthy",
+      "category": "gourmandes",
+      "emoji": "🍪",
+      "description": "Une base vanille-cajou et des morceaux de pâte à cookie express dedans. Personne ne devinera que c'est sain.",
+      "tags": ["Vegan", "Riche en protéines"],
+      "difficulty": "Moyen",
+      "prepTime": 10,
+      "freezeTime": 24,
+      "servings": 2,
+      "modes": ["Lite Ice Cream", "Re-spin", "Mix-in"],
+      "ingredients": [
+        { "qty": 320, "unit": "ml", "name": "Lait d'amande sans sucre", "kcal": 42, "group": "base", "aisle": "Épicerie" },
+        { "qty": 25, "unit": "g", "name": "Protéine végétale vanille", "kcal": 95, "group": "base", "aisle": "Épicerie" },
+        { "qty": 15, "unit": "g", "name": "Purée de noix de cajou", "kcal": 90, "group": "base", "aisle": "Épicerie" },
+        { "qty": 1, "unit": "c. à c.", "name": "Extrait de vanille", "kcal": 12, "group": "base", "aisle": "Placard" },
+        { "qty": 1, "unit": "c. à s.", "name": "Sirop d'érable", "kcal": 52, "group": "base", "aisle": "Placard" },
+        { "qty": 20, "unit": "g", "name": "Flocons d'avoine mixés", "kcal": 75, "group": "mixin", "aisle": "Épicerie" },
+        { "qty": 10, "unit": "g", "name": "Pépites de chocolat noir 70 %", "kcal": 58, "group": "mixin", "aisle": "Épicerie" }
+      ],
+      "steps": [
+        "Mixe le lait d'amande, la protéine, la purée de cajou, la vanille et le sirop. Verse dans le pot et congèle 24 h.",
+        "Pour la pâte à cookie : mélange les flocons mixés avec 1 c. à s. d'eau et une pincée de sel, puis ajoute les pépites. Forme des petites billes et mets-les au frais.",
+        "Programme Lite Ice Cream, puis Re-spin avec 1 c. à s. de lait si besoin.",
+        "Creuse un puits, ajoute les billes de pâte à cookie et lance Mix-in."
+      ],
+      "nutrition": { "protein": 16, "carbs": 25, "fat": 10 },
+      "tip": "Prépare les billes de cookie la veille et congèle-les : elles resteront en morceaux au Mix-in.",
+      "author": "Yacine"
+    },
+    {
+      "id": "sorbet-pina-colada",
+      "title": "Sorbet piña colada",
+      "category": "sorbets",
+      "emoji": "🍍",
+      "description": "Ananas, coco, citron vert. Le cocktail sans l'alcool et sans le parasol, mais avec la bonne humeur.",
+      "tags": ["Vegan", "Sans gluten", "Moins de 200 kcal", "Express"],
+      "difficulty": "Facile",
+      "prepTime": 5,
+      "freezeTime": 24,
+      "servings": 2,
+      "modes": ["Sorbet"],
+      "ingredients": [
+        { "qty": 300, "unit": "g", "name": "Ananas frais", "kcal": 150, "group": "base", "aisle": "Fruits & légumes" },
+        { "qty": 150, "unit": "ml", "name": "Boisson coco", "kcal": 30, "group": "base", "aisle": "Épicerie" },
+        { "qty": 0.5, "unit": "pc", "name": "Citron vert", "kcal": 4, "group": "base", "aisle": "Fruits & légumes" },
+        { "qty": 1, "unit": "c. à c.", "name": "Sirop d'agave", "kcal": 20, "group": "base", "aisle": "Placard" },
+        { "qty": 5, "unit": "g", "name": "Noix de coco râpée", "kcal": 33, "group": "topping", "aisle": "Épicerie" },
+        { "qty": 3, "unit": "feuilles", "name": "Menthe fraîche", "kcal": 0, "group": "topping", "aisle": "Fruits & légumes" }
+      ],
+      "steps": [
+        "Coupe l'ananas en morceaux et mixe-le avec la boisson coco, le jus du demi-citron vert et le sirop.",
+        "Verse dans le pot jusqu'au trait MAX et congèle 24 h.",
+        "Programme Sorbet.",
+        "Sers avec la coco râpée et la menthe ciselée."
+      ],
+      "nutrition": { "protein": 1, "carbs": 27, "fat": 2 },
+      "tip": "Un ananas bien mûr est assez sucré tout seul : goûte avant d'ajouter le sirop.",
+      "author": "Yacine"
+    },
+    {
+      "id": "sorbet-framboise-citron",
+      "title": "Sorbet framboise-citron",
+      "category": "sorbets",
+      "emoji": "🍋",
+      "description": "Acidulé, rose vif, ultra frais. Le palet de framboise qui réveille en fin de repas.",
+      "tags": ["Vegan", "Sans gluten", "Moins de 200 kcal"],
+      "difficulty": "Facile",
+      "prepTime": 5,
+      "freezeTime": 24,
+      "servings": 2,
+      "modes": ["Sorbet", "Re-spin"],
+      "ingredients": [
+        { "qty": 250, "unit": "g", "name": "Framboises surgelées", "kcal": 130, "group": "base", "aisle": "Surgelés" },
+        { "qty": 1, "unit": "pc", "name": "Citron jaune bio", "kcal": 17, "group": "base", "aisle": "Fruits & légumes" },
+        { "qty": 150, "unit": "ml", "name": "Lait d'amande sans sucre", "kcal": 20, "group": "base", "aisle": "Épicerie" },
+        { "qty": 2, "unit": "c. à s.", "name": "Sirop d'agave", "kcal": 120, "group": "base", "aisle": "Placard" },
+        { "qty": 5, "unit": "g", "name": "Copeaux de chocolat noir", "kcal": 29, "group": "topping", "aisle": "Épicerie" }
+      ],
+      "steps": [
+        "Râpe le zeste du citron, puis presse-le.",
+        "Mixe les framboises, le jus et le zeste, le lait d'amande et le sirop d'agave.",
+        "Passe au tamis si tu n'aimes pas les pépins, puis verse dans le pot et congèle 24 h.",
+        "Programme Sorbet, Re-spin si besoin.",
+        "Quelques copeaux de chocolat noir par-dessus et c'est servi."
+      ],
+      "nutrition": { "protein": 3, "carbs": 32, "fat": 3 },
+      "tip": "Le zeste fait plus pour le goût citron que le jus. Ne le zappe pas.",
+      "author": "Yacine"
+    },
+    {
+      "id": "matcha-coco",
+      "title": "Matcha-coco",
+      "category": "gourmandes",
+      "emoji": "🍵",
+      "description": "Un matcha doux, une base coco-yaourt, des framboises lyophilisées pour le contraste. Zen, mais pas trop.",
+      "tags": ["Vegan", "Sans gluten", "Moins de 200 kcal"],
+      "difficulty": "Facile",
+      "prepTime": 5,
+      "freezeTime": 24,
+      "servings": 2,
+      "modes": ["Lite Ice Cream", "Re-spin"],
+      "ingredients": [
+        { "qty": 300, "unit": "ml", "name": "Boisson coco", "kcal": 60, "group": "base", "aisle": "Épicerie" },
+        { "qty": 125, "unit": "g", "name": "Yaourt de soja nature", "kcal": 62, "group": "base", "aisle": "Frais" },
+        { "qty": 4, "unit": "g", "name": "Matcha", "kcal": 12, "group": "base", "aisle": "Épicerie" },
+        { "qty": 1, "unit": "c. à s.", "name": "Sirop d'érable", "kcal": 52, "group": "base", "aisle": "Placard" },
+        { "qty": 0.25, "unit": "c. à c.", "name": "Gomme de guar", "kcal": 2, "group": "base", "aisle": "Épicerie" },
+        { "qty": 5, "unit": "g", "name": "Noix de coco râpée", "kcal": 33, "group": "topping", "aisle": "Épicerie" },
+        { "qty": 3, "unit": "g", "name": "Framboises lyophilisées", "kcal": 10, "group": "topping", "aisle": "Épicerie" }
+      ],
+      "steps": [
+        "Délaye le matcha dans 2 c. à s. de boisson coco tiède pour éviter les grumeaux.",
+        "Mixe avec le reste de la boisson coco, le yaourt, le sirop et la gomme de guar.",
+        "Verse dans le pot jusqu'au trait MAX et congèle 24 h.",
+        "Programme Lite Ice Cream, puis Re-spin.",
+        "Sers avec la coco et les framboises lyophilisées émiettées."
+      ],
+      "nutrition": { "protein": 4, "carbs": 18, "fat": 5 },
+      "tip": "Prends un matcha de qualité culinaire, pas cérémonial : tu le paieras moins cher et il tient mieux au froid.",
+      "author": "Yacine"
+    },
+    {
+      "id": "cafe-latte-proteine",
+      "title": "Café latte protéiné",
+      "category": "proteinees",
+      "emoji": "☕",
+      "description": "Ton latte du matin, en glace et avec 20 g de protéines. On ne juge pas l'heure.",
+      "tags": ["Vegan", "Sans gluten", "Riche en protéines", "Moins de 200 kcal", "Express"],
+      "difficulty": "Facile",
+      "prepTime": 5,
+      "freezeTime": 24,
+      "servings": 2,
+      "modes": ["Lite Ice Cream", "Re-spin"],
+      "ingredients": [
+        { "qty": 250, "unit": "ml", "name": "Lait de soja sans sucre", "kcal": 83, "group": "base", "aisle": "Épicerie" },
+        { "qty": 60, "unit": "ml", "name": "Espresso refroidi", "kcal": 2, "group": "base", "aisle": "Placard" },
+        { "qty": 30, "unit": "g", "name": "Protéine végétale vanille", "kcal": 115, "group": "base", "aisle": "Épicerie" },
+        { "qty": 1, "unit": "c. à s.", "name": "Sirop d'érable", "kcal": 52, "group": "base", "aisle": "Placard" },
+        { "qty": 1, "unit": "pincée", "name": "Cannelle", "kcal": 0, "group": "base", "aisle": "Placard" },
+        { "qty": 5, "unit": "g", "name": "Copeaux de chocolat noir", "kcal": 29, "group": "topping", "aisle": "Épicerie" }
+      ],
+      "steps": [
+        "Prépare un double espresso et laisse-le refroidir complètement.",
+        "Mixe-le avec le lait de soja, la protéine, le sirop et la cannelle.",
+        "Verse dans le pot jusqu'au trait MAX et congèle 24 h.",
+        "Programme Lite Ice Cream, puis Re-spin avec 1 c. à s. de lait de soja.",
+        "Termine avec les copeaux de chocolat."
+      ],
+      "nutrition": { "protein": 20, "carbs": 12, "fat": 4 },
+      "tip": "Le café instantané marche aussi : 1 c. à c. dissoute dans 60 ml d'eau chaude.",
+      "author": "Yacine"
+    },
+    {
+      "id": "peche-abricot-vanille",
+      "title": "Pêche-abricot vanille",
+      "category": "fruitees",
+      "emoji": "🍑",
+      "description": "Le goût de l'été en pot. Avec des pêches au jus en conserve, ça marche aussi en plein hiver.",
+      "tags": ["Vegan", "Sans gluten", "Moins de 200 kcal"],
+      "difficulty": "Facile",
+      "prepTime": 10,
+      "freezeTime": 24,
+      "servings": 2,
+      "modes": ["Lite Ice Cream", "Re-spin"],
+      "ingredients": [
+        { "qty": 250, "unit": "g", "name": "Pêches", "kcal": 98, "group": "base", "aisle": "Fruits & légumes" },
+        { "qty": 2, "unit": "pc", "name": "Abricots", "kcal": 34, "group": "base", "aisle": "Fruits & légumes" },
+        { "qty": 100, "unit": "ml", "name": "Lait d'avoine", "kcal": 45, "group": "base", "aisle": "Épicerie" },
+        { "qty": 1, "unit": "c. à s.", "name": "Sirop d'agave", "kcal": 60, "group": "base", "aisle": "Placard" },
+        { "qty": 0.5, "unit": "c. à c.", "name": "Extrait de vanille", "kcal": 6, "group": "base", "aisle": "Placard" },
+        { "qty": 10, "unit": "g", "name": "Amandes effilées", "kcal": 58, "group": "topping", "aisle": "Épicerie" }
+      ],
+      "steps": [
+        "Dénoyaute les pêches et les abricots. Pas besoin de les éplucher.",
+        "Mixe avec le lait d'avoine, le sirop d'agave et la vanille.",
+        "Verse dans le pot jusqu'au trait MAX et congèle 24 h.",
+        "Programme Lite Ice Cream, puis Re-spin si besoin.",
+        "Sers avec les amandes effilées, grillées à sec si tu as 2 minutes."
+      ],
+      "nutrition": { "protein": 3, "carbs": 30, "fat": 4 },
+      "tip": "Les fruits trop mûrs, c'est parfait ici : ils sont plus sucrés et se mixent mieux.",
+      "author": "Yacine"
+    }
+  ]
+}
