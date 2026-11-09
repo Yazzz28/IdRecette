@@ -20,8 +20,8 @@ export function createCatalogView(root) {
   root.innerHTML = `
     <div class="container hero">
       <p class="hero__hello">Salut 👋</p>
-      <h1 class="hero__title">On se fait une <em>glace</em> ?</h1>
-      <p class="hero__sub">Glaces Ninja Creami healthy : lait végétal, fruits, et des toppings qui changent tout.</p>
+      <h1 class="hero__title">On mange <em>quoi</em> ?</h1>
+      <p class="hero__sub">Les recettes de la bande : plats, apéros, desserts, glaces… Des portions qui s'ajustent toutes seules et une liste de courses prête en un clic.</p>
       <div class="hero__search" data-search></div>
     </div>
     <div class="toolbar-sentinel" aria-hidden="true"></div>
@@ -70,6 +70,18 @@ export function createCatalogView(root) {
     errorSlot.innerHTML = library.status === 'error' ? LOAD_ERROR(library.error) : '';
 
     const filters = filtersStore.get();
+    // Filtres mémorisés qui ne correspondent plus aux données (catégorie ou tag supprimé).
+    const tagsInData = new Set(library.recipes.flatMap((r) => r.tags));
+    const staleCategory = filters.category !== 'all' && !library.categoriesById.has(filters.category);
+    const staleTags = filters.tags.filter((t) => !tagsInData.has(t));
+    if (staleCategory || staleTags.length) {
+      filtersStore.set((f) => ({
+        ...f,
+        category: staleCategory ? 'all' : f.category,
+        tags: f.tags.filter((t) => tagsInData.has(t)),
+      }));
+      return;
+    }
     const favorites = favoritesStore.get();
     const withoutCategory = filterWithoutCategory(library.recipes, filters, favorites);
     const results = sortRecipes(filterRecipes(library.recipes, filters, favorites), filters.sort);
@@ -87,7 +99,7 @@ export function createCatalogView(root) {
     });
 
     const n = results.length;
-    count.innerHTML = `<strong>${n}</strong> ${plural(n, 'glace', 'glaces')} ${filters.query ? `pour « ${esc(filters.query)} »` : 'dans le congélo'}`;
+    count.innerHTML = `<strong>${n}</strong> ${plural(n, 'recette', 'recettes')}${filters.query ? ` pour « ${esc(filters.query)} »` : ''}`;
     const isFiltered = filters.query || filters.category !== 'all' || filters.tags.length || filters.favOnly;
     reset.hidden = !isFiltered;
 

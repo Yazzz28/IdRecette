@@ -1,6 +1,6 @@
 ---
 name: ajouter-recette
-description: Ajoute (ou corrige) une recette de glace Ninja Creami dans data.json en respectant le schéma, les noms d'ingrédients existants et le calcul des calories, puis valide et commit. Utiliser dès qu'on parle d'ajouter, importer, corriger ou supprimer une recette, ou d'intégrer un export « recettes-perso.json » venu de l'app.
+description: Ajoute (ou corrige) une recette dans data.json en respectant le schéma, les noms d'ingrédients existants et le calcul des calories, puis valide et commit. Utiliser dès qu'on parle d'ajouter, importer, corriger ou supprimer une recette, ou d'intégrer un export « recettes-perso.json » venu de l'app.
 ---
 
 # Ajouter une recette dans IDrecette
@@ -10,31 +10,70 @@ Objectif : une recette propre dans `data.json`, qui passe le validateur, se regr
 ## 1. Rassembler l'info
 
 Si l'utilisateur ne l'a pas donnée, demande-la (en une seule question groupée) :
-- titre, catégorie, ingrédients avec quantités pour **un pot** (≈ 2 portions), étapes, programme(s) Creami, prénom de l'auteur.
-- Le reste (description, tags, astuce, kcal, macros) : propose-le toi-même, l'utilisateur corrigera.
+- titre, catégorie (`glaces`, `plats`, `apero`, `desserts`, `petit-dej`, `boissons`), appareil, nombre de portions, ingrédients avec quantités, étapes, prénom de l'auteur.
+- Pour une glace **Ninja Creami** : les quantités sont pour **un pot** (≈ 2 portions) et il faut le ou les programmes.
+- Le reste (description, tags, astuce, kcal, macros, temps) : propose-le toi-même, l'utilisateur corrigera.
 
 S'il s'agit d'un **export de l'app** (`recettes-perso.json`, ids en `perso-…`) : reprends chaque objet tel quel, mais **renomme l'id** sans le préfixe `perso-` ni le suffixe aléatoire (ex. `perso-fraise-basilic-mw9ofc4j` → `fraise-basilic`).
 
 ## 2. Lire l'existant avant d'écrire
 
 1. Lis `data.json` en entier : catégories, tags déjà utilisés, ids existants.
-2. Lis `js/core/schema.js` pour les valeurs autorisées (unités, rayons, groupes, modes, difficultés, couleurs).
-3. **Réutilise les noms d'ingrédients existants à l'identique** (même casse, mêmes accents) : `Lait d'amande sans sucre`, `Sirop d'érable`, `Banane bien mûre`, `Boisson coco`, `Protéine végétale vanille`… Sinon la liste de courses affiche deux lignes pour le même produit.
-4. Réutilise les tags existants (`Vegan`, `Sans gluten`, `Riche en protéines`, `Moins de 200 kcal`, `Express`) avant d'en inventer. Un nouveau tag n'a de sens que s'il servira à filtrer plusieurs recettes.
-5. Nouvelle catégorie seulement si vraiment nécessaire : ajoute-la dans `categories` avec une couleur d'assiette.
+2. Lis `js/core/schema.js` pour les valeurs autorisées (unités, rayons, appareils, groupes, modes, difficultés, couleurs).
+3. **Réutilise les noms d'ingrédients existants à l'identique** (même casse, mêmes accents) **et le même rayon** : `Lait d'amande sans sucre`, `Sirop d'érable`, `Huile d'olive`, `Oignon jaune`, `Ail` (unité `gousse`), `Tomates concassées`, `Œufs`… Sinon la liste de courses affiche deux lignes pour le même produit, et `npm test` échoue.
+4. Réutilise les tags existants (`Healthy`, `Vegan`, `Végétarien`, `Sans gluten`, `Riche en protéines`, `Moins de 200 kcal`, `Express`, `Salé`, `Apéro`…) avant d'en inventer. Un nouveau tag n'a de sens que s'il servira à filtrer plusieurs recettes.
+5. **`Healthy` est un tag, pas une obligation** : mets-le si la recette est équilibrée (légumes, fruits, céréales complètes, peu de sucre raffiné et de gras saturés). Une recette plaisir est bienvenue, sans ce tag.
+6. Nouvelle catégorie seulement si vraiment nécessaire : ajoute-la dans `categories` avec une couleur d'assiette (et au moins une recette dedans).
 
 ## 3. Écrire la recette
 
-Ajoute l'objet **à la fin** du tableau `recipes` (ça limite les conflits de merge entre contributeurs). Gabarit :
+Ajoute l'objet **à la fin** du tableau `recipes` (ça limite les conflits de merge entre contributeurs).
+
+### Gabarit : recette classique
 
 ```json
 {
   "id": "kebab-case-unique",
   "title": "Titre lisible",
-  "category": "fruitees",
+  "category": "plats",
+  "emoji": "🍛",
+  "description": "Une phrase qui donne envie, au tutoiement, ton entre potes.",
+  "tags": ["Healthy", "Vegan"],
+  "appliance": "Casserole",
+  "difficulty": "Facile",
+  "prepTime": 10,
+  "cookTime": 25,
+  "servings": 4,
+  "ingredients": [
+    { "qty": 1, "unit": "pc", "name": "Oignon jaune", "kcal": 44, "group": "base", "aisle": "Fruits & légumes" },
+    { "qty": 2, "unit": "gousse", "name": "Ail", "kcal": 9, "group": "base", "aisle": "Fruits & légumes" },
+    { "qty": 0.5, "unit": "botte", "name": "Coriandre fraîche", "kcal": 3, "group": "topping", "aisle": "Fruits & légumes" }
+  ],
+  "steps": [
+    "Émince l'oignon et fais-le revenir 5 min dans l'huile d'olive.",
+    "…"
+  ],
+  "nutrition": { "protein": 15, "carbs": 60, "fat": 12 },
+  "tip": "Le petit truc qui change tout.",
+  "author": "Prénom"
+}
+```
+
+- `appliance` est facultatif (`Four`, `Poêle`, `Casserole`, `Airfryer`, `Robot`, `Micro-ondes`, `Sans cuisson`).
+- `cookTime` (minutes) et `restTime` (minutes : marinade, frigo… `480` = une nuit) sont facultatifs.
+- **Pas de `modes`** hors Ninja Creami (le validateur refuse).
+
+### Gabarit : glace Ninja Creami
+
+```json
+{
+  "id": "kebab-case-unique",
+  "title": "Titre lisible",
+  "category": "glaces",
   "emoji": "🍓",
   "description": "Une phrase qui donne envie, au tutoiement, ton entre potes.",
-  "tags": ["Vegan", "Sans gluten"],
+  "tags": ["Healthy", "Vegan", "Fruitée"],
+  "appliance": "Ninja Creami",
   "difficulty": "Facile",
   "prepTime": 5,
   "freezeTime": 24,
@@ -62,9 +101,10 @@ Règles :
 - `kcal` = calories de **la quantité indiquée** (pas pour 100 g). Le validateur avertit si on dépasse 950 kcal/100 g.
 - `qty: null` autorisé pour « à volonté » (sel, menthe…).
 - `nutrition` = grammes **par portion** (total ÷ `servings`), arrondis à l'entier.
-- `steps` au tutoiement, une action par étape, mentionner le programme Creami et le Re-spin / Mix-in quand ils servent.
-- Mix-ins (ajoutés au programme Mix-in) → `group: "mixin"` ; décor final → `group: "topping"`.
-- Recettes healthy : lait végétal, fruits, sucres non raffinés en petite quantité. Pas de crème ni de lait de vache.
+- `steps` au tutoiement, une action par étape, avec les temps et températures (« 25 min à 180 °C »).
+- Ninja Creami : `freezeTime` et `modes` obligatoires, mentionne le programme et le Re-spin / Mix-in dans les étapes. Mix-ins → `group: "mixin"`.
+- Décor final (herbes, graines, croûtons…) → `group: "topping"`.
+- Glaces salées : catégorie `glaces` + tags `Salé` (et `Apéro` si ça s'y prête). Sale un peu plus qu'à chaud, le froid atténue le goût.
 
 ### Repères caloriques (pour la quantité indiquée)
 
@@ -90,6 +130,27 @@ Règles :
 | Sirop d'agave | 60 kcal / c. à s. · 20 / c. à c. |
 | Granola | 450 kcal / 100 g |
 | Noix de coco râpée | 660 kcal / 100 g |
+| Huile d'olive | 88 kcal / c. à s. |
+| Oignon jaune (1 pc ≈ 110 g) | 44 kcal / pc |
+| Ail | 4,5 kcal / gousse |
+| Tomates fraîches | 18 kcal / 100 g |
+| Tomates concassées | 20 kcal / 100 g |
+| Poivron (1 pc ≈ 150 g) | 40 kcal / pc |
+| Épinards frais | 23 kcal / 100 g |
+| Carotte (1 pc ≈ 100 g) | 41 kcal / pc |
+| Pois chiches cuits | 120 kcal / 100 g |
+| Lentilles corail (sèches) | 350 kcal / 100 g |
+| Riz basmati (sec) | 350 kcal / 100 g |
+| Pâtes (sèches) | 360 kcal / 100 g |
+| Flocons d'avoine | 370 kcal / 100 g |
+| Lait de coco léger | 80 kcal / 100 ml |
+| Œuf (1 pc ≈ 55 g) | 72 kcal / pc |
+| Feta | 264 kcal / 100 g |
+| Tofu ferme | 140 kcal / 100 g |
+| Blanc de poulet | 120 kcal / 100 g |
+| Saumon | 200 kcal / 100 g |
+| Tahini | 600 kcal / 100 g |
+| Pain de campagne | 260 kcal / 100 g |
 
 ## 4. Valider
 

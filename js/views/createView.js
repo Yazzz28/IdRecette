@@ -4,13 +4,15 @@ import { formatKcal } from '../utils/format.js';
 import { copyText, downloadFile } from '../utils/clipboard.js';
 import { readStorage, writeStorage } from '../core/store.js';
 import { libraryStore, userRecipesStore, draftStore } from '../core/stores.js';
-import { AISLES, UNITS, GROUPS, CREAMI_MODES, DIFFICULTIES, THUMB_COLORS } from '../core/library.js';
+import {
+  AISLES, UNITS, GROUPS, CREAMI_MODES, DIFFICULTIES, THUMB_COLORS, APPLIANCES, CREAMI,
+} from '../core/library.js';
 import { collectTags } from '../core/filters.js';
 import { navigate } from '../core/router.js';
 import { icons } from '../ui/icons.js';
 import { toast } from '../ui/toast.js';
 
-const EMOJIS = ['🍨', '🍦', '🍓', '🥭', '🫐', '🍌', '🍫', '🥜', '🍪', '🍋', '🍍', '🍑', '🍒', '🥥', '🍵', '☕'];
+const EMOJIS = ['🍲', '🍛', '🥗', '🍝', '🥘', '🍳', '🥑', '🍅', '🥕', '🧆', '🥞', '🍰', '🍪', '🍫', '🍨', '🍓', '🥭', '🫐', '🍌', '🍋', '🍹', '🍵', '☕'];
 const COLOR_LABELS = { sauge: 'Sauge', beurre: 'Beurre', ciel: 'Ciel', lilas: 'Lilas', pelure: 'Pelure' };
 
 const blankIngredient = () => ({ qty: '', unit: 'g', name: '', kcal: '', group: 'base', aisle: 'Épicerie' });
@@ -18,8 +20,8 @@ const blankIngredient = () => ({ qty: '', unit: 'g', name: '', kcal: '', group: 
 function emptyModel() {
   const firstCategory = libraryStore.get().categories[0]?.id || 'perso';
   return {
-    title: '', category: firstCategory, emoji: '🍨', color: '', description: '',
-    servings: 2, prepTime: 5, freezeTime: 24, difficulty: 'Facile',
+    title: '', category: firstCategory, emoji: '🍲', color: '', description: '',
+    appliance: '', servings: 2, prepTime: 10, cookTime: '', restTime: '', freezeTime: 24, difficulty: 'Facile',
     modes: ['Lite Ice Cream'], tags: [],
     ingredients: [blankIngredient(), blankIngredient(), blankIngredient()],
     steps: ['', ''],
@@ -38,19 +40,25 @@ function toRecipe(model, id) {
     const v = num(model.nutrition[k]);
     if (v !== null) nutrition[k] = v;
   });
+  const isCreami = model.appliance === CREAMI;
+  const cookTime = num(model.cookTime);
+  const restTime = num(model.restTime);
   return {
     id,
     title: model.title.trim(),
     category: model.category,
-    emoji: model.emoji.trim() || '🍨',
+    emoji: model.emoji.trim() || '🍲',
     ...(model.color ? { color: model.color } : {}),
     description: model.description.trim(),
     tags: model.tags,
+    ...(model.appliance ? { appliance: model.appliance } : {}),
     difficulty: model.difficulty,
     prepTime: num(model.prepTime) ?? 0,
-    freezeTime: num(model.freezeTime) ?? 24,
+    ...(cookTime ? { cookTime } : {}),
+    ...(restTime ? { restTime } : {}),
+    ...(isCreami ? { freezeTime: num(model.freezeTime) ?? 24 } : {}),
     servings: Math.max(1, num(model.servings) ?? 2),
-    modes: model.modes,
+    ...(isCreami ? { modes: model.modes } : {}),
     ingredients: model.ingredients
       .filter((i) => i.name.trim())
       .map((i) => ({
@@ -99,8 +107,11 @@ export function createCreateView(root, { onSaved }) {
     model.color = form.querySelector('[name="color"]:checked')?.value ?? '';
     model.description = val('description');
     model.servings = val('servings');
+    model.appliance = val('appliance');
     model.prepTime = val('prepTime');
-    model.freezeTime = val('freezeTime');
+    model.cookTime = val('cookTime');
+    model.restTime = val('restTime');
+    if (form.elements.freezeTime) model.freezeTime = val('freezeTime');
     model.tip = val('tip');
     model.author = val('author');
     model.nutrition = { protein: val('protein'), carbs: val('carbs'), fat: val('fat') };
@@ -181,7 +192,7 @@ export function createCreateView(root, { onSaved }) {
           <section class="form-card">
             <div class="field">
               <label for="f-title">Nom de la recette</label>
-              <input id="f-title" class="input input--lg" name="title" required maxlength="80" placeholder="Ex. Fraise-basilic au lait de coco" value="${esc(model.title)}">
+              <input id="f-title" class="input input--lg" name="title" required maxlength="80" placeholder="Ex. Curry de pois chiches coco" value="${esc(model.title)}">
             </div>
             <div class="field">
               <label for="f-description">En une phrase</label>
@@ -211,28 +222,47 @@ export function createCreateView(root, { onSaved }) {
           </section>
 
           <section class="form-card">
-            <div class="field-row field-row--3">
+            <div class="field-row">
+              <div class="field">
+                <label for="f-appliance">Appareil</label>
+                <select id="f-appliance" class="input" name="appliance">
+                  <option value="" ${!model.appliance ? 'selected' : ''}>Aucun en particulier</option>
+                  ${options(APPLIANCES, model.appliance)}
+                </select>
+              </div>
               <div class="field">
                 <label for="f-servings">Portions</label>
                 <input id="f-servings" class="input" name="servings" type="number" min="1" max="24" inputmode="numeric" value="${esc(model.servings)}">
               </div>
+            </div>
+            <div class="field-row field-row--3">
               <div class="field">
                 <label for="f-prep">Préparation (min)</label>
                 <input id="f-prep" class="input" name="prepTime" type="number" min="0" inputmode="numeric" value="${esc(model.prepTime)}">
               </div>
               <div class="field">
+                <label for="f-cook">Cuisson (min)</label>
+                <input id="f-cook" class="input" name="cookTime" type="number" min="0" inputmode="numeric" placeholder="0" value="${esc(model.cookTime)}">
+              </div>
+              ${model.appliance === CREAMI ? `
+              <div class="field">
                 <label for="f-freeze">Congélation (h)</label>
                 <input id="f-freeze" class="input" name="freezeTime" type="number" min="0" inputmode="numeric" value="${esc(model.freezeTime)}">
-              </div>
+              </div>` : `
+              <div class="field">
+                <label for="f-rest">Repos (min)</label>
+                <input id="f-rest" class="input" name="restTime" type="number" min="0" inputmode="numeric" placeholder="0" value="${esc(model.restTime)}">
+              </div>`}
             </div>
             <div class="field">
               <span class="field__label">Difficulté</span>
               <div class="chips chips--wrap">${DIFFICULTIES.map((d) => `<button type="button" class="chip chip--sm" data-difficulty="${esc(d)}" aria-pressed="${model.difficulty === d}">${esc(d)}</button>`).join('')}</div>
             </div>
+            ${model.appliance === CREAMI ? `
             <div class="field">
               <span class="field__label">Programmes Creami <small>(dans l'ordre)</small></span>
               <div class="chips chips--wrap">${CREAMI_MODES.map((m) => `<button type="button" class="chip chip--sm" data-mode="${esc(m)}" aria-pressed="${model.modes.includes(m)}">${esc(m)}</button>`).join('')}</div>
-            </div>
+            </div>` : ''}
             <div class="field">
               <span class="field__label">Tags</span>
               <div class="chips chips--wrap">
@@ -258,7 +288,7 @@ export function createCreateView(root, { onSaved }) {
               ${model.steps.map((s, i) => `
                 <li class="step-row">
                   <span class="step-row__n">${i + 1}</span>
-                  <textarea class="input" name="step" rows="2" placeholder="${i === 0 ? 'Mixe tout, verse dans le pot et congèle 24 h.' : 'Et ensuite ?'}" aria-label="Étape ${i + 1}">${esc(s)}</textarea>
+                  <textarea class="input" name="step" rows="2" placeholder="${i === 0 ? "Ex. Fais revenir l'oignon 5 min dans l'huile d'olive." : 'Et ensuite ?'}" aria-label="Étape ${i + 1}">${esc(s)}</textarea>
                   <button type="button" class="icon-btn icon-btn--ghost" data-action="remove-step" data-index="${i}" aria-label="Supprimer l'étape ${i + 1}">${icons.close}</button>
                 </li>`).join('')}
             </ol>
@@ -308,6 +338,13 @@ export function createCreateView(root, { onSaved }) {
 
   // Pré-remplissage des kcal / rayon pour un ingrédient connu.
   root.addEventListener('change', (e) => {
+    if (e.target.name === 'appliance') {
+      rerender(() => {
+        if (model.appliance === CREAMI && !model.modes.length) model.modes = ['Lite Ice Cream'];
+      });
+      $('[name="appliance"]', root)?.focus();
+      return;
+    }
     const row = e.target.closest('.ing-row');
     if (!row || !['ing-name', 'ing-qty', 'ing-unit'].includes(e.target.name)) return;
     const known = knownIngredients().get(normalize(row.querySelector('[name="ing-name"]').value));
@@ -454,6 +491,11 @@ export function createCreateView(root, { onSaved }) {
           ...emptyModel(),
           ...clone(existing),
           color: existing.color || '',
+          appliance: existing.appliance || (existing.modes?.length ? CREAMI : ''),
+          modes: existing.modes?.length ? existing.modes : ['Lite Ice Cream'],
+          cookTime: existing.cookTime ?? '',
+          restTime: existing.restTime ?? '',
+          freezeTime: existing.freezeTime ?? 24,
           ingredients: existing.ingredients.map((i) => ({ ...blankIngredient(), ...i, qty: i.qty ?? '', kcal: i.kcal ?? '' })),
           nutrition: { protein: '', carbs: '', fat: '', ...(existing.nutrition || {}) },
         };

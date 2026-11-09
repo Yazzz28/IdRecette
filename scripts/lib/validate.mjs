@@ -1,5 +1,5 @@
 import {
-  THUMB_COLORS, AISLES, UNITS, GROUPS, CREAMI_MODES, DIFFICULTIES, ID_PATTERN,
+  THUMB_COLORS, AISLES, UNITS, GROUPS, CREAMI_MODES, DIFFICULTIES, ID_PATTERN, APPLIANCES, CREAMI,
 } from '../../js/core/schema.js';
 
 const isNum = (v) => typeof v === 'number' && Number.isFinite(v);
@@ -70,12 +70,27 @@ export function validateData(data) {
 
       if (!Number.isInteger(r.servings) || r.servings < 1) err(where, 'servings doit être un entier ≥ 1');
       if (!isNum(r.prepTime) || r.prepTime < 0) err(where, 'prepTime (minutes) doit être un nombre ≥ 0');
-      if (!isNum(r.freezeTime) || r.freezeTime < 0) err(where, 'freezeTime (heures) doit être un nombre ≥ 0');
+      ['cookTime', 'restTime'].forEach((k) => {
+        if (r[k] !== undefined && (!isNum(r[k]) || r[k] < 0)) err(where, `${k} (minutes) doit être un nombre ≥ 0`);
+      });
       if (!DIFFICULTIES.includes(r.difficulty)) err(where, `difficulty doit être l'une de : ${DIFFICULTIES.join(', ')}`);
-
       if (!Array.isArray(r.tags) || r.tags.some((t) => !isStr(t))) err(where, 'tags doit être un tableau de textes');
-      if (!Array.isArray(r.modes) || !r.modes.length) err(where, 'modes doit lister au moins un programme Creami');
-      else r.modes.forEach((m) => { if (!CREAMI_MODES.includes(m)) err(where, `mode inconnu « ${m} » (${CREAMI_MODES.join(', ')})`); });
+
+      // Appareil : facultatif. « Ninja Creami » rend modes et freezeTime obligatoires.
+      if (r.appliance !== undefined && !APPLIANCES.includes(r.appliance)) {
+        err(where, `appliance « ${r.appliance} » inconnu (${APPLIANCES.join(', ')})`);
+      }
+      const hasModes = Array.isArray(r.modes) && r.modes.length > 0;
+      const isCreami = r.appliance === CREAMI;
+      if (isCreami) {
+        if (!hasModes) err(where, 'une recette Ninja Creami doit lister ses programmes dans modes');
+        if (!isNum(r.freezeTime) || r.freezeTime < 0) err(where, 'freezeTime (heures) est obligatoire pour une recette Ninja Creami');
+      } else {
+        if (hasModes) err(where, 'modes est réservé aux recettes "appliance": "Ninja Creami"');
+        if (r.freezeTime !== undefined && (!isNum(r.freezeTime) || r.freezeTime < 0)) err(where, 'freezeTime (heures) doit être un nombre ≥ 0');
+      }
+      if (r.modes !== undefined && !Array.isArray(r.modes)) err(where, 'modes doit être un tableau');
+      if (hasModes) r.modes.forEach((m) => { if (!CREAMI_MODES.includes(m)) err(where, `mode inconnu « ${m} » (${CREAMI_MODES.join(', ')})`); });
 
       if (!Array.isArray(r.ingredients) || !r.ingredients.length) {
         err(where, 'ingredients doit contenir au moins un ingrédient');

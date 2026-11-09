@@ -2,14 +2,14 @@
 
 > La deuxième, c'est la bonne.
 
-Les recettes de glaces **Ninja Creami healthy** de la bande : lait végétal, fruits, toppings.
+Les recettes de la bande : plats, apéros, desserts, petits-déj, boissons et glaces (dont des recettes **Ninja Creami**). Les recettes équilibrées portent le tag **Healthy**.
 App 100 % statique (HTML, CSS, JS) : pas de base de données, pas de compte, pas de build.
 
 ## Ce que fait l'app
 
-- **Catalogue** : recherche plein texte (titre, ingrédients, tags, insensible aux accents, raccourci `/`), filtres par catégorie et par tag, favoris, tri (A→Z, kcal, protéines, rapidité).
-- **Fiche recette** : portions ajustables (quantités et kcal recalculées), macros, programmes Creami, ingrédients à cocher, copie ou envoi par mail.
-- **Mon menu** : les glaces prévues, avec portions et total de kcal.
+- **Catalogue** : recherche plein texte (titre, ingrédients, tags, appareil, insensible aux accents, raccourci `/`), filtres par catégorie et par tag, favoris, tri (A→Z, kcal, protéines, rapidité).
+- **Fiche recette** : portions ajustables (quantités et kcal recalculées), temps de préparation, cuisson et repos, macros, ingrédients à cocher, copie ou envoi par mail. Pour les glaces Ninja Creami : programmes et nombre de pots.
+- **Mon menu** : les recettes prévues, avec portions et total de kcal.
 - **Liste de courses** : générée depuis le menu, ingrédients regroupés et classés par rayon, ajouts à la main, copie ou envoi par mail.
 - **Créer** : formulaire de recette perso avec brouillon automatique, kcal pré-remplies pour les ingrédients connus, export JSON.
 

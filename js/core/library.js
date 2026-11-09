@@ -1,8 +1,10 @@
 import { libraryStore, userRecipesStore } from './stores.js';
 import { normalize } from '../utils/text.js';
-import { THUMB_COLORS, AISLES, GROUPS } from './schema.js';
+import { THUMB_COLORS, AISLES, GROUPS, APPLIANCES, CREAMI } from './schema.js';
 
-export { THUMB_COLORS, AISLES, PANTRY_AISLE, UNITS, GROUPS, CREAMI_MODES, DIFFICULTIES } from './schema.js';
+export {
+  THUMB_COLORS, AISLES, PANTRY_AISLE, UNITS, GROUPS, CREAMI_MODES, DIFFICULTIES, APPLIANCES, CREAMI,
+} from './schema.js';
 
 const DEFAULT_CATEGORY = { id: 'perso', label: 'Perso', color: 'pelure' };
 const toNumber = (v, fallback = 0) => (v === '' || v === null || v === undefined || Number.isNaN(Number(v)) ? fallback : Number(v));
@@ -30,6 +32,8 @@ export function normalizeRecipe(raw, { isUser = false } = {}) {
   const nutrition = raw.nutrition || {};
   const tags = Array.isArray(raw.tags) ? raw.tags.filter(Boolean) : [];
   const modes = Array.isArray(raw.modes) ? raw.modes.filter(Boolean) : [];
+  const appliance = APPLIANCES.includes(raw.appliance) ? raw.appliance : (modes.length ? CREAMI : '');
+  const isCreami = appliance === CREAMI;
 
   const recipe = {
     id: String(raw.id),
@@ -41,10 +45,14 @@ export function normalizeRecipe(raw, { isUser = false } = {}) {
     description: raw.description || '',
     tags,
     difficulty: raw.difficulty || 'Facile',
+    appliance,
+    isCreami,
     prepTime: toNumber(raw.prepTime),
-    freezeTime: toNumber(raw.freezeTime, 24),
+    cookTime: toNumber(raw.cookTime),
+    restTime: toNumber(raw.restTime),
+    freezeTime: toNumber(raw.freezeTime, isCreami ? 24 : 0),
     servings,
-    modes,
+    modes: isCreami ? modes : [],
     ingredients,
     steps: (Array.isArray(raw.steps) ? raw.steps : []).map(String).filter((s) => s.trim()),
     nutrition: {
@@ -59,11 +67,15 @@ export function normalizeRecipe(raw, { isUser = false } = {}) {
     isUser,
   };
 
+  /** Temps « actif » : préparation + cuisson (sans repos ni congélation). */
+  recipe.activeTime = recipe.prepTime + recipe.cookTime;
+
   recipe.searchText = normalize([
     recipe.title,
     recipe.description,
     tags.join(' '),
-    modes.join(' '),
+    recipe.modes.join(' '),
+    appliance,
     ingredients.map((i) => i.name).join(' '),
     recipe.author,
   ].join(' '));

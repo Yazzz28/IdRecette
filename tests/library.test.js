@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { normalizeRecipe, scaleIngredients, thumbColor } from '../js/core/library.js';
-import { makeRecipe } from './helpers.js';
+import { makeRecipe, makeDish } from './helpers.js';
 
 test('normalizeRecipe calcule les kcal depuis les ingrédients', () => {
   const r = normalizeRecipe(makeRecipe());
@@ -14,7 +14,8 @@ test('normalizeRecipe applique des valeurs par défaut sûres', () => {
   const r = normalizeRecipe({ id: 42, title: 'Minimal', ingredients: [{ name: 'Mangue', qty: '100', kcal: '60', aisle: 'Inconnu', group: '?' }] }, { isUser: true });
   assert.equal(r.id, '42');
   assert.equal(r.servings, 2);
-  assert.equal(r.freezeTime, 24);
+  assert.equal(r.freezeTime, 0, 'pas de congélation par défaut hors Ninja Creami');
+  assert.equal(r.appliance, '');
   assert.equal(r.emoji, '🍨');
   assert.equal(r.isUser, true);
   assert.deepEqual(r.tags, []);
@@ -22,6 +23,25 @@ test('normalizeRecipe applique des valeurs par défaut sûres', () => {
   assert.equal(r.ingredients[0].aisle, 'Épicerie');
   assert.equal(r.ingredients[0].group, 'base');
   assert.equal(r.nutrition.protein, null);
+});
+
+test('appareil : Creami ou plat classique', () => {
+  const glace = normalizeRecipe(makeRecipe());
+  assert.equal(glace.isCreami, true);
+  assert.equal(glace.freezeTime, 24);
+  assert.deepEqual(glace.modes, ['Lite Ice Cream']);
+
+  const plat = normalizeRecipe(makeDish({ restTime: 30 }));
+  assert.equal(plat.isCreami, false);
+  assert.equal(plat.freezeTime, 0);
+  assert.deepEqual(plat.modes, []);
+  assert.equal(plat.activeTime, 25, 'préparation + cuisson');
+  assert.equal(plat.restTime, 30);
+  assert.ok(plat.searchText.includes('casserole'));
+
+  // Anciennes recettes : des modes sans appareil = Ninja Creami.
+  const { appliance, ...legacy } = makeRecipe();
+  assert.equal(normalizeRecipe(legacy).isCreami, true);
 });
 
 test('normalizeRecipe ignore les ingrédients sans nom', () => {

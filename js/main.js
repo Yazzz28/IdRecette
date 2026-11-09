@@ -11,7 +11,7 @@ import { createShoppingView } from './views/shoppingView.js';
 import { createCreateView } from './views/createView.js';
 
 const TITLES = {
-  recettes: 'IDrecette V.2 · Glaces Ninja Creami',
+  recettes: 'IDrecette V.2',
   menu: 'Mon menu · IDrecette V.2',
   courses: 'Liste de courses · IDrecette V.2',
   creer: 'Nouvelle recette · IDrecette V.2',
@@ -80,7 +80,7 @@ function handleRoute(route) {
     if (modal.open(route.param)) {
       document.title = `${libraryStore.get().byId.get(route.param).title} · IDrecette V.2`;
     } else {
-      toast('Recette introuvable. Elle a peut-être fondu.');
+      toast("Recette introuvable. Quelqu'un l'a mangée ?");
       location.hash = backgroundHash;
     }
     return;

@@ -6,7 +6,7 @@ export const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 
 export const loadData = () => JSON.parse(readFileSync(resolve(ROOT, 'data.json'), 'utf8'));
 
-/** Recette minimale valide, à surcharger dans les tests. */
+/** Glace Ninja Creami minimale valide, à surcharger dans les tests. */
 export function makeRecipe(overrides = {}) {
   return {
     id: 'test-recette',
@@ -15,6 +15,7 @@ export function makeRecipe(overrides = {}) {
     emoji: '🍓',
     description: 'Pour les tests.',
     tags: ['Vegan'],
+    appliance: 'Ninja Creami',
     difficulty: 'Facile',
     prepTime: 5,
     freezeTime: 24,
@@ -29,6 +30,19 @@ export function makeRecipe(overrides = {}) {
     nutrition: { protein: 2, carbs: 10, fat: 1 },
     tip: '',
     author: 'Test',
+    ...overrides,
+  };
+}
+
+/** Plat classique (sans Ninja Creami) minimal valide. */
+export function makeDish(overrides = {}) {
+  const { appliance, modes, freezeTime, ...rest } = makeRecipe();
+  return {
+    ...rest,
+    id: 'test-plat',
+    title: 'Plat de test',
+    appliance: 'Casserole',
+    cookTime: 20,
     ...overrides,
   };
 }

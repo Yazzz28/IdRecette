@@ -9,7 +9,7 @@ export function mountSearchBar(root, { isActive }) {
       <span class="search__icon">${icons.search}</span>
       <label for="search-input" class="sr-only">Rechercher une recette</label>
       <input id="search-input" class="search__input" type="search" autocomplete="off" spellcheck="false"
-        placeholder="Fraise, protéine, coco…" enterkeyhint="search">
+        placeholder="Curry, fraise, apéro, airfryer…" enterkeyhint="search">
       <kbd class="search__kbd" aria-hidden="true">/</kbd>
       <button type="button" class="search__clear">Effacer</button>
     </form>`;
