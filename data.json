@@ -942,6 +942,40 @@
       "nutrition": { "protein": 21, "carbs": 5, "fat": 21 },
       "tip": "Pas besoin de sel : la feta s'en charge.",
       "author": "Yacine"
+    },
+    {
+      "id": "buddha-bowl-patate-douce",
+      "title": "Buddha bowl patate douce & pois chiches rôtis",
+      "category": "plats",
+      "emoji": "🥗",
+      "description": "Un bol de couleurs avec du croquant, du fondant, et une sauce au tahini qu'on boirait à la cuillère.",
+      "tags": ["Healthy", "Vegan", "Sans gluten", "Batch cooking"],
+      "appliance": "Four",
+      "difficulty": "Facile",
+      "prepTime": 15,
+      "cookTime": 30,
+      "servings": 2,
+      "ingredients": [
+        { "qty": 300, "unit": "g", "name": "Patate douce", "kcal": 258, "group": "base", "aisle": "Fruits & légumes" },
+        { "qty": 160, "unit": "g", "name": "Pois chiches cuits", "kcal": 192, "group": "base", "aisle": "Épicerie" },
+        { "qty": 60, "unit": "g", "name": "Quinoa", "kcal": 220, "group": "base", "aisle": "Épicerie" },
+        { "qty": 60, "unit": "g", "name": "Épinards frais", "kcal": 14, "group": "base", "aisle": "Fruits & légumes" },
+        { "qty": 1, "unit": "c. à s.", "name": "Huile d'olive", "kcal": 88, "group": "base", "aisle": "Placard" },
+        { "qty": 1, "unit": "c. à c.", "name": "Paprika fumé", "kcal": 6, "group": "base", "aisle": "Placard" },
+        { "qty": 15, "unit": "g", "name": "Tahini", "kcal": 90, "group": "topping", "aisle": "Épicerie" },
+        { "qty": 0.5, "unit": "pc", "name": "Citron jaune bio", "kcal": 9, "group": "topping", "aisle": "Fruits & légumes" },
+        { "qty": 10, "unit": "g", "name": "Graines de courge", "kcal": 56, "group": "topping", "aisle": "Épicerie" }
+      ],
+      "steps": [
+        "Préchauffe le four à 200 °C.",
+        "Coupe la patate douce en cubes. Sur une plaque, mélange-la avec les pois chiches égouttés, l'huile d'olive et le paprika. Enfourne 30 min en remuant à mi-cuisson.",
+        "Pendant ce temps, fais cuire le quinoa 12 min dans deux fois son volume d'eau salée.",
+        "Pour la sauce, fouette le tahini avec le jus du demi-citron et 2 à 3 c. à s. d'eau, jusqu'à ce que ce soit nappant.",
+        "Dans deux bols, dispose les épinards, le quinoa, les légumes rôtis, puis la sauce et les graines de courge."
+      ],
+      "nutrition": { "protein": 15, "carbs": 60, "fat": 15 },
+      "tip": "Sèche bien les pois chiches dans un torchon avant de les enfourner : c'est ce qui les rend croustillants.",
+      "author": "Yacine"
     }
   ]
 }
