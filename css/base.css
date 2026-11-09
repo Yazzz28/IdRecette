@@ -18,6 +18,8 @@ body {
 
 body.is-locked { overflow: hidden; }
 
+[hidden] { display: none !important; }
+
 h1, h2, h3, h4 {
   margin: 0;
   font-family: var(--font-titre);
@@ -31,7 +33,7 @@ ul, ol { margin: 0; padding: 0; }
 
 img, svg { display: block; max-width: 100%; }
 
-button, input, select { font: inherit; color: inherit; }
+button, input, select, textarea { font: inherit; color: inherit; }
 button { cursor: pointer; }
 
 a { color: var(--tomate-cuite); text-underline-offset: 3px; }

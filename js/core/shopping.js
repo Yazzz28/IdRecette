@@ -11,7 +11,11 @@ export function menuEntries(menu, byId) {
     .filter((e) => e.recipe);
 }
 
-const shortTitle = (title) => title.split(/[\s,-]+/)[0];
+/** « Fraise-banane au lait d'amande » → « Fraise-banane » : assez court pour la ligne, assez long pour s'y retrouver. */
+const shortTitle = (title) => {
+  const words = title.split(/\s+/);
+  return words[0].length >= 6 || words.length === 1 ? words[0] : words.slice(0, 2).join(' ');
+};
 
 /**
  * Regroupe les ingrédients de toutes les recettes du menu :
