@@ -1138,6 +1138,36 @@
       "nutrition": { "protein": 6, "carbs": 22, "fat": 3 },
       "tip": "Avec de la mangue fraîche, ajoute 3 glaçons pour garder le côté bien frais.",
       "author": "Yacine"
+    },
+    {
+      "id": "sorbet-pasteque-menthe",
+      "title": "Sorbet pastèque-menthe",
+      "category": "glaces",
+      "emoji": "🍉",
+      "color": "pelure",
+      "description": "80 kcal la portion pour un sorbet qui a le goût de l'été au bord de la piscine. On en reprend sans réfléchir.",
+      "tags": ["Healthy", "Vegan", "Sans gluten", "Sorbet", "Fruitée", "Moins de 200 kcal"],
+      "appliance": "Ninja Creami",
+      "difficulty": "Facile",
+      "prepTime": 5,
+      "freezeTime": 24,
+      "servings": 2,
+      "modes": ["Sorbet", "Re-spin"],
+      "ingredients": [
+        { "qty": 450, "unit": "g", "name": "Pastèque", "kcal": 135, "group": "base", "aisle": "Fruits & légumes" },
+        { "qty": 0.5, "unit": "pc", "name": "Citron vert", "kcal": 4, "group": "base", "aisle": "Fruits & légumes" },
+        { "qty": 1, "unit": "c. à c.", "name": "Sirop d'agave", "kcal": 20, "group": "base", "aisle": "Placard" },
+        { "qty": 8, "unit": "feuilles", "name": "Menthe fraîche", "kcal": 1, "group": "base", "aisle": "Fruits & légumes" }
+      ],
+      "steps": [
+        "Coupe la pastèque en morceaux en retirant un maximum de pépins.",
+        "Mixe-la avec le jus du demi-citron vert, le sirop d'agave et la menthe.",
+        "Verse dans le pot Creami jusqu'au trait MAX, ferme et congèle 24 h bien à plat.",
+        "Lance le programme Sorbet, puis un Re-spin si c'est un peu sec : la pastèque contient tellement d'eau qu'il en faut souvent un."
+      ],
+      "nutrition": { "protein": 1, "carbs": 19, "fat": 0 },
+      "tip": "Une pincée de sel dans la base, et la pastèque a encore plus le goût de pastèque.",
+      "author": "Yacine"
     }
   ]
 }
