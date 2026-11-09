@@ -1,6 +1,7 @@
 {
   "categories": [
-    { "id": "glaces", "label": "Glaces", "color": "ciel" }
+    { "id": "glaces", "label": "Glaces", "color": "ciel" },
+    { "id": "plats", "label": "Plats", "color": "sauge" }
   ],
   "recipes": [
     {
@@ -465,6 +466,42 @@
       ],
       "nutrition": { "protein": 1, "carbs": 6, "fat": 4 },
       "tip": "En plein été, prends des cœurs de bœuf ou des tomates cerises bien mûres. En hiver, une bonne conserve de tomates pelées fait le job.",
+      "author": "Yacine"
+    },
+    {
+      "id": "curry-pois-chiches-coco",
+      "title": "Curry de pois chiches coco",
+      "category": "plats",
+      "emoji": "🍛",
+      "description": "Le plat du soir où on n'a rien prévu : tout vient du placard, c'est prêt en 35 min et c'est encore meilleur réchauffé le lendemain.",
+      "tags": ["Healthy", "Vegan", "Sans gluten", "Batch cooking"],
+      "appliance": "Casserole",
+      "difficulty": "Facile",
+      "prepTime": 10,
+      "cookTime": 25,
+      "servings": 4,
+      "ingredients": [
+        { "qty": 480, "unit": "g", "name": "Pois chiches cuits", "kcal": 576, "group": "base", "aisle": "Épicerie" },
+        { "qty": 400, "unit": "ml", "name": "Lait de coco léger", "kcal": 320, "group": "base", "aisle": "Épicerie" },
+        { "qty": 400, "unit": "g", "name": "Tomates concassées", "kcal": 80, "group": "base", "aisle": "Épicerie" },
+        { "qty": 100, "unit": "g", "name": "Épinards frais", "kcal": 23, "group": "base", "aisle": "Fruits & légumes" },
+        { "qty": 1, "unit": "pc", "name": "Oignon jaune", "kcal": 44, "group": "base", "aisle": "Fruits & légumes" },
+        { "qty": 2, "unit": "gousse", "name": "Ail", "kcal": 9, "group": "base", "aisle": "Fruits & légumes" },
+        { "qty": 10, "unit": "g", "name": "Gingembre frais", "kcal": 8, "group": "base", "aisle": "Fruits & légumes" },
+        { "qty": 2, "unit": "c. à s.", "name": "Curry doux en poudre", "kcal": 40, "group": "base", "aisle": "Placard" },
+        { "qty": 1, "unit": "c. à s.", "name": "Huile d'olive", "kcal": 88, "group": "base", "aisle": "Placard" },
+        { "qty": 240, "unit": "g", "name": "Riz basmati", "kcal": 845, "group": "base", "aisle": "Épicerie" },
+        { "qty": 0.5, "unit": "botte", "name": "Coriandre fraîche", "kcal": 3, "group": "topping", "aisle": "Fruits & légumes" }
+      ],
+      "steps": [
+        "Lance la cuisson du riz basmati selon le paquet.",
+        "Émince l'oignon, presse l'ail, râpe le gingembre. Fais-les revenir 5 min dans l'huile d'olive.",
+        "Ajoute le curry et remue 1 min pour qu'il torréfie, puis les tomates, le lait de coco et les pois chiches égouttés.",
+        "Laisse mijoter 15 min à feu doux, puis ajoute les épinards 2 min, juste le temps qu'ils tombent.",
+        "Sers sur le riz avec la coriandre ciselée."
+      ],
+      "nutrition": { "protein": 15, "carbs": 72, "fat": 12 },
+      "tip": "Un filet de citron vert au moment de servir réveille tout le plat.",
       "author": "Yacine"
     }
   ]
