@@ -909,6 +909,39 @@
       "nutrition": { "protein": 13, "carbs": 32, "fat": 7 },
       "tip": "Les lentilles corail n'ont pas besoin de trempage et cuisent en 20 min : c'est la légumineuse des gens pressés.",
       "author": "Yacine"
+    },
+    {
+      "id": "frittata-epinards-feta",
+      "title": "Frittata épinards, feta & tomates cerises",
+      "category": "plats",
+      "emoji": "🍳",
+      "color": "sauge",
+      "description": "L'omelette qui se prend pour un plat : épaisse, colorée, et aussi bonne froide le lendemain dans une boîte.",
+      "tags": ["Healthy", "Végétarien", "Sans gluten", "Riche en protéines", "Express"],
+      "appliance": "Poêle",
+      "difficulty": "Facile",
+      "prepTime": 10,
+      "cookTime": 15,
+      "servings": 2,
+      "ingredients": [
+        { "qty": 5, "unit": "pc", "name": "Œufs", "kcal": 360, "group": "base", "aisle": "Frais" },
+        { "qty": 100, "unit": "g", "name": "Épinards frais", "kcal": 23, "group": "base", "aisle": "Fruits & légumes" },
+        { "qty": 150, "unit": "g", "name": "Tomates cerises", "kcal": 27, "group": "base", "aisle": "Fruits & légumes" },
+        { "qty": 0.5, "unit": "pc", "name": "Oignon rouge", "kcal": 22, "group": "base", "aisle": "Fruits & légumes" },
+        { "qty": 0.5, "unit": "c. à s.", "name": "Huile d'olive", "kcal": 44, "group": "base", "aisle": "Placard" },
+        { "qty": 1, "unit": "pincée", "name": "Poivre noir", "kcal": 0, "group": "base", "aisle": "Placard" },
+        { "qty": 60, "unit": "g", "name": "Feta", "kcal": 158, "group": "topping", "aisle": "Frais" }
+      ],
+      "steps": [
+        "Émince l'oignon rouge et fais-le revenir 3 min dans l'huile d'olive, dans une poêle qui va au four si possible.",
+        "Ajoute les épinards et laisse-les tomber 2 min.",
+        "Bats les œufs avec le poivre, verse-les dans la poêle, puis ajoute les tomates cerises coupées en deux et la feta émiettée.",
+        "Couvre et laisse cuire 8 à 10 min à feu doux, jusqu'à ce que le dessus soit presque pris.",
+        "Termine 2 min sous le gril du four pour dorer, ou retourne-la sur une assiette pour finir la cuisson."
+      ],
+      "nutrition": { "protein": 21, "carbs": 5, "fat": 21 },
+      "tip": "Pas besoin de sel : la feta s'en charge.",
+      "author": "Yacine"
     }
   ]
 }
