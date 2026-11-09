@@ -3,7 +3,8 @@
     { "id": "glaces", "label": "Glaces", "color": "ciel" },
     { "id": "plats", "label": "Plats", "color": "sauge" },
     { "id": "apero", "label": "Apéro", "color": "pelure" },
-    { "id": "petit-dej", "label": "Petit-déj", "color": "beurre" }
+    { "id": "petit-dej", "label": "Petit-déj", "color": "beurre" },
+    { "id": "boissons", "label": "Boissons", "color": "ciel" }
   ],
   "recipes": [
     {
@@ -602,6 +603,36 @@
       ],
       "nutrition": { "protein": 15, "carbs": 55, "fat": 14 },
       "tip": "Prépare-en 3 ou 4 bocaux le dimanche : ils se gardent 3 jours au frigo.",
+      "author": "Yacine"
+    },
+    {
+      "id": "golden-milk",
+      "title": "Golden milk curcuma-gingembre",
+      "category": "boissons",
+      "emoji": "🥛",
+      "color": "beurre",
+      "description": "Le lait d'or, doux et épicé. Parfait pour finir la journée sous un plaid.",
+      "tags": ["Healthy", "Vegan", "Sans gluten", "Moins de 200 kcal", "Express"],
+      "appliance": "Casserole",
+      "difficulty": "Facile",
+      "prepTime": 2,
+      "cookTime": 5,
+      "servings": 2,
+      "ingredients": [
+        { "qty": 400, "unit": "ml", "name": "Lait d'avoine", "kcal": 180, "group": "base", "aisle": "Épicerie" },
+        { "qty": 1, "unit": "c. à c.", "name": "Curcuma", "kcal": 8, "group": "base", "aisle": "Placard" },
+        { "qty": 5, "unit": "g", "name": "Gingembre frais", "kcal": 4, "group": "base", "aisle": "Fruits & légumes" },
+        { "qty": 1, "unit": "pincée", "name": "Cannelle", "kcal": 0, "group": "base", "aisle": "Placard" },
+        { "qty": 1, "unit": "pincée", "name": "Poivre noir", "kcal": 0, "group": "base", "aisle": "Placard" },
+        { "qty": 1, "unit": "c. à s.", "name": "Sirop d'érable", "kcal": 52, "group": "base", "aisle": "Placard" }
+      ],
+      "steps": [
+        "Râpe le gingembre.",
+        "Fais chauffer le lait d'avoine avec le curcuma, le gingembre, la cannelle et le poivre, 5 min en fouettant, sans faire bouillir.",
+        "Hors du feu, ajoute le sirop d'érable, filtre et sers bien chaud."
+      ],
+      "nutrition": { "protein": 2, "carbs": 22, "fat": 3 },
+      "tip": "Le poivre n'est pas là pour le goût : il aide le corps à absorber le curcuma. Une pincée suffit.",
       "author": "Yacine"
     }
   ]
