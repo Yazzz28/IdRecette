@@ -503,6 +503,41 @@
       "nutrition": { "protein": 15, "carbs": 72, "fat": 12 },
       "tip": "Un filet de citron vert au moment de servir réveille tout le plat.",
       "author": "Yacine"
+    },
+    {
+      "id": "shakshuka-du-dimanche",
+      "title": "Shakshuka du dimanche",
+      "category": "plats",
+      "emoji": "🍳",
+      "color": "pelure",
+      "description": "Le brunch qui fait croire qu'on s'est levé tôt. Une poêle, des œufs, et du bon pain pour saucer.",
+      "tags": ["Healthy", "Végétarien", "Sans gluten", "Riche en protéines"],
+      "appliance": "Poêle",
+      "difficulty": "Facile",
+      "prepTime": 10,
+      "cookTime": 25,
+      "servings": 2,
+      "ingredients": [
+        { "qty": 4, "unit": "pc", "name": "Œufs", "kcal": 288, "group": "base", "aisle": "Frais" },
+        { "qty": 400, "unit": "g", "name": "Tomates concassées", "kcal": 80, "group": "base", "aisle": "Épicerie" },
+        { "qty": 1, "unit": "pc", "name": "Poivron rouge", "kcal": 40, "group": "base", "aisle": "Fruits & légumes" },
+        { "qty": 1, "unit": "pc", "name": "Oignon jaune", "kcal": 44, "group": "base", "aisle": "Fruits & légumes" },
+        { "qty": 2, "unit": "gousse", "name": "Ail", "kcal": 9, "group": "base", "aisle": "Fruits & légumes" },
+        { "qty": 1, "unit": "c. à s.", "name": "Huile d'olive", "kcal": 88, "group": "base", "aisle": "Placard" },
+        { "qty": 1, "unit": "c. à c.", "name": "Cumin", "kcal": 8, "group": "base", "aisle": "Placard" },
+        { "qty": 1, "unit": "c. à c.", "name": "Paprika fumé", "kcal": 6, "group": "base", "aisle": "Placard" },
+        { "qty": 80, "unit": "g", "name": "Feta", "kcal": 211, "group": "topping", "aisle": "Frais" },
+        { "qty": 0.5, "unit": "botte", "name": "Coriandre fraîche", "kcal": 3, "group": "topping", "aisle": "Fruits & légumes" }
+      ],
+      "steps": [
+        "Émince l'oignon et le poivron, presse l'ail. Fais revenir 8 min dans l'huile d'olive.",
+        "Ajoute le cumin et le paprika, puis les tomates. Laisse mijoter 10 min à feu moyen.",
+        "Creuse un petit puits par œuf dans la sauce et casse un œuf dans chacun. Couvre, 6 à 8 min.",
+        "Émiette la feta par-dessus, parsème de coriandre et sers avec du bon pain grillé."
+      ],
+      "nutrition": { "protein": 21, "carbs": 20, "fat": 24 },
+      "tip": "Retire du feu quand le blanc est pris mais que le jaune tremble encore : il finit de cuire dans la poêle.",
+      "author": "Yacine"
     }
   ]
 }
