@@ -774,6 +774,35 @@
       "nutrition": { "protein": 19, "carbs": 40, "fat": 15 },
       "tip": "Fais tremper l'oignon rouge émincé 10 min dans l'eau froide : il garde son croquant et perd son piquant.",
       "author": "Yacine"
+    },
+    {
+      "id": "smoothie-vert-mangue",
+      "title": "Smoothie vert mangue-épinards",
+      "category": "boissons",
+      "emoji": "🥤",
+      "color": "sauge",
+      "description": "Vert comme une pelouse, mais avec un goût de mangue. Même ceux qui détestent les épinards se font avoir.",
+      "tags": ["Healthy", "Vegan", "Sans gluten", "Express"],
+      "appliance": "Robot",
+      "difficulty": "Facile",
+      "prepTime": 5,
+      "servings": 1,
+      "ingredients": [
+        { "qty": 1, "unit": "pc", "name": "Banane bien mûre", "kcal": 105, "group": "base", "aisle": "Fruits & légumes" },
+        { "qty": 100, "unit": "g", "name": "Mangue surgelée", "kcal": 60, "group": "base", "aisle": "Surgelés" },
+        { "qty": 30, "unit": "g", "name": "Épinards frais", "kcal": 7, "group": "base", "aisle": "Fruits & légumes" },
+        { "qty": 200, "unit": "ml", "name": "Lait d'amande sans sucre", "kcal": 26, "group": "base", "aisle": "Épicerie" },
+        { "qty": 3, "unit": "g", "name": "Gingembre frais", "kcal": 2, "group": "base", "aisle": "Fruits & légumes" },
+        { "qty": 5, "unit": "g", "name": "Graines de chia", "kcal": 24, "group": "topping", "aisle": "Épicerie" }
+      ],
+      "steps": [
+        "Mets les épinards et le lait d'amande dans le blender en premier, mixe 20 secondes.",
+        "Ajoute la banane, la mangue encore surgelée et le gingembre, puis mixe jusqu'à ce que ce soit bien lisse.",
+        "Verse, parsème de graines de chia et bois tout de suite."
+      ],
+      "nutrition": { "protein": 4, "carbs": 42, "fat": 4 },
+      "tip": "La mangue surgelée remplace les glaçons : le smoothie est frais sans être dilué.",
+      "author": "Yacine"
     }
   ]
 }
