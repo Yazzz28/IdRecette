@@ -803,6 +803,41 @@
       "nutrition": { "protein": 4, "carbs": 42, "fat": 4 },
       "tip": "La mangue surgelée remplace les glaçons : le smoothie est frais sans être dilué.",
       "author": "Yacine"
+    },
+    {
+      "id": "cookies-chocolat-noisette",
+      "title": "Cookies chocolat-noisette",
+      "category": "desserts",
+      "emoji": "🍪",
+      "color": "beurre",
+      "description": "Pas healthy du tout, et on l'assume : croustillants au bord, fondants au cœur, avec de gros morceaux de chocolat.",
+      "tags": ["Végétarien", "Gourmande", "Recette plaisir"],
+      "appliance": "Four",
+      "difficulty": "Facile",
+      "prepTime": 15,
+      "cookTime": 10,
+      "restTime": 30,
+      "servings": 12,
+      "ingredients": [
+        { "qty": 120, "unit": "g", "name": "Beurre doux", "kcal": 888, "group": "base", "aisle": "Frais" },
+        { "qty": 150, "unit": "g", "name": "Sucre roux", "kcal": 585, "group": "base", "aisle": "Épicerie" },
+        { "qty": 1, "unit": "pc", "name": "Œufs", "kcal": 72, "group": "base", "aisle": "Frais" },
+        { "qty": 220, "unit": "g", "name": "Farine de blé", "kcal": 800, "group": "base", "aisle": "Épicerie" },
+        { "qty": 0.5, "unit": "sachet", "name": "Levure chimique", "kcal": 5, "group": "base", "aisle": "Placard" },
+        { "qty": 1, "unit": "pincée", "name": "Fleur de sel", "kcal": 0, "group": "base", "aisle": "Placard" },
+        { "qty": 150, "unit": "g", "name": "Chocolat noir pâtissier", "kcal": 840, "group": "base", "aisle": "Épicerie" },
+        { "qty": 50, "unit": "g", "name": "Noisettes", "kcal": 314, "group": "base", "aisle": "Épicerie" }
+      ],
+      "steps": [
+        "Fouette le beurre mou avec le sucre roux jusqu'à ce que ce soit crémeux, puis ajoute l'œuf.",
+        "Incorpore la farine, la levure et la fleur de sel, sans trop travailler la pâte.",
+        "Ajoute le chocolat et les noisettes concassés grossièrement au couteau.",
+        "Forme 12 boules, pose-les sur une plaque et laisse-les 30 min au frigo.",
+        "Enfourne 10 min à 180 °C. Sors-les quand le centre a encore l'air pas cuit : ils durcissent en refroidissant."
+      ],
+      "nutrition": { "protein": 4, "carbs": 33, "fat": 16 },
+      "tip": "Une pincée de fleur de sel sur chaque cookie à la sortie du four, et c'est le niveau au-dessus.",
+      "author": "Yacine"
     }
   ]
 }
