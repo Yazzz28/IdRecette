@@ -80,7 +80,7 @@ function handleRoute(route) {
     if (modal.open(route.param)) {
       document.title = `${libraryStore.get().byId.get(route.param).title} · IDrecette V.2`;
     } else {
-      toast('Recette introuvable. Elle a peut-être fondu.');
+      toast("Recette introuvable. Quelqu'un l'a mangée ?");
       location.hash = backgroundHash;
     }
     return;

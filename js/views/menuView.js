@@ -53,7 +53,7 @@ export function createMenuView(root) {
         <div class="empty">
           <span class="empty__icon">${icons.pot}</span>
           <h2>Ton menu est vide.</h2>
-          <p>Ajoute des glaces avec le bouton + sur les cartes, ou depuis une fiche recette.</p>
+          <p>Ajoute des recettes avec le bouton + sur les cartes, ou depuis une fiche recette.</p>
           <a class="btn btn--encre" href="#/">Voir les recettes</a>
         </div></div>`;
       return;

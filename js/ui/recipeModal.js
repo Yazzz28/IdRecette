@@ -10,6 +10,9 @@ import { icons } from './icons.js';
 import { thumbContent } from './recipeCard.js';
 import { toast } from './toast.js';
 
+/** Hors Ninja Creami, « Base / Mix-in / Toppings » parle moins qu'un vocabulaire de cuisine. */
+const DISH_GROUP_LABELS = { base: 'Ingrédients', mixin: 'À incorporer', topping: 'Pour servir' };
+
 const MIN_SERVINGS = 1;
 const MAX_SERVINGS = 24;
 
@@ -41,7 +44,7 @@ export function createRecipeModal(dialog, { onClose, onEdit }) {
         .filter(({ ing }) => ing.group === group.id);
       if (!items.length) return '';
       return `
-        ${showLabels ? `<p class="ingredients__group">${esc(group.label)}</p>` : ''}
+        ${showLabels ? `<p class="ingredients__group">${esc(recipe.isCreami ? group.label : DISH_GROUP_LABELS[group.id])}</p>` : ''}
         <ul class="ingredients">
           ${items.map(({ ing, index }) => `
             <li>
