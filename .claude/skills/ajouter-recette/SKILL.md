@@ -93,19 +93,33 @@ Règles :
 
 ## 4. Valider
 
+Avant d'écrire quoi que ce soit, crée ta branche : `git switch main && git pull && git switch -c recette/<id>`.
+
 ```bash
-node scripts/validate-data.mjs
+npm run validate   # = node scripts/validate-data.mjs
+npm test           # tests node:test, dont la cohérence des données
 ```
 
-- Doit finir par `✓ data.json valide`. Corrige toutes les erreurs `✗`.
+- Le validateur doit finir par `✓ data.json valide`. Corrige toutes les erreurs `✗`.
+- `npm test` vérifie aussi qu'un même ingrédient a **la même orthographe et le même rayon** dans toutes les recettes, et que les kcal par portion sont plausibles. Si ça casse, aligne ta recette sur l'existant (ne modifie pas les autres recettes sans le dire).
 - Lis les avertissements `!` et corrige ceux qui concernent ta recette.
 - Si possible, lance l'app (`npm start` ou `python -m http.server 5173`), ouvre `#/recette/<id>` et vérifie l'affichage, le stepper de portions et la liste de courses.
 
-## 5. Commit
+## 5. Commit et PR
 
-- **Une recette par commit**, message `feat(recette): <Titre>` (ou `fix(recette): <Titre> · <ce qui change>`).
-- Fais `git pull --rebase` avant de pousser. En cas de conflit dans `data.json`, garde **les deux** recettes (chacune est un objet indépendant du tableau), vérifie les virgules, puis relance le validateur.
-- Ne touche pas aux recettes des autres sans le dire dans le message de commit.
+`main` est protégée : **pas de push direct**, la CI (check « Tests ») doit être verte pour merger.
+
+```bash
+git add data.json
+git commit -m "feat(recette): <Titre>"     # ou fix(recette): <Titre> · <ce qui change>
+git push -u origin recette/<id>
+gh pr create --fill
+```
+
+- **Une recette par commit**, idéalement une recette par PR.
+- Si la CI échoue, lis le log du job « Tests » (`gh pr checks` puis `gh run view --log-failed`), corrige sur la même branche et repousse.
+- En cas de conflit dans `data.json` (`git pull --rebase origin main`), garde **les deux** recettes (chacune est un objet indépendant du tableau), vérifie les virgules, puis relance `npm run validate && npm test`.
+- Ne touche pas aux recettes des autres sans le dire dans la PR.
 
 ## Supprimer ou renommer
 
